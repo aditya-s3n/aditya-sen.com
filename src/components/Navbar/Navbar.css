@@ -1,0 +1,32 @@
+/* src/components/Navbar/Navbar.css */
+
+.navbar-brand {
+  font-size: 2rem;
+  font-family: var(--font-brother-signature), cursive;
+  color: #ef4040;
+}
+
+.navbar-brand:hover {
+    color: #59EEF4;
+}
+
+.nav-link {
+  transition: color 0.2s ease-in-out;
+  font-size: 1.15rem;
+  margin-left: 15px;
+  color: #FC7265;
+}
+
+.nav-link:hover {
+  color: #59EEF4;
+}
+
+.nav-link:active {
+    color: #59EEF4;
+    text-decoration: underline;
+}
+
+.navbar-landing {
+    background: linear-gradient(135deg, #321214, #07090E) !important;
+    border-bottom: 1px solid #FC7265;
+}
