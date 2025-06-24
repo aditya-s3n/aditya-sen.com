@@ -4,6 +4,7 @@
   font-size: 2rem;
   font-family: var(--font-brother-signature), cursive;
   color: #ef4040;
+  transition: color 0.2s ease-in-out;
 }
 
 .navbar-brand:hover {
