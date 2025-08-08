@@ -1,0 +1,44 @@
+.name {
+    color: #59EEF4;
+}
+
+.landing-subtext-container {
+    border: 1px solid #FC8C65;
+    background-color: #FC8C6530;
+    width: 80%;
+
+}
+
+.landing-subtext {
+    color: #FCA765;
+    font-size: 1.2rem;
+}
+
+.responsive-border {
+    border-right: 1px solid #FC8C65;
+}
+
+.profile-image-container {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.profile-image-wrapper {
+    position: relative;
+    display: inline-block;
+    border: 2px solid #59EEF4;
+
+    box-shadow:
+        0 0 10px 3px rgba(89, 238, 244, 0.6),
+        0 0 20px 6px rgba(89, 238, 244, 0.3);
+
+    transition: box-shadow 0.3s ease;
+}
+
+.profile-image-wrapper:hover {
+    box-shadow:
+        0 0 15px 5px rgba(89, 238, 244, 0.8),
+        0 0 30px 10px rgba(89, 238, 244, 0.5);
+}
