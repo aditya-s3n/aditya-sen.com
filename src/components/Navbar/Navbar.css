@@ -7,7 +7,9 @@
   transition: color 0.2s ease-in-out;
 }
 
-.navbar-brand:hover {
+.navbar-brand:focus,
+.navbar-brand:hover,
+.navbar-brand:active {
     color: #59EEF4;
 }
 
@@ -22,7 +24,8 @@
   color: #59EEF4;
 }
 
-.nav-link:active {
+.nav-link:active,
+.nav-link:focus {
     color: #59EEF4;
     text-decoration: underline;
 }

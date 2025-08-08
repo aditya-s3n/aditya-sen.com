@@ -1,10 +1,12 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 import BootstrapClient from '../components/BootstrapClient';
 
 import type { Metadata } from "next";
 import { Play } from "next/font/google";
 import localFont from "next/font/local";
 import Navbar from '@/components/Navbar/Navbar';
+import Footer from '@/components/Footer/Footer';
 
 const play = Play({
   variable: "--font-play",
@@ -33,6 +35,7 @@ export default function RootLayout({
       <body className={`${play.variable} ${brotherSignature.variable}`}>
         <Navbar />
         {children}
+        {/* <Footer /> */}
         <BootstrapClient />
       </body>
     </html>
