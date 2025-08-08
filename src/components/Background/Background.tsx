@@ -26,7 +26,7 @@ export default function CyberpunkBackground() {
   return (
     <>
       <style jsx>{`
-        .cyberpunk-bg {
+        .cyber-bg {
           position: fixed;
           top: 0;
           left: 0;
@@ -167,7 +167,7 @@ export default function CyberpunkBackground() {
         }
       `}</style>
 
-      <div className="cyberpunk-bg">
+      <div className="cyber-bg">
         <div className="glass-overlay"></div>
         <div className="glass-reflection"></div>
         <div className="scan-lines"></div>

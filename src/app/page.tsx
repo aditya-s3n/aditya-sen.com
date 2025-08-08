@@ -10,23 +10,31 @@ export default function Home() {
   return (
     <div>
       <Background />
-      <div className='container'>
+      <div className='container my-5'>
         <div className='row'>
-          <div className='col'>
-            {/* <Image 
-              src={logo}
-              alt='profile'
-              width={500}
-              height={500}
-            /> */}
+          <div className='col text-center text-md-start mb-4'>
+            <div className="profile-image-wrapper">
+              <Image
+                src={logo}
+                alt="Aditya Sen"
+                width={350}
+                height={350}
+                style={{
+                  objectFit: 'cover',
+                }}
+                sizes="(max-width: 768px) 100vw, 350px"
+                priority={true}
+              />
+            </div>
+
           </div>
 
-          <div className='col text-center'>
+          <div className='col d-flex flex-column justify-content-center align-items-center text-center'>
             <p className='fs-1 name'>Aditya Sen</p>
 
-            <div className='row py-2 text-center m-auto landing-subtext-container'>
-              <HexTextAnimation text='Software Engineer' className='col landing-subtext' duration={2} delay={0.5}/>
-              <HexTextAnimation text='Firmware Engineer' className='col landing-subtext' duration={2} delay={0.5}/>
+            <div className='row py-2 text-center landing-subtext-container w-100'>
+              <HexTextAnimation text='Software Engineer' className='col responsive-border landing-subtext mb-0' duration={2} delay={0.5}/>
+              <HexTextAnimation text='Firmware Engineer' className='col landing-subtext mb-0' duration={2} delay={0.5}/>
             </div>
           </div>
         </div>
