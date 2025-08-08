@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 import "./cyber.css";
 
-export default function CyberpunkBackground() {
+export default function CyberBackground() {
   const [scanlinePosition, setScanlinePosition] = useState(0)
   const [glitchActive, setGlitchActive] = useState(false)
 
