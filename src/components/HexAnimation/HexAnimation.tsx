@@ -1,7 +1,7 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import { motion } from "framer-motion"
+import { useState, useEffect, useRef } from "react"
+import { motion, useInView } from "framer-motion"
 
 interface HexTextAnimationProps {
   text: string
@@ -14,17 +14,19 @@ export default function HexTextAnimation({ text, className = "", delay = 0, dura
   const [displayText, setDisplayText] = useState("")
   const [isComplete, setIsComplete] = useState(false)
 
-  const hexChars = "0123456789ABCDEF"
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true }) // triggers only once
 
-  const getRandomHexChar = () => {
-    return hexChars[Math.floor(Math.random() * hexChars.length)]
-  }
+  const hexChars = "0123456789ABCDEF"
+  const getRandomHexChar = () => hexChars[Math.floor(Math.random() * hexChars.length)]
 
   useEffect(() => {
+    if (!isInView) return // don't start until visible
+
     const startTimer = setTimeout(() => {
-      const totalDuration = duration * 1000 // Convert to milliseconds
+      const totalDuration = duration * 1000
       const timePerChar = totalDuration / text.length
-      const cyclesPerChar = 8 // Number of hex characters to cycle through per letter
+      const cyclesPerChar = 8
       const cycleSpeed = timePerChar / cyclesPerChar
 
       let currentCharIndex = 0
@@ -42,7 +44,6 @@ export default function HexTextAnimation({ text, className = "", delay = 0, dura
         const remainingPart = text.slice(currentCharIndex + 1)
 
         if (cycleCount < cyclesPerChar) {
-          // Show random hex character for current position
           const randomChar = currentChar === " " ? " " : getRandomHexChar()
           setDisplayText(
             revealedPart +
@@ -50,18 +51,17 @@ export default function HexTextAnimation({ text, className = "", delay = 0, dura
               remainingPart
                 .split("")
                 .map((char) => (char === " " ? " " : getRandomHexChar()))
-                .join(""),
+                .join("")
           )
           cycleCount++
         } else {
-          // Reveal the actual character
           setDisplayText(
             revealedPart +
               currentChar +
               remainingPart
                 .split("")
                 .map((char) => (char === " " ? " " : getRandomHexChar()))
-                .join(""),
+                .join("")
           )
           currentCharIndex++
           cycleCount = 0
@@ -74,7 +74,7 @@ export default function HexTextAnimation({ text, className = "", delay = 0, dura
     }, delay * 1000)
 
     return () => clearTimeout(startTimer)
-  }, [text, delay, duration])
+  }, [text, delay, duration, isInView])
 
   return (
     <>
@@ -83,6 +83,8 @@ export default function HexTextAnimation({ text, className = "", delay = 0, dura
           font-family: 'JetBrains Mono', 'Courier New', monospace;
           text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 40px currentColor;
         }
+
+
         .hex-cursor {
           width: 4px;
           height: 2rem;
@@ -94,10 +96,12 @@ export default function HexTextAnimation({ text, className = "", delay = 0, dura
           100% { opacity: 0; }
         }
       `}</style>
+
       <motion.h1
+        ref={ref}
         className={`hex-text ${className}`}
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        animate={{ opacity: isInView ? 1 : 0 }}
         transition={{ duration: 0.5, delay }}
       >
         {displayText}

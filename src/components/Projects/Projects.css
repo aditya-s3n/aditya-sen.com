@@ -1,0 +1,112 @@
+.project-color {
+    color: #FC7265 !important;
+    border-color: #FC7265 !important;
+}
+
+.border-purple { border: 2px solid #b347d9 !important; }
+.border-cyan { border: 2px solid #00d4ff !important; }
+.border-yellow { border: 2px solid #ffdd44 !important; }
+
+.text-purple { color: #b347d9 !important; }
+.text-cyan { color: #00d4ff !important; }
+.text-yellow { color: #ffdd44 !important; }
+
+.bg-purple-dark { background-color: rgba(179, 71, 217, 0.1) !important; }
+.bg-cyan-dark { background-color: rgba(0, 212, 255, 0.1) !important; }
+.bg-yellow-dark { background-color: rgba(255, 221, 68, 0.1) !important; }
+
+.shadow-purple { box-shadow: 0 0 30px rgba(179, 71, 217, 0.4) !important; }
+.shadow-cyan { box-shadow: 0 0 30px rgba(0, 212, 255, 0.4) !important; }
+.shadow-yellow { box-shadow: 0 0 30px rgba(255, 221, 68, 0.4) !important; }
+
+.project-card-container {
+    height: 350px;
+}
+
+.project-card {
+    backdrop-filter: blur(4px);
+    border: 1px solid black;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+}
+
+.project-card:hover {
+    transform: scale(1.05);
+}
+
+.project-card-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.5rem;
+    position: relative;
+    z-index: 10;
+}
+
+.circuit-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.2;
+    transition: opacity 0.3s ease;
+}
+
+.project-card:hover .circuit-pattern {
+    opacity: 0.3;
+}
+
+.power-indicator {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.power-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+.power-dot.purple { background-color: #b347d9; }
+.power-dot.cyan { background-color: #00d4ff; }
+.power-dot.yellow { background-color: #ffdd44; }
+
+.power-text {
+    font-size: 0.75rem;
+    font-family: 'JetBrains Mono', monospace;
+    opacity: 0.6;
+}
+
+.power-text.purple { color: #b347d9; }
+.power-text.cyan { color: #00d4ff; }
+.power-text.yellow { color: #ffdd44; }
+
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+
+
+.cyber-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .cyber-grid {
+    grid-template-columns: repeat(3, 1fr);
+    }
+}
