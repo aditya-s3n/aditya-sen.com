@@ -1,20 +1,19 @@
 "use client"
 
+import Link from "next/link"
 import HexTextAnimation from "../HexAnimation/HexAnimation"
 
 const projects = [
   {
     title: "Scarlet Encryption",
-    description: "Scarlet Encryption is a file encryption tool that allows users to securely encrypt and decrypt files on their local storage.",
-    details: "Scarlet Encryption is compiled as an executable file for the designated operating system, to be used in the terminal as an application. It supports AES for encryption, SHA-256 for file integrity, RSA for hashing the AES key.",
-    color: "purple",
+    description: "Scarlet Encryption is a file encryption tool that allows users to securely encrypt and decrypt files on their local storage. It supports AES for encryption, SHA-256 for file integrity, RSA for hashing the AES key.",
+    color: "orange",
     github: "#",
     demo: "#",
   },
   {
     title: "NASA - Twitter Bot",
     description: "",
-    details: "",
     color: "cyan",
     github: "#",
     demo: "#",
@@ -22,8 +21,7 @@ const projects = [
   {
     title: "Test",
     description: "",
-    details: "",
-    color: "yellow",
+    color: "red",
     github: "#",
     demo: "#",
   },
@@ -50,6 +48,27 @@ const colorClasses = {
     text: "text-yellow",
     shadow: "shadow-yellow",
     circuit: "#ffdd44",
+  },
+  green: {
+    border: "border-green",
+    bg: "bg-green-dark",
+    text: "text-green",
+    shadow: "shadow-green",
+    circuit: "#22c55e",
+  },
+  red: {
+    border: "border-red",
+    bg: "bg-red-dark",
+    text: "text-red",
+    shadow: "shadow-red",
+    circuit: "#ef4444",
+  },
+  orange: {
+    border: "border-orange",
+    bg: "bg-orange-dark",
+    text: "text-orange",
+    shadow: "shadow-orange",
+    circuit: "#f97316",
   },
 }
 
@@ -103,7 +122,7 @@ export default function ProjectsSection() {
 
                     <div className="power-indicator">
                       <div className={`power-dot ${project.color}`}></div>
-                      <span className={`power-text ${project.color}`}>PWR</span>
+                      <span className={`power-text ${project.color}`}>ONLINE</span>
                     </div>
 
                     <div className="project-card-content">
@@ -115,6 +134,20 @@ export default function ProjectsSection() {
                           duration={4}
                         />
 
+                        <p>{project.description}</p>
+                      </div>
+
+                      <div className="cyber-btn-group mt-auto">
+                        <Link href={project.github}>
+                          <button className={`cyber-btn cyber-btn-${project.color}`}>
+                           <i className="bi bi-github cyber-btn-icon fs-5"></i>
+                          </button>
+                        </Link>
+                        <Link href={project.demo}>
+                          <button className={`cyber-btn cyber-btn-${project.color}`}>
+                            <i className="bi bi-box-arrow-up-right cyber-btn-icon fs-5"></i>
+                          </button>
+                        </Link>
                       </div>
                     </div>
 
