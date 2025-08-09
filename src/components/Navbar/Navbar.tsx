@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export default function Navbar() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark px-4 navbar-landing">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark px-4 navbar-landing sticky-top">
       <div className="container-fluid">
         <Link className="navbar-brand brother-font" href="/">
           Aditya Sen

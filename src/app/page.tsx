@@ -2,6 +2,7 @@ import HexTextAnimation from '@/components/HexAnimation/HexAnimation';
 import Image from 'next/image';
 import logo from '@/imgs/profile.jpg';
 import Background from '@/components/Background/Background';
+import Projects from '@/components/Projects/Projects';
 import './styles/background.css';
 import './styles/styles.css';
 
@@ -37,6 +38,11 @@ export default function Home() {
               <HexTextAnimation text='Firmware Engineer' className='col landing-subtext mb-0' duration={2} delay={0.5}/>
             </div>
           </div>
+        </div>
+
+
+        <div className='mt-5'>
+          <Projects />
         </div>
       </div>
 
