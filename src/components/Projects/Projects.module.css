@@ -1,0 +1,269 @@
+.projectColor {
+    color: #FC7265 !important;
+    border-color: #FC7265 !important;
+}
+
+.borderPurple { border: 2px solid #b347d9 !important; }
+.borderCyan { border: 2px solid #00d4ff !important; }
+.borderYellow { border: 2px solid #ffdd44 !important; }
+.borderGreen { border: 2px solid #22c55e !important; }
+.borderRed { border: 2px solid #ef4444 !important; }
+.borderOrange { border: 2px solid #f97316 !important; }
+
+.textPurple { color: #b347d9 !important; }
+.textCyan { color: #00d4ff !important; }
+.textYellow { color: #ffdd44 !important; }
+.textGreen { color: #22c55e !important; }
+.textRed { color: #ef4444 !important; }
+.textOrange { color: #f97316 !important; }
+
+.bgPurpleDark { background-color: rgba(179, 71, 217, 0.1) !important; }
+.bgCyanDark { background-color: rgba(0, 212, 255, 0.1) !important; }
+.bgYellowDark { background-color: rgba(255, 221, 68, 0.1) !important; }
+.bgGreenDark { background-color: rgba(34, 197, 94, 0.1) !important; }
+.bgRedDark { background-color: rgba(239, 68, 68, 0.1) !important; }
+.bgOrangeDark { background-color: rgba(249, 115, 22, 0.1) !important; }
+
+.shadowPurple { box-shadow: 0 0 30px rgba(179, 71, 217, 0.4) !important; }
+.shadowCyan { box-shadow: 0 0 30px rgba(0, 212, 255, 0.4) !important; }
+.shadowYellow { box-shadow: 0 0 30px rgba(255, 221, 68, 0.4) !important; }
+.shadowGreen { box-shadow: 0 0 30px rgba(34, 197, 94, 0.4) !important; }
+.shadowRed { box-shadow: 0 0 30px rgba(239, 68, 68, 0.4) !important; }
+.shadowOrange { box-shadow: 0 0 30px rgba(249, 115, 22, 0.4) !important; }
+
+.projectCardContainer {
+    height: 350px;
+}
+
+.projectCard {
+    backdrop-filter: blur(4px);
+    border: 1px solid black;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+}
+
+.projectCard:hover.shadowPurple {
+    box-shadow: 
+    0 0 40px rgba(179, 71, 217, 0.6),
+    0 0 80px rgba(179, 71, 217, 0.3),
+    inset 0 0 30px rgba(179, 71, 217, 0.15) !important;
+}
+
+.projectCard:hover.shadowCyan {
+    box-shadow: 
+    0 0 40px rgba(0, 212, 255, 0.6),
+    0 0 80px rgba(0, 212, 255, 0.3),
+    inset 0 0 30px rgba(0, 212, 255, 0.15) !important;
+}
+
+.projectCard:hover.shadowYellow {
+    box-shadow: 
+    0 0 40px rgba(255, 221, 68, 0.6),
+    0 0 80px rgba(255, 221, 68, 0.3),
+    inset 0 0 30px rgba(255, 221, 68, 0.15) !important;
+}
+
+.projectCard:hover.shadowGreen {
+    box-shadow: 
+    0 0 40px rgba(34, 197, 94, 0.6),
+    0 0 80px rgba(34, 197, 94, 0.3),
+    inset 0 0 30px rgba(34, 197, 94, 0.15) !important;
+}
+
+.projectCard:hover.shadowRed {
+    box-shadow: 
+    0 0 40px rgba(239, 68, 68, 0.6),
+    0 0 80px rgba(239, 68, 68, 0.3),
+    inset 0 0 30px rgba(239, 68, 68, 0.15) !important;
+}
+
+.projectCard:hover.shadowOrange {
+    box-shadow: 
+    0 0 40px rgba(249, 115, 22, 0.6),
+    0 0 80px rgba(249, 115, 22, 0.3),
+    inset 0 0 30px rgba(249, 115, 22, 0.15) !important;
+}
+
+.projectCard:hover {
+    clip-path: polygon(0 0, calc(100% - 25px) 0, 100% 25px, 100% 100%, 25px 100%, 0 calc(100% - 25px));
+}
+
+.projectCardContent {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.5rem;
+    position: relative;
+    z-index: 10;
+}
+
+.circuitPattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.2;
+    transition: opacity 0.3s ease;
+}
+
+.projectCard:hover .circuitPattern {
+    opacity: 0.3;
+}
+
+.powerIndicator {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.powerDot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+.powerDot.purple { background-color: #b347d9; }
+.powerDot.cyan { background-color: #00d4ff; }
+.powerDot.yellow { background-color: #ffdd44; }
+.powerDot.green { background-color: #22c55e; }
+.powerDot.red { background-color: #ef4444; }
+.powerDot.orange { background-color: #f97316; }
+
+.powerText {
+    font-size: 0.75rem;
+    font-family: 'JetBrains Mono', monospace;
+    opacity: 0.6;
+}
+
+.powerText.purple { color: #b347d9; }
+.powerText.cyan { color: #00d4ff; }
+.powerText.yellow { color: #ffdd44; }
+.powerText.green { color: #22c55e; }
+.powerText.red { color: #ef4444; }
+.powerText.orange { color: #f97316; }
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.cyberBtn {
+    position: relative;
+    background: transparent;
+    border: 1px solid #6c757d;
+    color: #acaeb1;
+    padding: 8px;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+}
+
+.cyberBtn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.cyberBtn:hover::before {
+    left: 100%;
+}
+
+.cyberBtn:hover {
+    color: white;
+    border-color: white;
+    box-shadow: 
+    0 0 10px rgba(255, 255, 255, 0.3),
+    inset 0 0 10px rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.cyberBtnpurple:hover {
+    border-color: #b347d9;
+    color: #b347d9;
+    box-shadow: 
+    0 0 15px rgba(179, 71, 217, 0.5),
+    inset 0 0 15px rgba(179, 71, 217, 0.1);
+}
+
+.cyberBtncyan:hover {
+    border-color: #00d4ff;
+    color: #00d4ff;
+    box-shadow: 
+    0 0 15px rgba(0, 212, 255, 0.5),
+    inset 0 0 15px rgba(0, 212, 255, 0.1);
+}
+
+.cyberBtnyellow:hover {
+    border-color: #ffdd44;
+    color: #ffdd44;
+    box-shadow: 
+    0 0 15px rgba(255, 221, 68, 0.5),
+    inset 0 0 15px rgba(255, 221, 68, 0.1);
+}
+
+.cyberBtngreen:hover {
+    border-color: #22c55e;
+    color: #22c55e;
+    box-shadow: 
+    0 0 15px rgba(34, 197, 94, 0.5),
+    inset 0 0 15px rgba(34, 197, 94, 0.1);
+}
+
+.cyberBtnred:hover {
+    border-color: #ef4444;
+    color: #ef4444;
+    box-shadow: 
+    0 0 15px rgba(239, 68, 68, 0.5),
+    inset 0 0 15px rgba(239, 68, 68, 0.1);
+}
+
+.cyberBtnorange:hover {
+    border-color: #f97316;
+    color: #f97316;
+    box-shadow: 
+    0 0 15px rgba(249, 115, 22, 0.5),
+    inset 0 0 15px rgba(249, 115, 22, 0.1);
+}
+
+.cyberBtnGroup {
+    display: flex;
+    gap: 8px;
+}
+
+.cyberBtnIcon {
+    width: 16px;
+    height: 16px;
+    transition: all 0.3s ease;
+}
+
+.cyberBtn:hover .cyberBtnIcon {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 5px currentColor);
+}
+
+.cyberGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .cyberGrid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

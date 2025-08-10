@@ -3,6 +3,7 @@ import Image from 'next/image';
 import logo from '@/imgs/profile.jpg';
 import Background from '@/components/Background/Background';
 import Projects from '@/components/Projects/Projects';
+import Career from '@/components/Career/Career';
 import './styles/background.css';
 import './styles/styles.css';
 
@@ -43,6 +44,10 @@ export default function Home() {
 
         <div className='mt-5'>
           <Projects />
+        </div>
+
+        <div className='mt-5'>
+          <Career />
         </div>
       </div>
 
