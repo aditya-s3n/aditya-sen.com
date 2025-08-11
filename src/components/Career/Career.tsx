@@ -3,7 +3,7 @@ import styles from "./Career.module.css";
 
 export default function Career() {
     return (
-        <div className="pt-5" id="career">
+        <div className="pt-5">
             <h1 className={styles.careerColor}>Career</h1>
             <div className={`w-100 border-top ${styles.careerColor} mb-3`}></div>
             <a href="#" target="_blank" rel="noopener noreferrer" className={styles.resumeText}><span>Resume</span> <i className="bi bi-box-arrow-up-right"></i></a>

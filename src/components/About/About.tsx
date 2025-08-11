@@ -2,7 +2,7 @@ import styles from "./About.module.css";
 
 export default function About() {
     return (
-        <div className="pt-5" id="about">
+        <div className="pt-5" >
             <h1 className={styles.aboutColor}>About</h1>
             <div className={`w-100 border-top ${styles.aboutColor} mb-3`}></div>
 

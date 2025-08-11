@@ -9,11 +9,17 @@ import './styles/background.css';
 import './styles/styles.css';
 
 
-export default function Home() {
+export default function Home() {  
   return (
     <div>
       <Background />
-      <div className='container my-5'>
+      <div 
+        className='container my-5'
+        data-bs-spy="scroll"
+        data-bs-target="#navbarNav"
+        data-bs-offset="80"
+        tabIndex={0}
+      >
         <div className='row'>
           <div className='col text-center text-md-start mb-4'>
             <div className="profile-image-wrapper">
@@ -43,15 +49,15 @@ export default function Home() {
         </div>
 
 
-        <div className='mt-5'>
+        <div className='mt-5' id="projects">
           <Projects />
         </div>
 
-        <div className='mt-5'>
+        <div className='mt-5'  id="career">
           <Career />
         </div>
 
-        <div className='mt-5'>
+        <div className='mt-5' id="about">
           <About />
         </div>
       </div>
