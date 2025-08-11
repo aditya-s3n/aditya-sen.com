@@ -19,7 +19,7 @@ const careers = [
     position: "Software Engineering Intern",
     duration: "January 2026 - April 2026",
     description:
-      "Developed game engine features and contributed to Unreal Engine optimization. Worked on rendering pipeline improvements and performance analysis.",
+      "",
     color: "purple",
     logo: "EG",
   },
@@ -29,8 +29,8 @@ const careers = [
     position: "Software Engineering Intern",
     duration: "January 2026 - April 2026",
     description:
-      "Built high-frequency trading systems and worked on distributed computing infrastructure. Implemented real-time data processing algorithms.",
-    color: "cyan",
+      "",
+    color: "yellow",
     logo: "JS",
   },
 ]
@@ -88,7 +88,7 @@ const colorClasses = {
 
 export default function CyberCareerStack() {
   return (
-    <div className="container-fluid m-0 p-0">
+    <div className="container-fluid m-0 p-0 mt-3">
       <div className="row">
         <div className="col-12 w-100">
           <div className="position-relative">
@@ -197,13 +197,13 @@ export default function CyberCareerStack() {
                                   </h3>
                                     <HexTextAnimation
                                         text={career.position}
-                                        className={`fw-medium fs-5 mb-0 ${styles.positionText}`}
+                                        className={`fw-medium fs-5 mb-0 ${colors.text} fst-italic`}
                                         duration={2}
                                         delay={0.5}
                                     />
                                 </div>
                                 <div className="mt-2 mt-lg-0 text-lg-end">
-                                    <HexTextAnimation text={career.duration} className={styles.durationText} duration={2} delay={0.5} />
+                                    <HexTextAnimation text={career.duration} className={`${styles.durationText} ${colors.text}`} duration={2} delay={0.5} />
                                 </div>
                               </div>
 

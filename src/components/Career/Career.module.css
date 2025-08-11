@@ -120,10 +120,18 @@
 
 .durationText {
   font-size: medium;
-  color: #fdf800;
 }
 
 .positionText {
   color: #59EEF4;
 }
 
+.careerColor {
+  color: #FC8C65;
+  border-color: #FC8C65 !important;
+}
+
+.resumeText {
+  color: #FCA765;
+  text-decoration: none;
+}
