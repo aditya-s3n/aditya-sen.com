@@ -19,7 +19,7 @@ const careers = [
     position: "Software Engineering Intern",
     duration: "January 2026 - April 2026",
     description:
-      "",
+      "Tesla updates software team. I contributed to the OTA firmware updates. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id ex vel odio dapibus mattis.",
     color: "purple",
     logo: "EG",
   },
@@ -29,7 +29,7 @@ const careers = [
     position: "Software Engineering Intern",
     duration: "January 2026 - April 2026",
     description:
-      "",
+      "Tesla updates software team. I contributed to the OTA firmware updates. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id ex vel odio dapibus mattis.",
     color: "yellow",
     logo: "JS",
   },

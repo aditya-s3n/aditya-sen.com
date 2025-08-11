@@ -54,3 +54,7 @@
         0 0 15px 5px rgba(89, 238, 244, 0.8),
         0 0 30px 10px rgba(89, 238, 244, 0.5);
 }
+
+#projects, #career, #about, #contact {
+  scroll-margin-top: 40px;
+}
