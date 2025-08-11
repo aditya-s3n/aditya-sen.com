@@ -98,20 +98,54 @@
 /* Trapezoid shape for career cards */
 .careerCard {
   clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 0 100%);
-  border: 2px solid;
   position: relative;
   transition: all 0.3s ease;
   backdrop-filter: blur(4px);
 }
 
 .careerCard:hover {
-  clip-path: polygon(0 0, calc(100% - 35px) 0, 100% 35px, 100% 100%, 0 100%);
   transform: translateX(5px);
 }
+
+.careerCardPurple {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(179, 71, 217, 0.08) 100%);
+  border: 2px solid #b347d9;
+
+}
+
+.careerCardCyan {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 212, 255, 0.08) 100%);
+  border: 2px solid #00d4ff;
+
+}
+
+.careerCardYellow {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(255, 221, 68, 0.08) 100%);
+  border: 2px solid #ffdd44;
+
+}
+
+.careerCardGreen {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(34, 197, 94, 0.08) 100%);
+  border: 2px solid #22c55e;
+}
+
+.careerCardRed {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(239, 68, 68, 0.08) 100%);
+  border: 2px solid #ef4444;
+}
+
+.careerCardOrange {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(249, 115, 22, 0.08) 100%);
+  border: 2px solid #f97316;
+}
+
+
 
 /* Border panel styling */
 .borderPanel {
   border-right: 2px solid;
+
 }
 
 .marginCard {
