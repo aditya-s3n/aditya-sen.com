@@ -1,4 +1,102 @@
 .aboutColor {
-    color: #FC8C65;
-    border-color: #FC8C65 !important;
+    color: #95FDCD;
+    border-color: #95FDCD !important;
+}
+
+.highlightAbout {
+    font-weight: bold;
+    color: #F3BDFF !important;
+    
+}
+
+.aboutText {
+    color: #95FDCD;
+    font-size: larger;
+}
+
+.aboutLink {
+    color: #F3BDFF !important;
+    text-decoration: none;
+}
+
+.section {
+  background-color: rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(4px);
+}
+
+.contributionsSection {
+  border: 1px solid rgba(34, 197, 94, 0.2);
+}
+
+.passionsSection {
+  border: 1px solid rgba(249, 115, 22, 0.2);
+}
+
+.sectionTitle1 {
+  color: #22c55e;
+}
+
+.sectionTitle2 {
+  color: #f97316;
+}
+
+.tab {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.tab:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.tab:hover .tabText {
+  font-weight: bold;
+}
+
+.tabText {
+  transition: color 0.3s ease;
+  z-index: 2;
+  position: relative;
+}
+
+.tabGloss {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+}
+
+/* Individual tab colors */
+.automotive:hover .tabText {
+  color: #ef4444;
+}
+.finance:hover .tabText {
+  color: #ffdd44;
+}
+.gaming:hover .tabText {
+  color: #b347d9;
+}
+.cybersecurity:hover .tabText {
+  color: #59EEF4;
+}
+
+.woodworking:hover .tabText {
+  color: #ffdd44;
+}
+.driving:hover .tabText {
+  color: #ef4444;
+}
+.computing:hover .tabText {
+  color: #59EEF4;
+}
+.cybersecurity:hover .tabText {
+  color: #59EEF4;
 }
