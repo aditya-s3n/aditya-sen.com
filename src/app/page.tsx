@@ -4,6 +4,7 @@ import logo from '@/imgs/profile.jpg';
 import Background from '@/components/Background/Background';
 import Projects from '@/components/Projects/Projects';
 import Career from '@/components/Career/Career';
+import About from '@/components/About/About';
 import './styles/background.css';
 import './styles/styles.css';
 
@@ -48,6 +49,10 @@ export default function Home() {
 
         <div className='mt-5'>
           <Career />
+        </div>
+
+        <div className='mt-5'>
+          <About />
         </div>
       </div>
 
