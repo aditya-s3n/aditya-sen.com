@@ -6,15 +6,15 @@ import styles from "./About.module.css";
 const interests = [
     { name: "Automotive", color: "#ef4444", className: "automotive" },
     { name: "Cybersecurity", color: "#59EEF4", className: "cybersecurity" },
+    { name: "Gaming", color: "#b347d9", className: "gaming" },
     { name: "Finance", color: "#ffdd44", className: "finance" },
-    { name: "Gaming / Computer Graphics", color: "#b347d9", className: "gaming" },
 ]
 
 const passions = [
     { name: "Driving & Working on Cars", color: "#ef4444", className: "driving" },
-    { name: "Computers 💕", color: "#59EEF4", className: "computing" },
-    { name: "", color: "#ffdd44", className: "woodworking" },
-    { name: "", color: "#b347d9", className: "cinematography" },
+    { name: "Art - Books 📖 | Video Games 🎮 | Movies 🎥", color: "#59EEF4", className: "art" },
+    { name: "Running & Biking", color: "#b347d9", className: "run" },
+    { name: "Of Course! Computers 💕", color: "#ffdd44", className: "computing" },
 ]
 
 
@@ -36,7 +36,7 @@ export default function About() {
                     {/* Contributions */}
                     <div className="col-md-6">
                     <div className={`p-4 ${styles.section} ${styles.contributionsSection}`}>
-                        <HexTextAnimation className={`fs-5 mb-3 text-center ${styles.sectionTitle1}`} text="CONTRIBUTIONS" duration={2} delay={0.5} />
+                        <HexTextAnimation className={`fs-5 mb-3 text-center ${styles.sectionTitle1}`} text="GOALS" duration={2} delay={0.5} />
                         <p className="mb-3 text-center">Industries I aim to contribute to:</p>
                         <div className="d-flex flex-column gap-2">
                         {interests.map((interest, index) => (
@@ -76,6 +76,8 @@ export default function About() {
             </div>
 
             <div className="mt-5">
+                <p className={styles.aboutText}>Looking to get my own motorcycle 🏍️💨!!! :)</p>
+                <p className={styles.aboutText}>Love so many types of art, those are just my top 3.</p>
                 <p className={styles.aboutText}>I like all types of engineering! Checkout out some of my <a href="#" className={styles.aboutLink}><span className="text-decoration-underline">3D CAD designs here</span> <i className="bi bi-box-arrow-up-right"></i></a></p>
             </div>
         </div>

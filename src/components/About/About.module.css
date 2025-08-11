@@ -1,6 +1,6 @@
 .aboutColor {
-    color: #95FDCD;
-    border-color: #95FDCD !important;
+    color: #22c55e;
+    border-color: #22c55e !important;
 }
 
 .highlightAbout {
@@ -88,15 +88,15 @@
   color: #59EEF4;
 }
 
-.woodworking:hover .tabText {
-  color: #ffdd44;
+.run:hover .tabText {
+  color: #b347d9;
 }
 .driving:hover .tabText {
   color: #ef4444;
 }
 .computing:hover .tabText {
-  color: #59EEF4;
+  color: #ffdd44;
 }
-.cybersecurity:hover .tabText {
+.art:hover .tabText {
   color: #59EEF4;
 }
