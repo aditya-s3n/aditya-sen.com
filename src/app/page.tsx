@@ -23,7 +23,7 @@ export default function Home() {
       >
         <div className='row'>
           <div className='col text-center text-md-start mb-4'>
-            <div className="profile-image-wrapper">
+            <div className="profile-image-wrapper" data-augmented-ui="r-clip-y both">
               <Image
                 src={logo}
                 alt="Aditya Sen"
@@ -42,7 +42,10 @@ export default function Home() {
           <div className='col d-flex flex-column justify-content-center align-items-center text-center'>
             <p className='fs-1 name'>Aditya Sen</p>
 
-            <div className='row py-2 text-center landing-subtext-container w-100'>
+            <div 
+              className='row py-2 text-center landing-subtext-container w-100'
+              data-augmented-ui="bl-clip-y tr-clip-y border"
+            >
               <HexTextAnimation text='Software Engineer' className='col responsive-border landing-subtext mb-0' duration={2} delay={0.5}/>
               <HexTextAnimation text='Firmware Engineer' className='col landing-subtext mb-0' duration={2} delay={0.5}/>
             </div>

@@ -106,9 +106,7 @@ export default function CyberCareerStack() {
                   <div key={career.id} className={`position-relative ${styles.marginCard}`}>
                     <div
                       className={`position-relative p-0 ${styles.careerCard} ${colors.bg} ${colors.border} ${colors.shadow} ${colors.card} `}
-                      style={{
-                        marginTop: index === 0 ? "0" : "-2px", // Overlap borders
-                      }}
+                      data-augmented-ui="br-clip border"
                     >
                       <div className="d-flex">
                         <div

@@ -90,6 +90,7 @@ export default function ProjectsSection() {
               >
                 <div
                   className={`${styles.projectCard} ${colors.border} ${colors.bg} ${colors.shadow}`}
+                  data-augmented-ui="tr-clip bl-clip border"
                 >
                   {/* Circuit Board Pattern */}
                   <div className={styles.circuitPattern}>
