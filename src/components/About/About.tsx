@@ -27,7 +27,7 @@ export default function About() {
             <div>
                 <p className={styles.aboutText}>Currently a second-year <span className={styles.highlightAbout}>Computer Engineering</span> student at the <span className={styles.highlightAbout}>University of Waterloo.</span></p>
 
-                <p className={styles.aboutText}>I love computers! If you already couldn't tell with the cyberpunk themed website. <br></br> Currently learning everything from low-level firmware to high-level software. </p> 
+                <p className={styles.aboutText}>I love computers! If you couldn't already tell with the cyberpunk themed website. <br></br> Learning as much as I can from low-level firmware to high-level software. </p> 
             </div>
 
             <div>
@@ -76,8 +76,8 @@ export default function About() {
             </div>
 
             <div className="mt-5">
-                <p className={styles.aboutText}>Looking to get my own motorcycle 🏍️💨!!! :)</p>
                 <p className={styles.aboutText}>Love so many types of art, those are just my top 3.</p>
+                <p className={styles.aboutText}>Looking to get my own motorcycle 🏍️💨!!! :)</p>
                 <p className={styles.aboutText}>I like all types of engineering! Checkout out some of my <a href="#" className={styles.aboutLink}><span className="text-decoration-underline">3D CAD designs here</span> <i className="bi bi-box-arrow-up-right"></i></a></p>
             </div>
         </div>

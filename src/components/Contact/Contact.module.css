@@ -1,0 +1,155 @@
+.contactColor {
+  color: #59a1f4 !important;
+  border-color: #59a1f4 !important;
+}
+
+.contactText {
+  font-size: larger;
+  color: #a6cbf5;
+}
+
+/* Contact Cards */
+.contactCard {
+  position: relative;
+  padding: 2rem;
+  border: 2px solid;
+  backdrop-filter: blur(4px);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  clip-path: polygon(15px 0%, 100% 0%, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0% 100%, 0% 15px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1 / 1; 
+}
+
+
+.contactCard:hover {
+  transform: scale(1.05);
+}
+
+/* Color variants */
+.contactCardOrange {
+  background: rgba(249, 115, 22, 0.2);
+  border-color: #f97316;
+}
+.contactCardOrange:hover {
+  background: rgba(249, 115, 22, 0.3);
+}
+
+.contactCardGreen {
+  background: rgba(52, 211, 153, 0.2);
+  border-color: #34d399;
+}
+.contactCardGreen:hover {
+  background: rgba(52, 211, 153, 0.3);
+}
+
+.contactCardPurple {
+  background: rgba(139, 92, 246, 0.2);
+  border-color: #8b5cf6;
+}
+.contactCardPurple:hover {
+  background: rgba(139, 92, 246, 0.3);
+}
+
+.contactCardCyan {
+  background: rgba(34, 211, 238, 0.2);
+  border-color: #22d3ee;
+}
+.contactCardCyan:hover {
+  background: rgba(34, 211, 238, 0.3);
+}
+
+/* Pattern overlay */
+.contactPattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.2;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.contactCard:hover .contactPattern {
+  opacity: 0.4;
+}
+
+/* Dataflow animations */
+.contactDataflow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.dataflowStream {
+  position: absolute;
+  width: 4px;
+  height: 2px;
+  opacity: 0;
+  animation: contactDataFlow infinite linear;
+  transition: opacity 0.3s ease;
+}
+.contactCard:hover .dataflowStream {
+  opacity: 0.4;
+}
+
+/* Contact content */
+.contactContent {
+  position: relative;
+  z-index: 10;
+}
+
+.contactName {
+  font-size: 1.125rem;
+  font-weight: bold;
+}
+.contactCardOrange .contactName {
+  color: #f97316;
+}
+.contactCardGreen .contactName {
+  color: #34d399;
+}
+.contactCardPurple .contactName {
+  color: #8b5cf6;
+}
+.contactCardCyan .contactName {
+  color: #22d3ee;
+}
+
+.contactDescription {
+  color: #9ca3af;
+  font-size: 0.875rem;
+  margin-bottom: 0;
+}
+
+/* Animations */
+@keyframes contactDataFlow {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(calc(100vw + 100px));
+    opacity: 0;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .contactCard {
+    min-height: 180px;
+    padding: 1.5rem;
+  }
+}

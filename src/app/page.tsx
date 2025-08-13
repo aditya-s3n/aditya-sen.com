@@ -5,6 +5,7 @@ import Background from '@/components/Background/Background';
 import Projects from '@/components/Projects/Projects';
 import Career from '@/components/Career/Career';
 import About from '@/components/About/About';
+import Contact from '@/components/Contact/Contact';
 import './styles/background.css';
 import './styles/styles.css';
 
@@ -59,6 +60,10 @@ export default function Home() {
 
         <div className='mt-5' id="about">
           <About />
+        </div>
+
+        <div className='mt-5' id="contact">
+          <Contact />
         </div>
       </div>
 

@@ -1,3 +1,41 @@
+.side-text {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    color: rgba(252, 114, 101, 0.4);
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    letter-spacing: 2px;
+    opacity: 0.8;
+}
+
+.side-text.left {
+    left: 20px;
+}
+
+.side-text.right {
+    right: 20px;
+}
+
+.protocol-text {
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    transform: translateY(-50%) rotate(-90deg);
+    font-size: 10px;
+    color: rgba(252, 114, 101, 0.8);
+    font-weight: bold;
+    letter-spacing: 3px;
+    text-shadow: 0 0 5px rgba(252, 114, 101, 0.3);
+}
+
 .glitch-bars {
     position: absolute;
     top: 0;
@@ -10,96 +48,142 @@
 .glitch-bar {
     position: absolute;
     width: 100%;
-    height: 2px;
+    height: 3px;
     background: linear-gradient(90deg,
     transparent,
-    rgba(252, 114, 101, 0.8),
-    rgba(89, 238, 244, 0.6),
-    rgba(252, 114, 101, 0.8),
+    rgba(252, 114, 101, 0.4),
+    rgba(89, 238, 244, 0.3),
+    rgba(255, 0, 255, 0.2),
+    rgba(252, 114, 101, 0.4),
     transparent
     );
-    animation: glitch-sweep 0.25s infinite;
-    box-shadow: 0 0 10px rgba(252, 114, 101, 0.5);
+    animation: glitch-sweep 0.2s infinite;
+    box-shadow: 0 0 8px rgba(252, 114, 101, 0.3);
 }
 
-.glitch-bar:nth-child(1) {
-    top: 20%;
-    animation-delay: 0s;
+.glitch-rectangles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 
-.glitch-bar:nth-child(2) {
-    top: 50%;
-    animation-delay: 0.08s;
+.glitch-rect {
+    position: absolute;
+    background: linear-gradient(45deg,
+    rgba(252, 114, 101, 0.3),
+    rgba(239, 64, 64, 0.25),
+    rgba(252, 114, 101, 0.35)
+    );
+    animation: glitch-rect-flicker 0.1s infinite steps(3);
+    box-shadow: 
+    0 0 5px rgba(252, 114, 101, 0.2),
+    inset 0 0 5px rgba(239, 64, 64, 0.15);
+    border: 1px solid rgba(252, 114, 101, 0.15);
 }
 
-.glitch-bar:nth-child(3) {
-    top: 80%;
-    animation-delay: 0.16s;
+@keyframes background-glitch-intense {
+    0% { background: linear-gradient(135deg, #321214 0%, #07090E 100%); }
+    10% { background: linear-gradient(135deg, #4a1416 0%, #0a090F 100%); }
+    20% { background: linear-gradient(135deg, #321628 0%, #070C0E 100%); }
+    30% { background: linear-gradient(135deg, #481632 0%, #080A10 100%); }
+    40% { background: linear-gradient(135deg, #321440 0%, #070A0E 100%); }
+    50% { background: linear-gradient(135deg, #501450 0%, #090A0E 100%); }
+    60% { background: linear-gradient(135deg, #321460 0%, #070B0E 100%); }
+    70% { background: linear-gradient(135deg, #601470 0%, #0A0A0E 100%); }
+    80% { background: linear-gradient(135deg, #321480 0%, #070A0F 100%); }
+    90% { background: linear-gradient(135deg, #401450 0%, #080A0E 100%); }
+    100% { background: linear-gradient(135deg, #321214 0%, #07090E 100%); }
 }
 
-@keyframes screen-shake {
-    0% { transform: translate(0, 0) scale(1) rotate(0deg); filter: hue-rotate(0deg); }
-    20% { transform: translate(-1px, 1px) scale(1.02) rotate(0.2deg); filter: hue-rotate(10deg); }
-    40% { transform: translate(1px, -1px) scale(1.01) rotate(-0.2deg); filter: hue-rotate(-10deg); }
-    60% { transform: translate(-1px, -1px) scale(1.02) rotate(0.1deg); filter: hue-rotate(15deg); }
-    80% { transform: translate(1px, 1px) scale(1.01) rotate(-0.1deg); filter: hue-rotate(-15deg); }
-    100% { transform: translate(0, 0) scale(1) rotate(0deg); filter: hue-rotate(0deg); }
+@keyframes screen-shake-intense {
+    0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+    5% { transform: translate(-3px, 2px) scale(1.01) rotate(0.5deg); }
+    10% { transform: translate(3px, -3px) scale(1.02) rotate(-0.5deg); }
+    15% { transform: translate(-2px, -2px) scale(1.01) rotate(0.3deg); }
+    20% { transform: translate(2px, 3px) scale(1.02) rotate(-0.3deg); }
+    25% { transform: translate(-4px, 1px) scale(1.015) rotate(0.4deg); }
+    30% { transform: translate(4px, -2px) scale(1.025) rotate(-0.4deg); }
+    35% { transform: translate(-3px, -4px) scale(1.01) rotate(0.2deg); }
+    40% { transform: translate(3px, 4px) scale(1.02) rotate(-0.2deg); }
+    45% { transform: translate(-2px, 2px) scale(1.015) rotate(0.3deg); }
+    50% { transform: translate(2px, -1px) scale(1.025) rotate(-0.3deg); }
+    55% { transform: translate(-1px, 3px) scale(1.01) rotate(0.1deg); }
+    60% { transform: translate(1px, -3px) scale(1.02) rotate(-0.1deg); }
+    65% { transform: translate(-2px, 1px) scale(1.015) rotate(0.2deg); }
+    70% { transform: translate(2px, -2px) scale(1.025) rotate(-0.2deg); }
+    75% { transform: translate(-1px, -1px) scale(1.01) rotate(0.1deg); }
+    80% { transform: translate(1px, 2px) scale(1.02) rotate(-0.1deg); }
+    85% { transform: translate(-1px, 1px) scale(1.005) rotate(0.05deg); }
+    90% { transform: translate(1px, -1px) scale(1.01) rotate(-0.05deg); }
+    95% { transform: translate(-0.5px, 0.5px) scale(1.005) rotate(0.02deg); }
+    100% { transform: translate(0, 0) scale(1) rotate(0deg); }
 }
 
-@keyframes hue-shift {
-    0%, 100% { filter: hue-rotate(0deg); }
-    50% { filter: hue-rotate(30deg); }
-}
-
-@keyframes glass-glitch {
+@keyframes glass-intense-glitch {
     0% { backdrop-filter: blur(1px) brightness(1.1) contrast(1.05); }
-    50% { backdrop-filter: blur(2px) brightness(1.2) contrast(1.15); }
+    25% { backdrop-filter: blur(2px) brightness(1.15) contrast(1.1); }
+    50% { backdrop-filter: blur(0.5px) brightness(1.05) contrast(1.15); }
+    75% { backdrop-filter: blur(1.5px) brightness(1.12) contrast(1.02); }
     100% { backdrop-filter: blur(1px) brightness(1.1) contrast(1.05); }
 }
 
-@keyframes reflection-glitch {
-    0% { opacity: 0.3; transform: scale(1); }
-    50% { opacity: 0.6; transform: scale(1.01); }
-    100% { opacity: 0.3; transform: scale(1); }
+@keyframes scanlines-intense-glitch {
+    0% { opacity: 0.6; transform: translateY(0) scaleY(1); }
+    25% { opacity: 1; transform: translateY(-2px) scaleY(1.5); }
+    50% { opacity: 0.3; transform: translateY(1px) scaleY(0.8); }
+    75% { opacity: 0.9; transform: translateY(-1px) scaleY(1.2); }
+    100% { opacity: 0.6; transform: translateY(0) scaleY(1); }
 }
 
-@keyframes scanlines-glitch {
-    0% { opacity: 0.6; transform: translateY(0); }
-    50% { opacity: 0.9; transform: translateY(-1px); }
-    100% { opacity: 0.6; transform: translateY(0); }
+@keyframes grid-intense-glitch {
+    0% { opacity: 0.7; transform: translate(0, 0) scale(1); }
+    25% { opacity: 1; transform: translate(-2px, 1px) scale(1.02); }
+    50% { opacity: 0.4; transform: translate(1px, -2px) scale(0.98); }
+    75% { opacity: 0.9; transform: translate(-1px, 1px) scale(1.01); }
+    100% { opacity: 0.7; transform: translate(0, 0) scale(1); }
 }
 
-@keyframes scanline-glitch {
-    0% { opacity: 0.8; transform: scaleY(1); }
-    50% { opacity: 1; transform: scaleY(1.5); }
-    100% { opacity: 0.8; transform: scaleY(1); }
-}
-
-@keyframes grid-glitch {
-    0% { opacity: 0.7; transform: translate(0, 0); }
-    50% { opacity: 0.9; transform: translate(-1px, 1px); }
-    100% { opacity: 0.7; transform: translate(0, 0); }
-}
-
-@keyframes glass-shimmer {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 0.7; }
-}
-
-@keyframes scanline-pulse {
-    0% { opacity: 0.3; transform: scaleY(1); }
-    100% { opacity: 0.8; transform: scaleY(1.5); }
-}
-
-@keyframes grid-flicker {
-    0%, 100% { opacity: 0.7; }
-    50% { opacity: 0.4; }
+@keyframes rgb-shift-intense {
+    0% { filter: hue-rotate(0deg) saturate(1) contrast(1); }
+    25% { filter: hue-rotate(90deg) saturate(1.5) contrast(1.3); }
+    50% { filter: hue-rotate(180deg) saturate(0.8) contrast(1.1); }
+    75% { filter: hue-rotate(270deg) saturate(1.2) contrast(1.4); }
+    100% { filter: hue-rotate(360deg) saturate(1) contrast(1); }
 }
 
 @keyframes glitch-sweep {
-    0% { transform: translateX(-100%); }
-    50% { transform: translateX(0); }
-    100% { transform: translateX(100%); }
+    0% { transform: translateX(-100%) scaleX(1); }
+    25% { transform: translateX(-50%) scaleX(1.5); }
+    50% { transform: translateX(0) scaleX(1); }
+    75% { transform: translateX(50%) scaleX(1.2); }
+    100% { transform: translateX(100%) scaleX(1); }
+}
+
+@keyframes glitch-rect-flicker {
+    0% { opacity: 0.3; transform: scale(1) skew(0deg); }
+    33% { opacity: 0.15; transform: scale(1.05) skew(1deg); }
+    66% { opacity: 0.35; transform: scale(0.98) skew(-0.5deg); }
+    100% { opacity: 0.25; transform: scale(1) skew(0deg); }
+}
+
+@keyframes color-shift-intense {
+    0% { filter: hue-rotate(0deg); opacity: 0.6; }
+    25% { filter: hue-rotate(90deg); opacity: 0.8; }
+    50% { filter: hue-rotate(180deg); opacity: 0.4; }
+    75% { filter: hue-rotate(270deg); opacity: 0.7; }
+    100% { filter: hue-rotate(360deg); opacity: 0.6; }
+}
+
+@keyframes noise-intense-glitch {
+    0% { transform: translateX(0) translateY(0) scale(1); }
+    20% { transform: translateX(-3px) translateY(2px) scale(1.02); }
+    40% { transform: translateX(3px) translateY(-2px) scale(0.98); }
+    60% { transform: translateX(-2px) translateY(3px) scale(1.01); }
+    80% { transform: translateX(2px) translateY(-3px) scale(0.99); }
+    100% { transform: translateX(0) translateY(0) scale(1); }
 }
 
 @keyframes noise-glitch {
@@ -110,17 +194,25 @@
     100% { transform: translateX(0) translateY(0); }
 }
 
-@keyframes noise-intense-glitch {
-    0% { transform: translateX(0) translateY(0); }
-    20% { transform: translateX(-2px) translateY(1px); }
-    40% { transform: translateX(2px) translateY(-1px); }
-    60% { transform: translateX(-1px) translateY(2px); }
-    80% { transform: translateX(1px) translateY(-2px); }
-    100% { transform: translateX(0) translateY(0); }
+@keyframes glass-shimmer {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.7; }
 }
 
-@keyframes rgb-shift-subtle {
-    0% { filter: hue-rotate(0deg) saturate(1); }
-    50% { filter: hue-rotate(30deg) saturate(1.1); }
-    100% { filter: hue-rotate(0deg) saturate(1); }
+@keyframes grid-flicker {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 0.4; }
+}
+
+@keyframes line-pulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
+@keyframes line-glitch {
+    0% { opacity: 0.6; transform: scaleX(1); }
+    25% { opacity: 1; transform: scaleX(1.5); }
+    50% { opacity: 0.3; transform: scaleX(0.8); }
+    75% { opacity: 0.9; transform: scaleX(1.2); }
+    100% { opacity: 0.6; transform: scaleX(1); }
 }
