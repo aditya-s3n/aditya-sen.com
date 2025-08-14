@@ -43,6 +43,7 @@ const colorClasses = {
     shadow: styles.shadowPurple,
     circuit: "#b347d9",
     subtle: styles.bgPurpleSubtle,
+    card: styles.careerCardPurple
   },
   cyan: {
     border: styles.borderCyan,
@@ -51,6 +52,7 @@ const colorClasses = {
     shadow: styles.shadowCyan,
     circuit: "#00d4ff",
     subtle: styles.bgCyanSubtle,
+    card: styles.careerCardCyan
   },
   yellow: {
     border: styles.borderYellow,
@@ -59,6 +61,7 @@ const colorClasses = {
     shadow: styles.shadowYellow,
     circuit: "#ffdd44",
     subtle: styles.bgYellowSubtle,
+    card: styles.careerCardYellow
   },
   green: {
     border: styles.borderGreen,
@@ -67,6 +70,7 @@ const colorClasses = {
     shadow: styles.shadowGreen,
     circuit: "#22c55e",
     subtle: styles.bgGreenSubtle,
+    card: styles.careerCardGreen
   },
   red: {
     border: styles.borderRed,
@@ -75,6 +79,7 @@ const colorClasses = {
     shadow: styles.shadowRed,
     circuit: "#ef4444",
     subtle: styles.bgRedSubtle,
+    card: styles.careerCardRed
   },
   orange: {
     border: styles.borderOrange,
@@ -83,6 +88,7 @@ const colorClasses = {
     shadow: styles.shadowOrange,
     circuit: "#f97316",
     subtle: styles.bgOrangeSubtle,
+    card: styles.careerCardOrange
   },
 }
 
@@ -96,14 +102,11 @@ export default function CyberCareerStack() {
             <div className="position-relative">
               {careers.map((career, index) => {
                 const colors = colorClasses[career.color as keyof typeof colorClasses]
-
                 return (
                   <div key={career.id} className={`position-relative ${styles.marginCard}`}>
                     <div
-                      className={`position-relative p-0 ${styles.careerCard} ${colors.bg} ${colors.border} ${colors.shadow}`}
-                      style={{
-                        marginTop: index === 0 ? "0" : "-2px", // Overlap borders
-                      }}
+                      className={`position-relative p-0 ${styles.careerCard} ${colors.bg} ${colors.border} ${colors.shadow} ${colors.card} `}
+                      data-augmented-ui="br-clip border"
                     >
                       <div className="d-flex">
                         <div
@@ -189,9 +192,6 @@ export default function CyberCareerStack() {
                                 <div>
                                   <h3
                                     className={`h2 fw-bold mb-1 ${colors.text}`}
-                                    style={{
-                                      letterSpacing: "0.05em",
-                                    }}
                                   >
                                     {career.company}
                                   </h3>

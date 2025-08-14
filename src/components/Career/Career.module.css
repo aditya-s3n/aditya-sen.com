@@ -95,23 +95,63 @@
   background-color: #4d2e1a !important;
 }
 
-/* Trapezoid shape for career cards */
 .careerCard {
-  clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 0 100%);
-  border: 2px solid;
   position: relative;
   transition: all 0.3s ease;
   backdrop-filter: blur(4px);
+ --aug-r-extend1: 50%;
+  --aug-br: 50px;
+  --aug-tr: 15px;
+
 }
 
 .careerCard:hover {
-  clip-path: polygon(0 0, calc(100% - 35px) 0, 100% 35px, 100% 100%, 0 100%);
   transform: translateX(5px);
 }
+
+.careerCardPurple {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(179, 71, 217, 0.08) 100%);
+  --aug-border-bg: #b347d9;
+  --aug-border-all: 2px;
+}
+
+.careerCardCyan {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 212, 255, 0.08) 100%);
+  --aug-border-bg: #00d4ff;
+  --aug-border-all: 2px;
+}
+
+.careerCardYellow {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(255, 221, 68, 0.08) 100%);
+  --aug-border-bg: #ffdd44;
+  --aug-border-all: 2px;
+}
+
+.careerCardGreen {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(34, 197, 94, 0.08) 100%);
+  --aug-border-bg: #22c55e;
+  --aug-border-all: 2px;
+}
+
+.careerCardRed {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(239, 68, 68, 0.08) 100%);
+  --aug-border-bg: #ef4444;
+  --aug-border-all: 2px;
+}
+
+.careerCardOrange {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(249, 115, 22, 0.08) 100%);
+  --aug-border-bg: #f97316;
+  --aug-border-all: 2px;
+}
+
+
+
 
 /* Border panel styling */
 .borderPanel {
   border-right: 2px solid;
+
 }
 
 .marginCard {

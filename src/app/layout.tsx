@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import 'augmented-ui/augmented-ui.min.css';
 import BootstrapClient from '../components/BootstrapClient';
 
 import type { Metadata } from "next";

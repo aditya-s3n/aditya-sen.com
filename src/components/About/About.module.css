@@ -20,18 +20,30 @@
 }
 
 .section {
-  background-color: rgba(0, 0, 0, 0.2);
   position: relative;
   overflow: hidden;
   backdrop-filter: blur(4px);
 }
 
 .contributionsSection {
-  border: 1px solid rgba(34, 197, 94, 0.2);
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.3) 0%,
+    rgba(34, 197, 94, 0.08) 100%
+  );
+  --aug-border-bg: rgba(34, 197, 94, 0.2);
+  --aug-border-all: 2px;
 }
 
 .passionsSection {
-  border: 1px solid rgba(249, 115, 22, 0.2);
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.3) 0%,
+    rgba(249, 115, 22, 0.08) 100%
+  );
+  --aug-border-bg: rgba(249, 115, 22, 0.2);
+  --aug-border-all: 2px;
+  --aug-l-extend1: 71%;
 }
 
 .sectionTitle1 {

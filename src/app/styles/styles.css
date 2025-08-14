@@ -3,14 +3,16 @@
 }
 
 .landing-subtext-container {
-    border: 1px solid #FC8C65;
     background-color: #FC8C6530;
     width: 80%;
     backdrop-filter: blur(4px);
 
-    box-shadow:
-        inset 0 0 4px rgba(252, 140, 101, 0.7),
-        inset 0 0 10px rgba(252, 140, 101, 0.4);
+    --aug-border-bg: #FC8C65;
+    --aug-border-all: 1px;
+    --aug-br: 8px;
+    --aug-bl: 8px;
+    --aug-tr: 8px;
+    --aug-tl: 8px;
 
     transition: box-shadow 0.3s ease;
 }
@@ -18,7 +20,7 @@
 .landing-subtext-container:hover {
      box-shadow:
         inset 0 0 5px rgba(252, 140, 101, 0.9),
-        inset 0 0 15px rgba(252, 140, 101, 0.6);
+        inset 0 0 10px rgba(252, 140, 101, 0.6);
 }
 
 .landing-subtext {
@@ -34,26 +36,87 @@
     width: 100%;
     max-width: 500px;
     margin: 0 auto;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .profile-image-wrapper {
     position: relative;
     display: inline-block;
-    border: 2px solid #59EEF4;
-
-    box-shadow:
-        0 0 10px 3px rgba(89, 238, 244, 0.6),
-        0 0 20px 6px rgba(89, 238, 244, 0.3);
+    overflow: visible; 
+    
+    --aug-r-extend1: 70%;
+    --aug-border-bg: #59EEF4;
+    --aug-border-all: 2px;
 
     transition: box-shadow 0.3s ease;
 }
 
-.profile-image-wrapper:hover {
-    box-shadow:
-        0 0 15px 5px rgba(89, 238, 244, 0.8),
-        0 0 30px 10px rgba(89, 238, 244, 0.5);
+/* Simple downward scan line movement without glitch */
+@keyframes holocall-simple-scan {
+  0% {
+    top: -4px;
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  95% {
+    top: 100%;
+    opacity: 1;
+  }
+  100% {
+    top: 104%;
+    opacity: 0;
+  }
 }
+
+/* Single scan line instead of repeating pattern */
+.profile-image-wrapper.holocall-active::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(89, 238, 244, 0.3) 20%,
+    rgba(89, 238, 244, 0.8) 50%,
+    rgba(89, 238, 244, 0.3) 80%,
+    transparent
+  );
+  box-shadow: 0 0 8px rgba(89, 238, 244, 0.6);
+  /* Updated to use simple scan animation */
+  animation: holocall-simple-scan 3s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Auto-activate version with same single scan line */
+.profile-image-wrapper.holocall-auto::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(89, 238, 244, 0.3) 20%,
+    rgba(89, 238, 244, 0.8) 50%,
+    rgba(89, 238, 244, 0.3) 80%,
+    transparent
+  );
+  box-shadow: 0 0 8px rgba(89, 238, 244, 0.6);
+  /* Updated to use simple scan animation */
+  animation: holocall-simple-scan 3s ease-in-out infinite 1s;
+  pointer-events: none;
+  z-index: 1;
+}
+
+
 
 #projects, #career, #about, #contact {
   scroll-margin-top: 40px;
