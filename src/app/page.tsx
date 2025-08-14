@@ -23,7 +23,7 @@ export default function Home() {
       >
         <div className='row'>
           <div className='col text-center text-md-start mb-4'>
-            <div className="profile-image-wrapper" data-augmented-ui="r-clip-y both">
+            <div className="profile-image-wrapper holocall-auto" data-augmented-ui="r-clip-y both">
               <Image
                 src={logo}
                 alt="Aditya Sen"
