@@ -12,15 +12,20 @@
 .contactCard {
   position: relative;
   padding: 2rem;
-  border: 2px solid;
   backdrop-filter: blur(4px);
   transition: all 0.3s ease;
   overflow: hidden;
-  clip-path: polygon(15px 0%, 100% 0%, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0% 100%, 0% 15px);
   display: flex;
-  align-items: center;
-  justify-content: center;
-  aspect-ratio: 1 / 1; 
+  flex-direction: column; 
+  justify-content: center; 
+  align-items: center;     
+  height: 100%;   
+  
+  --aug-border-all: 2px;
+  --aug-b-extend1: 50%;
+  --aug-b: 8px;
+  --aug-tr: 8px;
+  --aug-tl: 8px;
 }
 
 
@@ -28,10 +33,10 @@
   transform: scale(1.05);
 }
 
-/* Color variants */
+/* Color variants with Augmented UI border colors */
 .contactCardOrange {
   background: rgba(249, 115, 22, 0.2);
-  border-color: #f97316;
+  --aug-border-bg: #f97316;
 }
 .contactCardOrange:hover {
   background: rgba(249, 115, 22, 0.3);
@@ -39,7 +44,7 @@
 
 .contactCardGreen {
   background: rgba(52, 211, 153, 0.2);
-  border-color: #34d399;
+  --aug-border-bg: #34d399;
 }
 .contactCardGreen:hover {
   background: rgba(52, 211, 153, 0.3);
@@ -47,7 +52,7 @@
 
 .contactCardPurple {
   background: rgba(139, 92, 246, 0.2);
-  border-color: #8b5cf6;
+  --aug-border-bg: #8b5cf6;
 }
 .contactCardPurple:hover {
   background: rgba(139, 92, 246, 0.3);
@@ -55,11 +60,12 @@
 
 .contactCardCyan {
   background: rgba(34, 211, 238, 0.2);
-  border-color: #22d3ee;
+  --aug-border-bg: #22d3ee;
 }
 .contactCardCyan:hover {
   background: rgba(34, 211, 238, 0.3);
 }
+
 
 /* Pattern overlay */
 .contactPattern {
@@ -149,7 +155,8 @@
 /* Responsive design */
 @media (max-width: 768px) {
   .contactCard {
-    min-height: 180px;
     padding: 1.5rem;
+    margin-left: 10%;
+    margin-right: 10%;
   }
 }
