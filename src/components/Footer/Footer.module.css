@@ -1,0 +1,11 @@
+.footerContainer {
+    background: linear-gradient(135deg, #321214, #07090E) !important;
+    border-top: 1px solid #FC7265;
+}
+
+.footerText {
+    font-size: 1.15rem;
+    color: #FC7265;
+    text-decoration: none;
+    margin: 0;
+}

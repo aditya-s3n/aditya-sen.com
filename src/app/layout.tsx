@@ -36,7 +36,7 @@ export default function RootLayout({
       <body className={`${play.variable} ${brotherSignature.variable}`}>
         <Navbar />
         {children}
-        {/* <Footer /> */}
+        <Footer />
         <BootstrapClient />
       </body>
     </html>

@@ -45,7 +45,7 @@ export default function Contact() {
         {socialLinks.map((link, index) => {
 
           return (
-            <div key={link.name} className="col-lg-3 col-md-6">
+            <div key={link.name} className="col-lg-3 col-md-6 mb-5">
               <a
                 href={link.href}
                 target="_blank"
