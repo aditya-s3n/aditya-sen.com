@@ -86,7 +86,6 @@
   opacity: 0;
 }
 
-/* Individual tab colors */
 .automotive:hover .tabText {
   color: #ef4444;
 }

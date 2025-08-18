@@ -188,7 +188,7 @@
     background: transparent;
     border: 1px solid #6c757d;
     color: #acaeb1;
-    padding: 8px;
+    padding: 15px;
     transition: all 0.3s ease;
     overflow: hidden;
     clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));

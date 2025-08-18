@@ -31,9 +31,7 @@ export default function About() {
             </div>
 
             <div>
-                {/* Contributions and Passions Grid */}
                 <div className="row g-4 mt-4">
-                    {/* Contributions */}
                     <div className="col-md-6">
                     <div 
                         className={`p-4 ${styles.section} ${styles.contributionsSection}`} 
@@ -56,7 +54,6 @@ export default function About() {
                     </div>
                     </div>
 
-                    {/* Passions */}
                     <div className="col-md-6">
                     <div 
                         className={`p-4 ${styles.section} ${styles.passionsSection}`}
@@ -84,7 +81,7 @@ export default function About() {
             <div className="mt-5">
                 <p className={styles.aboutText}>Love so many types of art, those are just my top 3.</p>
                 <p className={styles.aboutText}>Looking to get my own motorcycle 🏍️💨!!! :)</p>
-                <p className={styles.aboutText}>I like all types of engineering! Checkout out some of my <a href="#" className={styles.aboutLink}><span className="text-decoration-underline">3D CAD designs here</span> <i className="bi bi-box-arrow-up-right"></i></a></p>
+                <p className={styles.aboutText}>I like all types of engineering! Checkout out some of my <a href="https://drive.google.com/drive/folders/1m_l11mimNXIqmZlXha4vqFqzNAXGIOkQ?usp=sharing" target="_blank" rel="noopener noreferrer" className={styles.aboutLink}><span className="text-decoration-underline">3D CAD designs here</span> <i className="bi bi-box-arrow-up-right"></i></a></p>
             </div>
         </div>
     )

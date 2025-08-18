@@ -1,4 +1,3 @@
-/* Custom Color Classes */
 .borderPurple {
   border-color: #b347d9 !important;
 }
@@ -75,7 +74,6 @@
   box-shadow: 0 0 30px rgba(249, 115, 22, 0.4) !important;
 }
 
-/* Custom subtle backgrounds for left panel */
 .bgPurpleSubtle {
   background-color: #2d1b3d !important;
 }
@@ -147,8 +145,6 @@
 
 
 
-
-/* Border panel styling */
 .borderPanel {
   border-right: 2px solid;
 

@@ -51,7 +51,7 @@
     transition: box-shadow 0.3s ease;
 }
 
-/* Simple downward scan line movement without glitch */
+
 @keyframes holocall-simple-scan {
   0% {
     top: -4px;
@@ -70,7 +70,6 @@
   }
 }
 
-/* Single scan line instead of repeating pattern */
 .profile-image-wrapper.holocall-active::before {
   content: "";
   position: absolute;
@@ -87,13 +86,11 @@
     transparent
   );
   box-shadow: 0 0 8px rgba(89, 238, 244, 0.6);
-  /* Updated to use simple scan animation */
   animation: holocall-simple-scan 3s ease-in-out infinite;
   pointer-events: none;
   z-index: 1;
 }
 
-/* Auto-activate version with same single scan line */
 .profile-image-wrapper.holocall-auto::before {
   content: "";
   position: absolute;
@@ -110,7 +107,6 @@
     transparent
   );
   box-shadow: 0 0 8px rgba(89, 238, 244, 0.6);
-  /* Updated to use simple scan animation */
   animation: holocall-simple-scan 3s ease-in-out infinite 1s;
   pointer-events: none;
   z-index: 1;

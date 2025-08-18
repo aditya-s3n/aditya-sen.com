@@ -10,14 +10,14 @@ const projects = [
     description:
       "Scarlet Encryption is a file encryption tool that allows users to securely encrypt and decrypt files on their local storage. It supports AES for encryption, SHA-256 for file integrity, RSA for hashing the AES key.",
     color: "orange",
-    github: "#",
+    github: "https://github.com/aditya-s3n/scarlet_encryption",
     demo: "#",
   },
   {
     title: "NASA - Twitter Bot",
     description: "",
     color: "cyan",
-    github: "#",
+    github: "https://github.com/aditya-s3n/tweet-me-a-universe",
     demo: "#",
   },
   {
@@ -92,7 +92,6 @@ export default function ProjectsSection() {
                   className={`${styles.projectCard} ${colors.border} ${colors.bg} ${colors.shadow}`}
                   data-augmented-ui="tr-clip bl-clip border"
                 >
-                  {/* Circuit Board Pattern */}
                   <div className={styles.circuitPattern}>
                     <svg width="100%" height="100%">
                       <defs>
@@ -270,16 +269,20 @@ export default function ProjectsSection() {
                     </div>
 
                     <div className={`${styles.cyberBtnGroup} mt-auto`}>
-                      <Link href={project.github}>
+                      <Link 
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         <button
                           className={`${styles.cyberBtn} ${
                             styles[`cyberBtn${project.color}`]
                           }`}
                         >
-                          <i className="bi bi-github cyberBtnIcon fs-5"></i>
+                          <i className="bi bi-github cyberBtnIcon fs-4"></i>
                         </button>
                       </Link>
-                      <Link href={project.demo}>
+                      {/* <Link href={project.demo}>
                         <button
                           className={`${styles.cyberBtn} ${
                             styles[`cyberBtn${project.color}`]
@@ -287,7 +290,7 @@ export default function ProjectsSection() {
                         >
                           <i className="bi bi-box-arrow-up-right cyberBtnIcon fs-5"></i>
                         </button>
-                      </Link>
+                      </Link> */}
                     </div>
                   </div>
                 </div>

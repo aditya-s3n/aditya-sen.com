@@ -55,29 +55,6 @@ export default function EnhancedGlitchBackground() {
     "SHELL",
   ]
 
-  const leftUpHex = [
-    "0xA1B2C3",
-    "0xD4E5F6",
-    "0x789ABC",
-    "0xDEF012",
-    "0x345678",
-    "0x9ABCDE",
-    "0xF01234",
-    "0x567890",
-    "0xABCDEF",
-    "0x123456",
-    "0x789012",
-    "0x345ABC",
-    "0xDEF678",
-    "0x901234",
-    "0x567DEF",
-    "0xABC123",
-    "0x456789",
-    "0x012345",
-    "0x678901",
-    "0x234567",
-  ]
-
   useEffect(() => {
     const glitchInterval = setInterval(
       () => {

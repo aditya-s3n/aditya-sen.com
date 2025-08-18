@@ -1,37 +1,64 @@
 "use client"
+
 import HexTextAnimation from "../HexAnimation/HexAnimation"
+import Image from "next/image";
 import styles from "./Career.module.css"
+
+import midnightSunLogo from "@/imgs/MidnightSun.png";
+import dundasLifeLogo from "@/imgs/DundasLife.png";
+import lifestyleLogo from "@/imgs/Lifestyle.png";
+import uCastLogo from "@/imgs/uCastLogo.png";
 
 const careers = [
   {
     id: 1,
-    company: "Tesla",
-    position: "Embedded Software Engineering Intern",
-    duration: "January 2026 - April 2026",
+    company: "Midnight Sun Solar Rayce XVI",
+    position: "Firmware Team Lead",
+    duration: "January 2024 - Present",
     description:
       "Tesla updates software team. I contributed to the OTA firmware updates. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id ex vel odio dapibus mattis.",
-    color: "red",
-    logo: "T",
+    color: "orange",
+    logo: midnightSunLogo,
   },
   {
     id: 2,
-    company: "Epic Games",
+    company: "Lifestyle Home Products",
     position: "Software Engineering Intern",
-    duration: "January 2026 - April 2026",
+    duration: "May 2025 - August 2025",
     description:
       "Tesla updates software team. I contributed to the OTA firmware updates. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id ex vel odio dapibus mattis.",
-    color: "purple",
-    logo: "EG",
+    color: "red",
+    logo: lifestyleLogo,
   },
   {
     id: 3,
-    company: "Jane Street",
+    company: "Lifestyle Home Products",
     position: "Software Engineering Intern",
-    duration: "January 2026 - April 2026",
+    duration: "September 2024 - December 2024",
     description:
       "Tesla updates software team. I contributed to the OTA firmware updates. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id ex vel odio dapibus mattis.",
-    color: "yellow",
-    logo: "JS",
+    color: "red",
+    logo: lifestyleLogo,
+  },
+  {
+    id: 4,
+    company: "Dundas Life",
+    position: "Software Engineering Intern",
+    duration: "January 2024 - April 2024",
+    description:
+      "Tesla updates software team. I contributed to the OTA firmware updates. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id ex vel odio dapibus mattis.",
+    color: "green",
+    logo: dundasLifeLogo,
+  },
+  {
+    id: 5,
+    company: "uCast",
+    position: "Software Engineering Intern",
+    duration: "July 2022 - July 2023",
+    description:
+      "Tesla updates software team. I contributed to the OTA firmware updates. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id ex vel odio dapibus mattis.",
+    color: "purple",
+    logo: uCastLogo,
   },
 ]
 
@@ -102,6 +129,7 @@ export default function CyberCareerStack() {
             <div className="position-relative">
               {careers.map((career, index) => {
                 const colors = colorClasses[career.color as keyof typeof colorClasses]
+
                 return (
                   <div key={career.id} className={`position-relative ${styles.marginCard}`}>
                     <div
@@ -169,12 +197,9 @@ export default function CyberCareerStack() {
 
                         </div>
 
-                        {/* Main Screen Content Area */}
                         <div className="flex-fill p-4 position-relative">
 
-                          {/* Content */}
                           <div className="d-flex align-items-start position-relative" style={{ zIndex: 10 }}>
-                            {/* Company Terminal */}
                             <div
                               className={`border-2 ${colors.border} ${colors.bg} d-flex align-items-center justify-content-center fw-bold fs-2 flex-shrink-0 position-relative overflow-hidden me-4`}
                               style={{
@@ -183,11 +208,18 @@ export default function CyberCareerStack() {
                                 color: colors.circuit,
                               }}
                             >
-                              {career.logo}
+                              <div style={{ position: 'relative', width: '60px', height: '60px' }}>
+                                <Image
+                                  src={career.logo}
+                                  alt={career.company}
+                                  fill
+                                  style={{ objectFit: 'cover' }}
+                                  priority
+                                />
+                              </div>
                             </div>
 
                             <div className="flex-fill">
-                              {/* Header */}
                               <div className="d-flex flex-column flex-lg-row align-items-lg-start justify-content-lg-between mb-3">
                                 <div>
                                   <h3
@@ -207,7 +239,6 @@ export default function CyberCareerStack() {
                                 </div>
                               </div>
 
-                              {/* Description */}
                               <p className="">{career.description}</p>
                             </div>
                           </div>

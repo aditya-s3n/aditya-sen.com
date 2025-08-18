@@ -3,6 +3,8 @@
 import { useState, useEffect, useRef } from "react"
 import { motion, useInView } from "framer-motion"
 
+
+
 interface HexTextAnimationProps {
   text: string
   className?: string
@@ -78,25 +80,6 @@ export default function HexTextAnimation({ text, className = "", delay = 0, dura
 
   return (
     <>
-      <style jsx>{`
-        .hex-text {
-          font-family: 'JetBrains Mono', 'Courier New', monospace;
-          text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 40px currentColor;
-        }
-
-
-        .hex-cursor {
-          width: 4px;
-          height: 2rem;
-          background-color: currentColor;
-          animation: blink 0.8s infinite alternate;
-        }
-        @keyframes blink {
-          0% { opacity: 1; }
-          100% { opacity: 0; }
-        }
-      `}</style>
-
       <motion.h1
         ref={ref}
         className={`hex-text ${className}`}

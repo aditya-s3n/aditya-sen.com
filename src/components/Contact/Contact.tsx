@@ -1,3 +1,4 @@
+import HexTextAnimation from "../HexAnimation/HexAnimation";
 import styles from "./Contact.module.css";
 
 const socialLinks = [
@@ -60,13 +61,16 @@ export default function Contact() {
                 data-augmented-ui="b-clip-x tr-2-clip-x tl-2-clip-x border"
               >
 
-                {/* Card content */}
                 <div className={`text-center h-100 w-100 ${styles.contactContent} ${styles.contactName}`}>
                   {link.icon}
                   <h3 className={styles.contactName}>{link.name}</h3>
-                  <p className={styles.contactDescription}>
-                    {link.description}
-                  </p>
+
+                  <HexTextAnimation
+                    text={link.description}
+                    className={styles.contactDescription}
+                    delay={0.5}
+                    duration={2}
+                  />
                 </div>
               </a>
             </div>
