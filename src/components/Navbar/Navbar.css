@@ -30,6 +30,11 @@
     text-decoration: underline;
 }
 
+.navbar .nav-link.active {
+  color: #59EEF4 !important;
+  text-decoration: underline;
+}
+
 .navbar-landing {
     background: linear-gradient(135deg, #321214, #07090E) !important;
     border-bottom: 1px solid #FC7265;
