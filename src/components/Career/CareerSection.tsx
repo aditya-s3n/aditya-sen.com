@@ -16,7 +16,7 @@ const careers = [
     position: "Firmware Team Lead",
     duration: "January 2024 - Present",
     description:
-      "As a team lead I have responsibilties ",
+      "Engineered multiple firmware components for the car, including a FOTA-enabled CAN bootloader and current-sense drivers for the pedals. Of course, guided team members, as well as reviewed PR's for the firmware repository.",
     color: "orange",
     logo: midnightSunLogo,
   },
@@ -26,7 +26,7 @@ const careers = [
     position: "Software Engineering Intern",
     duration: "May 2025 - August 2025",
     description:
-      "Tesla updates software team. I contributed to the OTA firmware updates. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id ex vel odio dapibus mattis.",
+      "Independently, built out a custom rules engine for the main sales team. The rules engine ranked sales representatives and appointments. Personally built the rank match algorithm to run daily, assigning appointments to sales representatives.",
     color: "red",
     logo: lifestyleLogo,
   },
@@ -36,7 +36,7 @@ const careers = [
     position: "Software Engineering Intern",
     duration: "September 2024 - December 2024",
     description:
-      "Tesla updates software team. I contributed to the OTA firmware updates. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id ex vel odio dapibus mattis.",
+      "Developed API integrations for EXP Realty’s KVcore platform using Google Cloud and Node.js, and built a Python-based OpenAI transcript analysis AI to evaluate dialer conversations and assess lead quality. ",
     color: "red",
     logo: lifestyleLogo,
   },
@@ -46,7 +46,7 @@ const careers = [
     position: "Software Engineering Intern",
     duration: "January 2024 - April 2024",
     description:
-      "Tesla updates software team. I contributed to the OTA firmware updates. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id ex vel odio dapibus mattis.",
+      "Governed and trained an underwriting assistant AI, using Open AI API and Postman, resulting in an AI chat assistant that can analyze PDF's of various insurance providers and provide insight on client's approval and premium rate.",
     color: "green",
     logo: dundasLifeLogo,
   },
@@ -56,7 +56,7 @@ const careers = [
     position: "Software Engineering Intern",
     duration: "July 2022 - July 2023",
     description:
-      "Tesla updates software team. I contributed to the OTA firmware updates. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id ex vel odio dapibus mattis.",
+      "Built an internal wallet currency system end-to-end, integrating AWS and Stripe to convert user payments into in-app credits. Fixed various bugs throughout the application, notably helping optimize the rank algorithm for the in-built search engine.",
     color: "purple",
     logo: uCastLogo,
   },
