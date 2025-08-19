@@ -228,7 +228,7 @@ export default function EnhancedGlitchBackground() {
       <div className="cyber-bg">
         <div className="left-edge-line"></div>
 
-        <div className="protocol-text">v.1.0.0</div>
+        <div className="protocol-text">v.1.0.2</div>
 
         <div className="side-text left">
           {leftText.map((text, index) => (
