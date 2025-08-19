@@ -127,7 +127,7 @@ export default function CyberCareerStack() {
           <div className="position-relative">
 
             <div className="position-relative">
-              {careers.map((career, index) => {
+              {careers.map((career) => {
                 const colors = colorClasses[career.color as keyof typeof colorClasses]
 
                 return (

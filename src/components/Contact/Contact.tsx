@@ -43,7 +43,7 @@ export default function Contact() {
       </p>
 
       <div className="row g-4 justify-content-center mb-5 mt-3">
-        {socialLinks.map((link, index) => {
+        {socialLinks.map((link) => {
 
           return (
             <div key={link.name} className="col-lg-3 col-md-6 mb-5">

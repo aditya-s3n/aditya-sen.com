@@ -27,7 +27,7 @@ export default function About() {
             <div>
                 <p className={styles.aboutText}>Currently a second-year <span className={styles.highlightAbout}>Computer Engineering</span> student at the <span className={styles.highlightAbout}>University of Waterloo.</span></p>
 
-                <p className={styles.aboutText}>I love computers! If you couldn't already tell with the cyberpunk themed website. <br></br> Learning as much as I can from low-level firmware to high-level software. </p> 
+                <p className={styles.aboutText}>I love computers! If you couldn&apos;t already tell with the cyberpunk themed website. <br></br> Learning as much as I can from low-level firmware to high-level software. </p> 
             </div>
 
             <div>
@@ -62,7 +62,7 @@ export default function About() {
                         <HexTextAnimation className={`fs-5 mb-3 text-center ${styles.sectionTitle2}`} text="PASSIONS" duration={2} delay={0.5} />
                         <p className="mb-3 text-center">Personal interests and hobbies:</p>
                         <div className="d-flex flex-column gap-2">
-                        {passions.map((passion, index) => (
+                        {passions.map((passion) => (
                             <div
                             key={passion.name}
                             className={`d-flex align-items-center justify-content-center m-auto w-75 gap-3 py-2 ${styles.tab} ${styles[passion.className]}`}
