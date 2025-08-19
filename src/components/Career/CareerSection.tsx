@@ -16,7 +16,7 @@ const careers = [
     position: "Firmware Team Lead",
     duration: "January 2024 - Present",
     description:
-      "Tesla updates software team. I contributed to the OTA firmware updates. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id ex vel odio dapibus mattis.",
+      "As a team lead I have responsibilties ",
     color: "orange",
     logo: midnightSunLogo,
   },

@@ -15,16 +15,16 @@ const projects = [
   },
   {
     title: "NASA - Twitter Bot",
-    description: "",
+    description: "Tweet me a Universe is a custom Node.js bot that randomly selects an image from NASA's database, and posts the media as a tweet. Using NASA API, Twitter API, streaming BLOB data, it is able to consistently post an image at 7AM EST for over 1000 days.",
     color: "cyan",
     github: "https://github.com/aditya-s3n/tweet-me-a-universe",
     demo: "#",
   },
   {
-    title: "Test",
-    description: "",
+    title: "Python - Email Automation",
+    description: "An SMTP Python emailer, able to take in a csv file of emails / data. Shifting through the data to send out tailored emails based on the data provided in the CSV file.",
     color: "red",
-    github: "#",
+    github: "https://github.com/aditya-s3n/Email-Automation",
     demo: "#",
   },
 ];
