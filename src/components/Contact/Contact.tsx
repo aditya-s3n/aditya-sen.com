@@ -39,7 +39,7 @@ export default function Contact() {
       <div className={`w-100 border-top ${styles.contactColor} mb-3`}></div>
 
       <p className={`mt-5 text-center fs-4 ${styles.contactText}`}>
-        Reach out if you have any question, or just feeling friendly. <br />:)
+        Reach out if you have any questions, or just feeling friendly. <br />:)
       </p>
 
       <div className="row g-4 justify-content-center mb-5 mt-3">
