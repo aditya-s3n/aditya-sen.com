@@ -4,17 +4,29 @@ import HexTextAnimation from "../HexAnimation/HexAnimation"
 import Image from "next/image";
 import styles from "./Career.module.css"
 
+import spsCommerceLogo from "@/imgs/SPSCommerce.png";
 import midnightSunLogo from "@/imgs/MidnightSun.png";
 import dundasLifeLogo from "@/imgs/DundasLife.png";
 import lifestyleLogo from "@/imgs/Lifestyle.png";
 import uCastLogo from "@/imgs/uCastLogo.png";
 
+
 const careers = [
+  {
+    id: 0,
+    company: "SPS Commerce",
+    position: "Software Engineering Intern",
+    duration: "January 2026 - April 2026",
+    description:
+      "Engineered a new external API service in Python and Kotlin to centralize external reference values across the SPS platform, and wrote Kotlin migration scripts to update 10,000+ database records.",
+    color: "cyan",
+    logo: spsCommerceLogo,
+  },
   {
     id: 1,
     company: "Midnight Sun Solar Rayce XVI",
     position: "Firmware Team Lead",
-    duration: "January 2024 - Present",
+    duration: "January 2024 - January 2026",
     description:
       "Engineered multiple firmware components for the car, including a FOTA-enabled CAN bootloader and current-sense drivers for the pedals. Of course, guided team members, as well as reviewed PR's for the firmware repository.",
     color: "orange",

@@ -43,11 +43,10 @@ export default function Home() {
             <p className='fs-1 name'>Aditya Sen</p>
 
             <div 
-              className='row py-2 text-center landing-subtext-container w-100'
+              className='row py-2 text-center landing-subtext-container w-75'
               data-augmented-ui="bl-clip-y tr-clip-y border"
             >
-              <HexTextAnimation text='Software Engineer' className='col responsive-border landing-subtext mb-0' duration={2} delay={0.5}/>
-              <HexTextAnimation text='Firmware Engineer' className='col landing-subtext mb-0' duration={2} delay={0.5}/>
+              <HexTextAnimation text='Graphics & Rendering Engineer' className='col responsive-border landing-subtext mb-0' duration={2} delay={0.5}/>
             </div>
           </div>
         </div>

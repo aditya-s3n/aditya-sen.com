@@ -27,6 +27,20 @@ const projects = [
     github: "https://github.com/aditya-s3n/Email-Automation",
     demo: "#",
   },
+  {
+    title: "PBR - Raytracing",
+    description: "A CPU-based path tracer built from scratch, following Ray Tracing in One Weekend. Implements Lambertian, metal, and dielectric materials with physically accurate light scattering, anti-aliasing via supersampling, and a thin-lens camera model for depth-of-field effects.",
+    color: "purple",
+    github: "https://github.com/aditya-s3n/Raytracing",
+    demo: "#",
+  },
+  {
+    title: "3D Rasterization Rendering",
+    description: "A software rasterizer built entirely from scratch, with no graphics API dependency. Parses OBJ mesh files and renders wireframe geometry using a custom Bresenham line algorithm and perspective camera projection.",
+    color: "yellow",
+    github: "https://github.com/aditya-s3n/3D-Renderer",
+    demo: "#",
+  },
 ];
 
 const colorClasses = {

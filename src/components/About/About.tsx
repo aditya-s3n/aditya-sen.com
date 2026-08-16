@@ -25,7 +25,7 @@ export default function About() {
             <div className={`w-100 border-top ${styles.aboutColor} mb-3`}></div>
 
             <div>
-                <p className={styles.aboutText}>Currently a second-year <span className={styles.highlightAbout}>Computer Engineering</span> student at the <span className={styles.highlightAbout}>University of Waterloo.</span></p>
+                <p className={styles.aboutText}>Currently a third-year <span className={styles.highlightAbout}>Computer Engineering</span> student at the <span className={styles.highlightAbout}>University of Waterloo.</span></p>
 
                 <p className={styles.aboutText}>I love computers! If you couldn&apos;t already tell with the cyberpunk themed website. <br></br> Learning as much as I can from low-level firmware to high-level software. </p> 
             </div>
@@ -80,7 +80,7 @@ export default function About() {
 
             <div className="mt-5">
                 <p className={styles.aboutText}>Love so many types of art, those are just my top 3.</p>
-                <p className={styles.aboutText}>Looking to buy and build my own PC :) 🖥️</p>
+                <p className={styles.aboutText}>Check out my PC <a href="https://ca.pcpartpicker.com/b/RLfv6h" target="_blank" rel="noopener noreferrer" className={styles.aboutLink}><span className="text-decoration-underline">specs</span></a> 🖥️</p>
                 <p className={styles.aboutText}>I like all types of engineering! Checkout out some of my <a href="https://drive.google.com/drive/folders/1m_l11mimNXIqmZlXha4vqFqzNAXGIOkQ?usp=sharing" target="_blank" rel="noopener noreferrer" className={styles.aboutLink}><span className="text-decoration-underline">3D CAD designs here</span> <i className="bi bi-box-arrow-up-right"></i></a></p>
             </div>
         </div>
