@@ -11,14 +11,6 @@
     flex-direction: column;
     align-items: center;
     gap: 1rem;
-    padding: 2.5rem 3rem;
-    background-color: #FC8C6520;
-    backdrop-filter: blur(4px);
-
-    --aug-border-bg: #FC8C65;
-    --aug-border-all: 1px;
-    --aug-tl: 12px;
-    --aug-br: 12px;
 }
 
 .loading-label {
@@ -69,7 +61,7 @@
 .landing-tag-container {
     background-color: #FC8C6530;
     backdrop-filter: blur(4px);
-    padding: 0 0.5rem;
+    padding: 0.4rem 3rem;
 
     --aug-border-bg: #FC8C65;
     --aug-border-all: 1px;
@@ -81,8 +73,40 @@
 
 .landing-tag {
     color: #FCA765;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     margin: 0;
+}
+
+.enter-button {
+    margin-top: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: #FCA765;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    font-weight: normal;
+    letter-spacing: 3px;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    line-height: 1.3;
+    cursor: pointer;
+    transition: color 0.2s ease, border-bottom-color 0.2s ease;
+}
+
+.enter-button:hover,
+.enter-button:focus {
+    color: #59EEF4;
+    border-bottom-color: #59EEF4;
+}
+
+.enter-button-arrow {
+    transition: transform 0.2s ease;
+}
+
+.enter-button:hover .enter-button-arrow,
+.enter-button:focus .enter-button-arrow {
+    transform: translateX(4px);
 }
 
 @keyframes landing-fade-in {
