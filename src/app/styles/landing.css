@@ -1,0 +1,98 @@
+.landing-hero {
+    min-height: calc(100vh - 160px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+}
+
+.loading-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 2.5rem 3rem;
+    background-color: #FC8C6520;
+    backdrop-filter: blur(4px);
+
+    --aug-border-bg: #FC8C65;
+    --aug-border-all: 1px;
+    --aug-tl: 12px;
+    --aug-br: 12px;
+}
+
+.loading-label {
+    font-family: 'Courier New', monospace;
+    letter-spacing: 3px;
+    color: #FCA765;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.loading-bar-track {
+    width: 260px;
+    max-width: 60vw;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid #FC8C6580;
+    overflow: hidden;
+}
+
+.loading-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #FC8C65, #59EEF4);
+    transition: width 0.1s linear;
+}
+
+.loading-percent {
+    font-family: 'Courier New', monospace;
+    color: #59EEF4;
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.landing-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    animation: landing-fade-in 0.6s ease-in-out;
+}
+
+.landing-name {
+    font-size: 3rem;
+    color: #59EEF4;
+    margin: 0;
+}
+
+.landing-tag-container {
+    background-color: #FC8C6530;
+    backdrop-filter: blur(4px);
+    padding: 0 0.5rem;
+
+    --aug-border-bg: #FC8C65;
+    --aug-border-all: 1px;
+    --aug-br: 8px;
+    --aug-bl: 8px;
+    --aug-tr: 8px;
+    --aug-tl: 8px;
+}
+
+.landing-tag {
+    color: #FCA765;
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+@keyframes landing-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
