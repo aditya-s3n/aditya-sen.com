@@ -63,7 +63,7 @@ export default function Career() {
                     >
                         <i className={`bi bi-file-earmark-person ${styles.resumeIcon}`} />
                         <span className={styles.resumeTitle}>Resume <i className="bi bi-box-arrow-up-right" /></span>
-                        <span className={styles.resumeCaption}>Full spec sheet</span>
+                        <span className={styles.resumeCaption}>My career spec sheet</span>
                     </a>
                 </div>
             </div>

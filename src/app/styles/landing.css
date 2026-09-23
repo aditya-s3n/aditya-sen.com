@@ -54,8 +54,14 @@
 
 .landing-name {
     font-size: 3rem;
-    color: #59EEF4;
+    font-family: var(--font-brother-signature), cursive;
+    color: #ef4040;
     margin: 0;
+    transition: color 0.2s ease-in-out;
+}
+
+.landing-name:hover {
+    color: #59EEF4;
 }
 
 .landing-tag-container {
