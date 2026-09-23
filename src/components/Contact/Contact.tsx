@@ -8,7 +8,7 @@ const socialLinks = [
     href: "mailto:adityasen120@gmail.com",
     color: "#8b5cf6",
     file: "~/contact/email.sh",
-    command: "mail --to",
+    command: "cat email.txt",
     output: "adityasen120@gmail.com",
     action: "SEND MAIL",
   },
@@ -28,7 +28,7 @@ const socialLinks = [
     href: "https://github.com/aditya-s3n",
     color: "#f97316",
     file: "~/contact/github.sh",
-    command: "git remote -v",
+    command: "git config --list",
     output: "@aditya-s3n",
     action: "VIEW REPOS",
   },
@@ -60,7 +60,7 @@ export default function Contact() {
         <div>
           <p className={styles.transmissionLabel}>OPEN CHANNEL</p>
           <p className={styles.transmissionText}>
-            Reach out if you have any questions, or just feeling friendly. :)
+            Reach out if you have any questions, or just feeling friendly :)
           </p>
         </div>
       </div>
