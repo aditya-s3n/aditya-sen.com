@@ -13,10 +13,10 @@
     "augmented-ui": "^2.0.0",
     "bootstrap": "^5.3.7",
     "bootstrap-icons": "^1.13.1",
-    "framer-motion": "^12.18.1",
     "next": "^16.3.1",
     "react": "^19.2.8",
-    "react-dom": "^19.2.8"
+    "react-dom": "^19.2.8",
+    "three": "^0.186.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -24,6 +24,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/three": "^0.186.0",
     "eslint": "^9",
     "eslint-config-next": "15.3.2",
     "typescript": "^5"

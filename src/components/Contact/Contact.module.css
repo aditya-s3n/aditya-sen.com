@@ -1,118 +1,258 @@
-.contactColor {
-  color: #59a1f4 !important;
-  border-color: #59a1f4 !important;
+/* ---------- Section header ---------- */
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
-.contactText {
-  font-size: larger;
+.headerIndex {
+  font-family: 'Courier New', monospace;
+  color: #59a1f4;
+  opacity: 0.7;
+  letter-spacing: 2px;
+}
+
+.headerTitle {
+  color: #59a1f4;
+  letter-spacing: 4px;
+  text-shadow: 0 0 12px rgba(89, 161, 244, 0.5);
+}
+
+.headerLine {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, #59a1f4, transparent);
+  box-shadow: 0 0 8px rgba(89, 161, 244, 0.6);
+}
+
+/* ---------- Open channel banner ---------- */
+
+.transmission {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 2.5rem 0;
+  padding: 1.5rem 2rem;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(89, 161, 244, 0.1) 100%);
+  backdrop-filter: blur(4px);
+  --aug-border-all: 1px;
+  --aug-border-bg: rgba(89, 161, 244, 0.5);
+  --aug-tl: 14px;
+  --aug-br: 14px;
+}
+
+.signal {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  height: 32px;
+  flex-shrink: 0;
+}
+
+.signal i {
+  width: 6px;
+  background: #59a1f4;
+  box-shadow: 0 0 6px rgba(89, 161, 244, 0.7);
+  animation: signal 1.6s ease-in-out infinite;
+}
+
+.signal i:nth-child(1) { height: 25%; }
+.signal i:nth-child(2) { height: 50%; animation-delay: 0.15s; }
+.signal i:nth-child(3) { height: 75%; animation-delay: 0.3s; }
+.signal i:nth-child(4) { height: 100%; animation-delay: 0.45s; }
+
+@keyframes signal {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.transmissionLabel {
+  margin: 0 0 0.25rem;
+  font-family: 'Courier New', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  color: rgba(89, 161, 244, 0.8);
+}
+
+.transmissionText {
+  margin: 0;
+  font-size: 1.25rem;
   color: #a6cbf5;
 }
 
-.contactCard {
-  position: relative;
-  padding: 2rem;
-  backdrop-filter: blur(4px);
-  transition: all 0.3s ease;
-  overflow: hidden;
+/* ---------- Terminal tiles ---------- */
+
+.terminalGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.terminal {
   display: flex;
-  flex-direction: column; 
-  justify-content: center; 
-  align-items: center;     
-  height: 100%;   
-  
-  --aug-border-all: 2px;
-  --aug-b-extend1: 50%;
-  --aug-b: 8px;
-  --aug-tr: 8px;
-  --aug-tl: 8px;
+  flex-direction: column;
+  min-height: 230px;
+  text-decoration: none;
+  background: rgba(7, 9, 14, 0.8);
+  backdrop-filter: blur(4px);
+  font-family: 'Courier New', monospace;
+  transition: transform 0.3s ease, background 0.3s ease;
+  --aug-border-all: 1px;
+  --aug-border-bg: color-mix(in srgb, var(--accent) 50%, transparent);
+  --aug-tr: 14px;
+  --aug-bl: 14px;
 }
 
-
-.contactCard:hover {
-  transform: scale(1.05);
+.terminal:hover {
+  transform: translateY(-4px);
+  background: color-mix(in srgb, var(--accent) 8%, rgba(7, 9, 14, 0.85));
+  --aug-border-bg: var(--accent);
 }
 
-.contactCardOrange {
-  background: rgba(249, 115, 22, 0.2);
-  --aug-border-bg: #f97316;
-}
-.contactCardOrange:hover {
-  background: rgba(249, 115, 22, 0.3);
-}
-
-.contactCardGreen {
-  background: rgba(52, 211, 153, 0.2);
-  --aug-border-bg: #34d399;
-}
-.contactCardGreen:hover {
-  background: rgba(52, 211, 153, 0.3);
+.terminalBar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.6rem 1.25rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  transition: background 0.3s ease;
 }
 
-.contactCardPurple {
-  background: rgba(139, 92, 246, 0.2);
-  --aug-border-bg: #8b5cf6;
-}
-.contactCardPurple:hover {
-  background: rgba(139, 92, 246, 0.3);
+.terminal:hover .terminalBar {
+  background: color-mix(in srgb, var(--accent) 22%, transparent);
 }
 
-.contactCardCyan {
-  background: rgba(34, 211, 238, 0.2);
-  --aug-border-bg: #22d3ee;
-}
-.contactCardCyan:hover {
-  background: rgba(34, 211, 238, 0.3);
+.terminalDots {
+  display: flex;
+  gap: 6px;
 }
 
-
-.contactPattern {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.2;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-}
-.contactCard:hover .contactPattern {
-  opacity: 0.4;
+.terminalDots i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ef4444;
 }
 
-
-.contactContent {
-  position: relative;
-  z-index: 10;
+.terminalDots i:nth-child(2) {
+  background: #ffdd44;
 }
 
-.contactName {
-  font-size: 1.125rem;
+.terminalDots i:nth-child(3) {
+  background: #22c55e;
+}
+
+.terminalPath {
+  flex: 1;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.barIcon {
+  color: var(--accent);
+}
+
+.terminalBody {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem 1.5rem;
+}
+
+.line {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #fff;
+  overflow-wrap: anywhere;
+}
+
+.user {
+  color: var(--accent);
+}
+
+.dim {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.output {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex: 1;
+  padding-left: 1rem;
+  border-left: 2px solid color-mix(in srgb, var(--accent) 35%, transparent);
+}
+
+.outputIcon {
+  font-size: 2.5rem;
+  color: var(--accent);
+  filter: drop-shadow(0 0 8px color-mix(in srgb, var(--accent) 60%, transparent));
+}
+
+.outputName {
+  margin: 0;
+  font-family: var(--font-play, sans-serif);
+  font-size: 1.4rem;
   font-weight: bold;
-}
-.contactCardOrange .contactName {
-  color: #f97316;
-}
-.contactCardGreen .contactName {
-  color: #34d399;
-}
-.contactCardPurple .contactName {
-  color: #8b5cf6;
-}
-.contactCardCyan .contactName {
-  color: #22d3ee;
+  color: var(--accent);
 }
 
-.contactDescription {
-  color: #9ca3af;
-  font-size: 0.875rem;
-  margin-bottom: 0;
+.outputValue {
+  margin: 0;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  overflow-wrap: anywhere;
 }
 
+.action {
+  color: var(--accent);
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
 
-@media (max-width: 768px) {
-  .contactCard {
-    padding: 1.5rem;
-    margin-left: 10%;
-    margin-right: 10%;
+.terminal:hover .action {
+  color: #fff;
+  text-shadow: 0 0 8px var(--accent);
+}
+
+.caret {
+  display: inline-block;
+  width: 0.6em;
+  height: 1.1em;
+  margin-left: 0.4rem;
+  vertical-align: text-bottom;
+  background: var(--accent);
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+@media (max-width: 576px) {
+  .transmission {
+    padding: 1.25rem;
+    gap: 1rem;
+  }
+
+  .transmissionText {
+    font-size: 1.05rem;
+  }
+
+  .terminalBody {
+    padding: 1rem 1.1rem 1.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .signal i,
+  .caret {
+    animation: none;
   }
 }

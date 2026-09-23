@@ -1,113 +1,358 @@
-.aboutColor {
-    color: #22c55e;
-    border-color: #22c55e !important;
+/* ---------- Section header ---------- */
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
-.highlightAbout {
-    font-weight: bold;
-    color: #F3BDFF !important;
-    
+.headerIndex {
+  font-family: 'Courier New', monospace;
+  color: #22c55e;
+  opacity: 0.7;
+  letter-spacing: 2px;
 }
 
-.aboutText {
-    color: #95FDCD;
-    font-size: larger;
+.headerTitle {
+  color: #22c55e;
+  letter-spacing: 4px;
+  text-shadow: 0 0 12px rgba(34, 197, 94, 0.5);
 }
 
-.aboutLink {
-    color: #F3BDFF !important;
-    text-decoration: none;
+.headerLine {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, #22c55e, transparent);
+  box-shadow: 0 0 8px rgba(34, 197, 94, 0.6);
 }
 
-.section {
+/* ---------- Shared panel ---------- */
+
+.panel {
   position: relative;
-  overflow: hidden;
+  height: 100%;
+  padding: 1.75rem;
   backdrop-filter: blur(4px);
+  --aug-border-all: 1px;
+  --aug-tl: 14px;
+  --aug-tr: 14px;
+  --aug-bl: 14px;
+  --aug-br: 14px;
 }
 
-.contributionsSection {
-  background: linear-gradient(
-    135deg,
-    rgba(0, 0, 0, 0.3) 0%,
-    rgba(34, 197, 94, 0.08) 100%
-  );
-  --aug-border-bg: rgba(34, 197, 94, 0.2);
-  --aug-border-all: 2px;
+.panelTag {
+  font-family: 'Courier New', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  color: #59EEF4;
+  opacity: 0.7;
+  margin-bottom: 1rem;
+  align-self: flex-start;
 }
 
-.passionsSection {
-  background: linear-gradient(
-    135deg,
-    rgba(0, 0, 0, 0.3) 0%,
-    rgba(249, 115, 22, 0.08) 100%
-  );
-  --aug-border-bg: rgba(249, 115, 22, 0.2);
-  --aug-border-all: 2px;
-  --aug-l-extend1: 71%;
+.panelTitle {
+  letter-spacing: 3px;
 }
 
-.sectionTitle1 {
+.panelSubtitle {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 1.25rem;
+}
+
+/* ---------- ID card ---------- */
+
+.idCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(160deg, rgba(0, 0, 0, 0.45) 0%, rgba(89, 238, 244, 0.08) 100%);
+  --aug-border-bg: rgba(89, 238, 244, 0.5);
+}
+
+.portrait {
+  width: 100%;
+  max-width: 320px;
+}
+
+.portraitImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.name {
+  font-size: 2.25rem;
+  color: #59EEF4;
+  margin: 1.25rem 0 0.5rem;
+  text-shadow: 0 0 14px rgba(89, 238, 244, 0.45);
+}
+
+.role {
+  width: 100%;
+  max-width: 320px;
+  padding: 0.35rem 0.75rem;
+}
+
+.stats {
+  width: 100%;
+  margin: 1.5rem 0 0;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.statRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.45rem 0;
+  border-bottom: 1px dashed rgba(89, 238, 244, 0.2);
+}
+
+.statRow:last-child {
+  border-bottom: none;
+}
+
+.statRow dt {
+  font-weight: normal;
+  color: rgba(89, 238, 244, 0.6);
+  letter-spacing: 2px;
+}
+
+.statRow dd {
+  margin: 0;
+  color: #95FDCD;
+  text-align: right;
+}
+
+
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* ---------- Terminal bio ---------- */
+
+.terminal {
+  height: auto;
+  padding: 0;
+  background: rgba(7, 9, 14, 0.7);
+  --aug-border-bg: rgba(34, 197, 94, 0.5);
+}
+
+.terminalBar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.6rem 1.5rem;
+  border-bottom: 1px solid rgba(34, 197, 94, 0.25);
+  background: rgba(34, 197, 94, 0.08);
+}
+
+.terminalDots {
+  display: flex;
+  gap: 6px;
+}
+
+.terminalDots i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ef4444;
+}
+
+.terminalDots i:nth-child(2) {
+  background: #ffdd44;
+}
+
+.terminalDots i:nth-child(3) {
+  background: #22c55e;
+}
+
+.terminalPath {
+  font-family: 'Courier New', monospace;
+  font-size: 0.8rem;
+  color: rgba(149, 253, 205, 0.7);
+}
+
+.terminalBody {
+  padding: 1.5rem;
+  font-family: 'Courier New', monospace;
   color: #22c55e;
 }
 
-.sectionTitle2 {
-  color: #f97316;
+.prompt {
+  color: #FC8C65;
 }
 
-.tab {
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-  z-index: 2;
+.bio {
+  font-family: var(--font-play, sans-serif);
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: #95FDCD;
+  padding-left: 1rem;
+  border-left: 2px solid rgba(34, 197, 94, 0.3);
 }
 
-.tab:hover {
-  background-color: rgba(255, 255, 255, 0.05);
+.highlight {
+  font-weight: bold;
+  color: #F3BDFF;
 }
 
-.tab:hover .tabText {
+.caret {
+  display: inline-block;
+  width: 0.6em;
+  height: 1.1em;
+  vertical-align: text-bottom;
+  background: #22c55e;
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* ---------- Loadout links ---------- */
+
+.loadoutGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 1rem;
+}
+
+.loadoutCard {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-height: 110px;
+  padding: 1.25rem 1.5rem;
+  text-decoration: none;
+  background: rgba(243, 189, 255, 0.07);
+  backdrop-filter: blur(4px);
+  transition: background 0.3s ease, transform 0.3s ease;
+  --aug-border-all: 1px;
+  --aug-border-bg: rgba(243, 189, 255, 0.5);
+  --aug-tr: 12px;
+  --aug-bl: 12px;
+}
+
+.loadoutCard:hover {
+  background: rgba(243, 189, 255, 0.16);
+  transform: translateY(-3px);
+}
+
+.loadoutIcon {
+  font-size: 1.8rem;
+  color: #F3BDFF;
+}
+
+.loadoutTitle {
+  display: block;
+  color: #F3BDFF;
   font-weight: bold;
 }
 
-.tabText {
-  transition: color 0.3s ease;
-  z-index: 2;
+.loadoutTitle i {
+  font-size: 0.75rem;
+}
+
+.loadoutCaption {
+  display: block;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* ---------- Goals & passions ---------- */
+
+.goals {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.3) 0%, rgba(34, 197, 94, 0.08) 100%);
+  --aug-border-bg: rgba(34, 197, 94, 0.4);
+}
+
+.goals .panelTitle {
+  color: #22c55e;
+}
+
+.passions {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.3) 0%, rgba(249, 115, 22, 0.08) 100%);
+  --aug-border-bg: rgba(249, 115, 22, 0.4);
+}
+
+.passions .panelTitle {
+  color: #f97316;
+}
+
+.chipGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+.chip {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 110px;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  --aug-border-all: 1px;
+  --aug-border-bg: rgba(255, 255, 255, 0.15);
+  --aug-tl: 10px;
+  --aug-br: 10px;
 }
 
-.tabGloss {
+.chip:hover {
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  --aug-border-bg: var(--accent);
+  box-shadow: inset 0 0 18px color-mix(in srgb, var(--accent) 25%, transparent);
+}
+
+.chipIndex {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0;
+  top: 0.5rem;
+  right: 0.75rem;
+  font-family: 'Courier New', monospace;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.35);
 }
 
-.automotive:hover .tabText {
-  color: #ef4444;
-}
-.finance:hover .tabText {
-  color: #ffdd44;
-}
-.gaming:hover .tabText {
-  color: #b347d9;
-}
-.cybersecurity:hover .tabText {
-  color: #59EEF4;
+.chipIcon {
+  font-size: 1.4rem;
+  color: var(--accent);
+  margin-bottom: 0.4rem;
+  filter: drop-shadow(0 0 6px var(--accent));
 }
 
-.run:hover .tabText {
-  color: #b347d9;
+.chipName {
+  font-size: 0.95rem;
+  color: #fff;
+  transition: color 0.3s ease;
 }
-.driving:hover .tabText {
-  color: #ef4444;
+
+.chip:hover .chipName {
+  color: var(--accent);
 }
-.computing:hover .tabText {
-  color: #ffdd44;
+
+.chipDetail {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.55);
 }
-.art:hover .tabText {
-  color: #59EEF4;
+
+@media (max-width: 400px) {
+  .chipGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .caret {
+    animation: none;
+  }
 }

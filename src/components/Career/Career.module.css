@@ -1,173 +1,365 @@
-.borderPurple {
-  border-color: #b347d9 !important;
-}
-.borderCyan {
-  border-color: #00d4ff !important;
-}
-.borderYellow {
-  border-color: #ffdd44 !important;
-}
-.borderGreen {
-  border-color: #22c55e !important;
-}
-.borderRed {
-  border-color: #ef4444 !important;
-}
-.borderOrange {
-  border-color: #f97316 !important;
+/* ---------- Section header ---------- */
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
-.textPurple {
-  color: #b347d9 !important;
-}
-.textCyan {
-  color: #59EEF4 !important;
-}
-.textYellow {
-  color: #ffdd44 !important;
-}
-.textGreen {
-  color: #22c55e !important;
-}
-.textRed {
-  color: #ef4444 !important;
-}
-.textOrange {
-  color: #f97316 !important;
-}
-
-.bgPurpleDark {
-  background-color: rgba(179, 71, 217, 0.1) !important;
-}
-.bgCyanDark {
-  background-color: rgba(0, 212, 255, 0.1) !important;
-}
-.bgYellowDark {
-  background-color: rgba(255, 221, 68, 0.1) !important;
-}
-.bgGreenDark {
-  background-color: rgba(34, 197, 94, 0.1) !important;
-}
-.bgRedDark {
-  background-color: rgba(239, 68, 68, 0.1) !important;
-}
-.bgOrangeDark {
-  background-color: rgba(249, 115, 22, 0.1) !important;
-}
-
-.shadowPurple {
-  box-shadow: 0 0 30px rgba(179, 71, 217, 0.4) !important;
-}
-.shadowCyan {
-  box-shadow: 0 0 30px rgba(0, 212, 255, 0.4) !important;
-}
-.shadowYellow {
-  box-shadow: 0 0 30px rgba(255, 221, 68, 0.4) !important;
-}
-.shadowGreen {
-  box-shadow: 0 0 30px rgba(34, 197, 94, 0.4) !important;
-}
-.shadowRed {
-  box-shadow: 0 0 30px rgba(239, 68, 68, 0.4) !important;
-}
-.shadowOrange {
-  box-shadow: 0 0 30px rgba(249, 115, 22, 0.4) !important;
-}
-
-.bgPurpleSubtle {
-  background-color: #2d1b3d !important;
-}
-.bgCyanSubtle {
-  background-color: #1a3d4d !important;
-}
-.bgYellowSubtle {
-  background-color: #4d4a1a !important;
-}
-.bgGreenSubtle {
-  background-color: #1a4d2e !important;
-}
-.bgRedSubtle {
-  background-color: #4d1a1a !important;
-}
-.bgOrangeSubtle {
-  background-color: #4d2e1a !important;
-}
-
-.careerCard {
-  position: relative;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(4px);
- --aug-r-extend1: 50%;
-  --aug-br: 50px;
-  --aug-tr: 15px;
-
-}
-
-.careerCard:hover {
-  transform: translateX(5px);
-}
-
-.careerCardPurple {
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(179, 71, 217, 0.08) 100%);
-  --aug-border-bg: #b347d9;
-  --aug-border-all: 2px;
-}
-
-.careerCardCyan {
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 212, 255, 0.08) 100%);
-  --aug-border-bg: #00d4ff;
-  --aug-border-all: 2px;
-}
-
-.careerCardYellow {
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(255, 221, 68, 0.08) 100%);
-  --aug-border-bg: #ffdd44;
-  --aug-border-all: 2px;
-}
-
-.careerCardGreen {
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(34, 197, 94, 0.08) 100%);
-  --aug-border-bg: #22c55e;
-  --aug-border-all: 2px;
-}
-
-.careerCardRed {
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(239, 68, 68, 0.08) 100%);
-  --aug-border-bg: #ef4444;
-  --aug-border-all: 2px;
-}
-
-.careerCardOrange {
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(249, 115, 22, 0.08) 100%);
-  --aug-border-bg: #f97316;
-  --aug-border-all: 2px;
-}
-
-
-
-.borderPanel {
-  border-right: 2px solid;
-
-}
-
-.marginCard {
-  margin-top: 10px;
-}
-
-.durationText {
-  font-size: medium;
-}
-
-.positionText {
-  color: #59EEF4;
-}
-
-.careerColor {
+.headerIndex {
+  font-family: 'Courier New', monospace;
   color: #FC7265;
-  border-color: #FC7265 !important;
+  opacity: 0.7;
+  letter-spacing: 2px;
 }
 
-.resumeText {
-  color: #FCA765;
+.headerTitle {
+  color: #FC7265;
+  letter-spacing: 4px;
+  text-shadow: 0 0 12px rgba(252, 114, 101, 0.5);
+}
+
+.headerLine {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, #FC7265, transparent);
+  box-shadow: 0 0 8px rgba(252, 114, 101, 0.6);
+}
+
+/* ---------- BIOS POST panel ---------- */
+
+.bios {
+  height: 100%;
+  background: rgba(7, 9, 14, 0.75);
+  backdrop-filter: blur(4px);
+  font-family: 'Courier New', monospace;
+  --aug-border-all: 1px;
+  --aug-border-bg: rgba(252, 114, 101, 0.5);
+  --aug-tl: 14px;
+  --aug-br: 14px;
+}
+
+.biosBar {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.6rem 1.5rem;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  color: #07090E;
+  background: #FC7265;
+}
+
+.biosBody {
+  padding: 1.25rem 1.5rem;
+}
+
+.biosLine {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding: 0.2rem 0;
+}
+
+.biosLabel {
+  color: rgba(252, 167, 101, 0.8);
+  white-space: nowrap;
+}
+
+.biosDots {
+  flex: 1;
+  min-width: 1rem;
+  border-bottom: 1px dotted rgba(252, 167, 101, 0.35);
+}
+
+.biosValue {
+  color: #fff;
+  text-align: right;
+}
+
+.biosStatus {
+  margin: 1rem 0 0;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.ok {
+  color: #22c55e;
+  text-shadow: 0 0 8px rgba(34, 197, 94, 0.7);
+}
+
+.caret {
+  display: inline-block;
+  width: 0.6em;
+  height: 1.1em;
+  vertical-align: text-bottom;
+  background: #FC7265;
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* ---------- Resume tile ---------- */
+
+.resumeCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  height: 100%;
+  min-height: 180px;
+  padding: 1.5rem;
   text-decoration: none;
+  text-align: center;
+  background: rgba(252, 167, 101, 0.08);
+  backdrop-filter: blur(4px);
+  transition: background 0.3s ease, transform 0.3s ease;
+  --aug-border-all: 1px;
+  --aug-border-bg: rgba(252, 167, 101, 0.6);
+  --aug-tr: 14px;
+  --aug-bl: 14px;
+}
+
+.resumeCard:hover {
+  background: rgba(252, 167, 101, 0.18);
+  transform: translateY(-3px);
+}
+
+.resumeIcon {
+  font-size: 2.5rem;
+  color: #FCA765;
+  filter: drop-shadow(0 0 8px rgba(252, 167, 101, 0.6));
+}
+
+.resumeTitle {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #FCA765;
+}
+
+.resumeTitle i {
+  font-size: 0.8rem;
+}
+
+.resumeCaption {
+  font-family: 'Courier New', monospace;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* ---------- DRAM stick ---------- */
+
+.stick {
+  position: relative;
+  padding: 0 1.5rem;
+  /* PCB with faint traces */
+  background:
+    repeating-linear-gradient(90deg, color-mix(in srgb, var(--accent) 7%, transparent) 0 1px, transparent 1px 22px),
+    linear-gradient(180deg, #0c1512 0%, #07090E 100%);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  --aug-border-all: 1px;
+  --aug-border-bg: color-mix(in srgb, var(--accent) 45%, transparent);
+  --aug-l: 14px;
+  --aug-r: 14px;
+  --aug-bl: 8px;
+  --aug-br: 8px;
+}
+
+.stick:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px -12px var(--accent);
+}
+
+.rgbBar {
+  height: 8px;
+  margin: 0 -1.5rem;
+  background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 40%, #fff), var(--accent));
+  background-size: 200% 100%;
+  box-shadow: 0 0 18px var(--accent), 0 0 4px var(--accent);
+  opacity: 0.75;
+  animation: rgbShift 4s linear infinite;
+  transition: opacity 0.3s ease;
+}
+
+.stick:hover .rgbBar {
+  opacity: 1;
+}
+
+@keyframes rgbShift {
+  to { background-position: 200% 0; }
+}
+
+.spreader {
+  margin-top: 1rem;
+  background:
+    repeating-linear-gradient(135deg, transparent 0 14px, rgba(255, 255, 255, 0.025) 14px 16px),
+    linear-gradient(135deg, color-mix(in srgb, var(--accent) 14%, #07090E) 0%, rgba(0, 0, 0, 0.6) 100%);
+  --aug-border-all: 1px;
+  --aug-border-bg: color-mix(in srgb, var(--accent) 60%, transparent);
+  --aug-tr: 18px;
+  --aug-bl: 18px;
+}
+
+.spreaderMeta {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.4rem 1.25rem;
+  font-family: 'Courier New', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  color: var(--accent);
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+}
+
+.spreaderBody {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  padding: 1.25rem;
+}
+
+/* Logo sits in a memory IC with pins on both sides */
+.logoChip {
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 84px;
+  height: 84px;
+  background: #0a0a0c;
+  border: 1px solid color-mix(in srgb, var(--accent) 60%, transparent);
+  box-shadow: 0 0 12px -4px var(--accent);
+}
+
+.logoChip::before,
+.logoChip::after {
+  content: "";
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  width: 6px;
+  background: repeating-linear-gradient(180deg, #b8b8c0 0 3px, transparent 3px 8px);
+}
+
+.logoChip::before {
+  left: -7px;
+}
+
+.logoChip::after {
+  right: -7px;
+}
+
+.logoImage {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+}
+
+.label {
+  flex: 1;
+  min-width: 0;
+}
+
+.company {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: var(--accent);
+  text-shadow: 0 0 10px color-mix(in srgb, var(--accent) 45%, transparent);
+}
+
+.duration {
+  font-family: 'Courier New', monospace;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.65);
+  white-space: nowrap;
+}
+
+.position {
+  color: color-mix(in srgb, var(--accent) 60%, #fff);
+}
+
+.description {
+  margin: 0;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Row of tiny surface-mount parts between the heat spreader and the pins */
+.pcbStrip {
+  display: flex;
+  justify-content: space-around;
+  padding: 0.6rem 2rem;
+}
+
+.smd {
+  width: 18px;
+  height: 7px;
+  background: #1c1c20;
+  border-left: 3px solid #b8b8c0;
+  border-right: 3px solid #b8b8c0;
+}
+
+.smd:nth-child(odd) {
+  width: 10px;
+}
+
+.fingers {
+  display: flex;
+  gap: 12px;
+  height: 22px;
+  margin: 0 0.5rem;
+}
+
+.pins {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.35) 0%, transparent 40%),
+    repeating-linear-gradient(90deg, #d4a73a 0 6px, transparent 6px 9px);
+  filter: drop-shadow(0 0 3px rgba(212, 167, 58, 0.4));
+}
+
+.keyNotch {
+  width: 12px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 576px) {
+  .stick {
+    padding: 0 0.75rem;
+  }
+
+  .rgbBar {
+    margin: 0 -0.75rem;
+  }
+
+  .spreaderBody {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .logoChip {
+    width: 68px;
+    height: 68px;
+    margin-left: 7px;
+  }
+
+  .logoImage {
+    width: 48px;
+    height: 48px;
+  }
+
+  .smd:nth-child(n+6) {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rgbBar,
+  .caret {
+    animation: none;
+  }
 }

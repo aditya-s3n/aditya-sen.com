@@ -1,5 +1,6 @@
 'use client';
 import styles from "./Footer.module.css";
+import Circuit from "@/components/Circuit/Circuit";
 
 export default function Footer() {
     const year = new Date().getFullYear();
@@ -7,6 +8,8 @@ export default function Footer() {
 
     return (
         <footer className={`text-center pt-3 pb-3 ${styles.footerContainer}`}>
+                <Circuit className={styles.circuitLeft} />
+                <Circuit className={styles.circuitRight} />
                 <div className="row container m-auto">
                     <div className="col text-start">
                         <h5 className={`${styles.footerText}`}>Made by Aditya Sen</h5>

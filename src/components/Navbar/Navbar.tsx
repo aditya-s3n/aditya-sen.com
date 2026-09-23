@@ -1,10 +1,12 @@
 'use client';
 import './Navbar.css';
 import Link from 'next/link';
+import Circuit from '@/components/Circuit/Circuit';
 
 export default function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark px-4 navbar-landing sticky-top">
+      <Circuit className="navbar-circuit" />
       <div className="container-fluid">
         <Link className="navbar-brand brother-font" href="/">
           Aditya Sen
@@ -23,22 +25,22 @@ export default function Navbar() {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <Link className="nav-link" href="#projects">
+              <Link className="nav-link" href="/aditya/projects">
                 Projects
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" href="#career">
+              <Link className="nav-link" href="/aditya/career">
                 Career
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" href="#about">
+              <Link className="nav-link" href="/aditya">
                 About
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" href="#contact">
+              <Link className="nav-link" href="/aditya/contact">
                 Contact
               </Link>
             </li>

@@ -1,0 +1,15 @@
+/* Full-screen WebGL layer between the gradient and the SVG skyline,
+   so the lights rise from behind the buildings into the sky. */
+.lights {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.8;
+}
+
+.lights canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}

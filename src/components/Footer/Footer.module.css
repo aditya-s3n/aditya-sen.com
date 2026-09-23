@@ -1,6 +1,31 @@
 .footerContainer {
     background: linear-gradient(135deg, #321214, #07090E) !important;
     border-top: 1px solid #FC7265;
+    position: relative;
+    overflow: hidden;
+}
+
+.footerContainer > :global(.row) {
+    position: relative;
+    z-index: 1;
+}
+
+/* Circuits hang down from the top border at both edges. */
+.circuitLeft,
+.circuitRight {
+    top: 0;
+    width: 320px;
+    height: 56px;
+}
+
+.circuitLeft {
+    left: 0;
+    transform: scaleY(-1);
+}
+
+.circuitRight {
+    right: 0;
+    transform: scale(-1, -1);
 }
 
 .footerText {

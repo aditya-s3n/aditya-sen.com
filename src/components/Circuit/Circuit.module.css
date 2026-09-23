@@ -1,0 +1,39 @@
+.circuit {
+    position: absolute;
+    pointer-events: none;
+    z-index: 0;
+    overflow: visible;
+}
+
+.traces {
+    fill: none;
+    stroke: #FC7265;
+    stroke-width: 1;
+    opacity: 0.35;
+}
+
+.pulses {
+    fill: none;
+    stroke: #59EEF4;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    filter: drop-shadow(0 0 3px #59EEF4);
+}
+
+/* A short dash of light that runs along each trace, then rests. */
+.pulses path {
+    stroke-dasharray: 6 200;
+    stroke-dashoffset: 6;
+    animation: circuit-pulse 6.5s linear infinite;
+}
+
+@keyframes circuit-pulse {
+    0% { stroke-dashoffset: 6; }
+    35%, 100% { stroke-dashoffset: -100; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pulses {
+        display: none;
+    }
+}

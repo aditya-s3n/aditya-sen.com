@@ -1,75 +1,75 @@
+'use client';
+
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
 import HexTextAnimation from '@/components/HexAnimation/HexAnimation';
-import Image from 'next/image';
-import logo from '@/imgs/profile.jpg';
 import Background from '@/components/Background/Background';
-import Projects from '@/components/Projects/Projects';
-import Career from '@/components/Career/Career';
-import About from '@/components/About/About';
-import Contact from '@/components/Contact/Contact';
 import './styles/background.css';
-import './styles/styles.css';
+import './styles/landing.css';
 
+const LOADING_MESSAGES = [
+  'INIT RENDER',
+  'COMPILING SHADERS',
+  'BUILDING SCENE GRAPH',
+  'GPU DRAW CALLS',
+  'RASTERIZING IMAGE',
+];
 
-export default function Home() {  
+export default function Home() {
+  const [progress, setProgress] = useState(0);
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    const start = Date.now();
+    const durationMs = 1500;
+    let frame: number;
+
+    const tick = () => {
+      const elapsed = Date.now() - start;
+      const pct = Math.min(100, Math.round((elapsed / durationMs) * 100));
+      setProgress(pct);
+
+      if (pct < 100) {
+        frame = requestAnimationFrame(tick);
+      } else {
+        setTimeout(() => setLoaded(true), 300);
+      }
+    };
+
+    frame = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frame);
+  }, []);
+
+  const messageIndex = Math.min(
+    LOADING_MESSAGES.length - 1,
+    Math.floor((progress / 100) * LOADING_MESSAGES.length)
+  );
+
   return (
     <div>
       <Background />
-      <div 
-        className='container my-5'
-        data-bs-spy="scroll"
-        data-bs-target="#navbarNav"
-        data-bs-offset="80"
-        tabIndex={0}
-      >
-        <div className='row'>
-          <div className='col text-center text-md-start mb-4'>
-            <div className="profile-image-wrapper" data-augmented-ui="r-clip-y both">
-              <Image
-                src={logo}
-                alt="Aditya Sen"
-                width={350}
-                height={350}
-                style={{
-                  objectFit: 'cover',
-                }}
-                sizes="(max-width: 768px) 100vw, 350px"
-                priority={true}
-              />
+      <div className="landing-hero">
+        {!loaded ? (
+          <div className="loading-screen">
+            <p className="loading-label">{LOADING_MESSAGES[messageIndex]}</p>
+            <div className="loading-bar-track">
+              <div className="loading-bar-fill" style={{ width: `${progress}%` }} />
             </div>
-
+            <p className="loading-percent">{progress}%</p>
           </div>
-
-          <div className='col d-flex flex-column justify-content-center align-items-center text-center'>
-            <p className='fs-1 name'>Aditya Sen</p>
-
-            <div 
-              className='row py-2 text-center landing-subtext-container w-75'
-              data-augmented-ui="bl-clip-y tr-clip-y border"
-            >
-              <HexTextAnimation text='Graphics & Rendering Engineer' className='col responsive-border landing-subtext mb-0' duration={2} delay={0.5}/>
+        ) : (
+          <div className="landing-content">
+            <p className="landing-name">Aditya Sen</p>
+            <div className="landing-tag-container" data-augmented-ui="bl-clip-y tr-clip-y border">
+              <HexTextAnimation text="Graphics & Rendering Engineer" className="landing-tag mb-0" duration={2} />
             </div>
+            <Link href="/aditya" className="enter-button">
+              Enter
+              <span className="enter-button-arrow">&rarr;</span>
+            </Link>
           </div>
-        </div>
-
-
-        <div className='mt-5' id="projects">
-          <Projects />
-        </div>
-
-        <div className='mt-5'  id="career">
-          <Career />
-        </div>
-
-        <div className='mt-5' id="about">
-          <About />
-        </div>
-
-        <div className='mt-5' id="contact">
-          <Contact />
-        </div>
+        )}
       </div>
-
-      
     </div>
   );
 }
