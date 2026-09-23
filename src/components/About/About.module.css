@@ -129,16 +129,7 @@
   text-align: right;
 }
 
-.statusDot {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  margin-right: 0.5rem;
-  border-radius: 50%;
-  background: #22c55e;
-  box-shadow: 0 0 8px #22c55e;
-  animation: pulse 1.6s ease-in-out infinite;
-}
+
 
 @keyframes pulse {
   0%, 100% { opacity: 1; }
@@ -361,7 +352,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .statusDot,
   .caret {
     animation: none;
   }

@@ -7,30 +7,30 @@ import { RESUME_URL } from "../links";
 import styles from "./About.module.css";
 
 const stats = [
-    { label: "CLASS", value: "Graphics & Rendering" },
+    { label: "FOCUS", value: "Graphics & Rendering" },
     { label: "PROGRAM", value: "Computer Engineering" },
-    { label: "ORIGIN", value: "University of Waterloo" },
+    { label: "EDUCATION", value: "University of Waterloo" },
     { label: "YEAR", value: "3rd" },
 ];
 
 const interests = [
-    { name: "Automotive", icon: "bi-car-front-fill", color: "#ef4444" },
-    { name: "Cybersecurity", icon: "bi-shield-lock-fill", color: "#59EEF4" },
+    { name: "CAD & Simulations", icon: "bi-boxes", color: "#ef4444" },
+    { name: "Film & Animation", icon: "bi-film", color: "#59EEF4" },
     { name: "Gaming", icon: "bi-controller", color: "#b347d9" },
-    { name: "Finance", icon: "bi-graph-up-arrow", color: "#ffdd44" },
+    { name: "Automotive", icon: "bi-car-front-fill", color: "#ffdd44" },
 ];
 
 const passions = [
-    { name: "Driving & Working on Cars", icon: "bi-wrench-adjustable", color: "#ef4444" },
-    { name: "Art", detail: "Books · Video Games · Movies", icon: "bi-palette-fill", color: "#59EEF4" },
-    { name: "Running & Biking", icon: "bi-bicycle", color: "#b347d9" },
-    { name: "Of Course! Computers", icon: "bi-cpu-fill", color: "#ffdd44" },
+    { name: "3D Printing", icon: "bi-printer", color: "#ef4444" },
+    { name: "Art", detail: "Music · Video Games · Animation · Culture", icon: "bi-palette-fill", color: "#59EEF4" },
+    { name: "Hiking & Outdoor Sports", icon: "bi-bicycle", color: "#b347d9" },
+    { name: "Computers & PC Building", icon: "bi-cpu-fill", color: "#ffdd44" },
 ];
 
 const loadout = [
     {
         title: "PC Build",
-        caption: "See the specs",
+        caption: "See my specs",
         icon: "bi-pc-display",
         href: "https://ca.pcpartpicker.com/b/RLfv6h",
     },
@@ -42,7 +42,7 @@ const loadout = [
     },
     {
         title: "Resume",
-        caption: "Full spec sheet",
+        caption: "My career",
         icon: "bi-file-earmark-person",
         href: RESUME_URL,
     },
@@ -106,10 +106,6 @@ export default function About() {
                                     <dd>{stat.value}</dd>
                                 </div>
                             ))}
-                            <div className={styles.statRow}>
-                                <dt>STATUS</dt>
-                                <dd><span className={styles.statusDot} />Online</dd>
-                            </div>
                         </dl>
                     </div>
                 </div>
@@ -128,7 +124,8 @@ export default function About() {
                             </p>
                             <p className={styles.bio}>
                                 I love computers! If you couldn&apos;t already tell from the cyberpunk themed website.
-                                Learning as much as I can, from low-level firmware to high-level software.
+                                Learning as much as I can, focusing on building a career as a <b>graphics programmer</b>. Passionate about real-time rendering, VFX, CAD and geometric modelling, systems programming, and memory allocators.
+                                <br></br>Interested in RTL engineering and GPU architecture.
                             </p>
                             <p className="mb-0"><span className={styles.prompt}>&gt;</span> <span className={styles.caret} /></p>
                         </div>
