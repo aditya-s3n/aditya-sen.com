@@ -31,9 +31,7 @@ type LayerOptions = {
   neonChance: number;
 };
 
-type Ad =
-  | { kind: 'board'; x: number; y: number; w: number; h: number; color: string; text: string[] }
-  | { kind: 'vertical'; x: number; y: number; color: string; text: string };
+type Sign = { x: number; y: number; color: string; text: string };
 
 // Seeded PRNG so the server and client render the same skyline.
 function mulberry32(seed: number) {
@@ -153,42 +151,25 @@ function buildLayer({ seed, minW, maxW, minH, maxH, litChance, neonChance }: Lay
   return { path, cyanWindows, orangeWindows, neonCyan, neonPink, beacons, buildings };
 }
 
-const BOARD_TEXT = [
-  ['RENDER', 'レンダー'],
-  ['SHADERS'],
-  ['OPEN', '24H'],
-  ['NEXUS', 'ネクサス'],
-  ['SEN CORP'],
-  ['ラーメン'],
-  ['NEON', 'ネオン'],
-];
 const VERTICAL_TEXT = ['ホテル', 'サイバー', 'バー', 'ラーメン', 'ネオン'];
 const AD_COLORS = [CYAN, PINK, ORANGE, PURPLE, CORAL];
 
-// Hangs billboards and vertical signs on the faces of some buildings.
-function placeAds(buildings: Building[], seed: number, boardChance: number, signChance: number): Ad[] {
+// Hangs vertical neon signs off the sides of some buildings.
+function placeSigns(buildings: Building[], seed: number, skipChance: number, signChance: number): Sign[] {
   const rand = mulberry32(seed);
-  const ads: Ad[] = [];
-  let board = 0;
+  const signs: Sign[] = [];
   let sign = 0;
 
   for (const b of buildings) {
     const h = HEIGHT - b.top;
     const color = AD_COLORS[Math.floor(rand() * AD_COLORS.length)];
-    if (b.w >= 50 && h >= 110 && rand() < boardChance) {
-      const w = b.w - 14;
-      ads.push({
-        kind: 'board',
-        x: b.x + 7,
-        y: b.top + 14 + Math.round(rand() * 20),
-        w,
-        h: Math.min(34, Math.round(w * 0.45)),
-        color,
-        text: BOARD_TEXT[board++ % BOARD_TEXT.length],
-      });
-    } else if (h >= 150 && rand() < signChance) {
-      ads.push({
-        kind: 'vertical',
+    // Wide buildings used to carry billboards; keep their random draws so the signs stay where they were.
+    if (b.w >= 50 && h >= 110 && rand() < skipChance) {
+      rand();
+      continue;
+    }
+    if (h >= 150 && rand() < signChance) {
+      signs.push({
         x: rand() < 0.5 ? b.x - 6 : b.x + b.w - 6,
         y: b.top + 20 + Math.round(rand() * 30),
         color,
@@ -197,102 +178,35 @@ function placeAds(buildings: Building[], seed: number, boardChance: number, sign
     }
   }
 
-  return ads;
-}
-
-// Rough text width in ems: full-width katakana vs. latin characters.
-function textEms(text: string) {
-  let ems = 0;
-  for (const ch of text) ems += ch.charCodeAt(0) > 0x3000 ? 1 : 0.62;
-  return ems;
+  return signs;
 }
 
 const far = buildLayer({ seed: 1337, minW: 30, maxW: 70, minH: 170, maxH: 340, litChance: 0.05, neonChance: 0 });
 const mid = buildLayer({ seed: 4242, minW: 35, maxW: 90, minH: 110, maxH: 280, litChance: 0.07, neonChance: 0.15 });
 const near = buildLayer({ seed: 2077, minW: 45, maxW: 110, minH: 60, maxH: 220, litChance: 0.08, neonChance: 0.25 });
 
-const midAds = placeAds(mid.buildings, 99, 0.25, 0.2);
-const nearAds = placeAds(near.buildings, 7, 0.3, 0.25);
+const midSigns = placeSigns(mid.buildings, 99, 0.25, 0.2);
+const nearSigns = placeSigns(near.buildings, 7, 0.3, 0.25);
 
-// Flying cars: `far` lanes pass behind the mid-rise layer, `near` lanes in front of it.
-const CARS = [
-  { lane: 'far', y: 165, scale: 0.5, duration: 46, delay: -5, dir: 1 },
-  { lane: 'far', y: 195, scale: 0.55, duration: 52, delay: -30, dir: -1 },
-  { lane: 'far', y: 140, scale: 0.45, duration: 60, delay: -44, dir: 1 },
-  { lane: 'near', y: 250, scale: 0.85, duration: 28, delay: -12, dir: -1 },
-  { lane: 'near', y: 285, scale: 1, duration: 24, delay: -3, dir: 1 },
-  { lane: 'near', y: 225, scale: 0.75, duration: 34, delay: -20, dir: 1 },
-] as const;
-
-function Cars({ lane }: { lane: 'far' | 'near' }) {
-  return (
-    <g>
-      {CARS.filter((car) => car.lane === lane).map((car, i) => (
-        <g key={i} transform={`translate(0 ${car.y})`}>
-          <g
-            className={styles.car}
-            style={{
-              animationDuration: `${car.duration}s`,
-              animationDelay: `${car.delay}s`,
-              animationDirection: car.dir < 0 ? 'reverse' : 'normal',
-            }}
-          >
-            <g transform={`scale(${car.dir * car.scale} ${car.scale})`}>
-              <rect x="-40" y="-0.6" width="30" height="1.2" fill="url(#car-trail)" />
-              <path d="M8 0L34 -4V4Z" fill="url(#car-beam)" />
-              <path d="M-10 1V-1L-6 -4H4L9 -1V1L6 3H-7Z" fill="#0b0c12" stroke={CYAN} strokeOpacity="0.5" strokeWidth="0.6" />
-              <circle cx="8.5" cy="0" r="1.2" fill="#fff" />
-              <circle cx="-10" cy="0" r="1.1" fill={PINK} />
-              <rect x="-5" y="3" width="10" height="1" fill={CYAN} opacity="0.7" />
-            </g>
-          </g>
-        </g>
-      ))}
-    </g>
-  );
-}
-
-function Ads({ ads }: { ads: Ad[] }) {
+function Signs({ signs }: { signs: Sign[] }) {
+  const size = 9;
   return (
     <g filter="url(#neon-glow)">
-      {ads.map((ad, i) => {
-        const timing = {
-          animationDelay: `${(i * 1.7) % 7}s`,
-          animationDuration: `${6 + (i % 4) * 1.5}s`,
-        };
-
-        if (ad.kind === 'vertical') {
-          const chars = [...ad.text];
-          const size = 9;
-          return (
-            <g key={i} className={styles.ad} style={timing}>
-              <rect x={ad.x} y={ad.y} width="12" height={chars.length * (size + 2) + 6} fill={ad.color} fillOpacity="0.12" stroke={ad.color} strokeWidth="0.8" />
-              {chars.map((ch, j) => (
-                <text key={j} x={ad.x + 6} y={ad.y + 3 + (j + 0.5) * (size + 2)} fontSize={size} className={styles.adText} fill={ad.color}>
-                  {ch}
-                </text>
-              ))}
-            </g>
-          );
-        }
-
-        const cx = ad.x + ad.w / 2;
-        const cy = ad.y + ad.h / 2;
-        const sizeFor = (text: string) => Math.min(ad.h * 0.55, (ad.w - 8) / textEms(text));
+      {signs.map((sign, i) => {
+        const chars = [...sign.text];
         return (
-          <g key={i} className={styles.ad} style={timing}>
-            <rect x={ad.x} y={ad.y} width={ad.w} height={ad.h} rx="1" fill={ad.color} fillOpacity="0.12" stroke={ad.color} strokeWidth="1" />
-            {ad.text.map((text, j) => (
-              <text
-                key={j}
-                x={cx}
-                y={cy}
-                fontSize={sizeFor(text)}
-                className={ad.text.length > 1 ? `${styles.adText} ${j === 0 ? styles.swapA : styles.swapB}` : styles.adText}
-                fill={ad.color}
-                style={{ animationDuration: timing.animationDuration }}
-              >
-                {text}
+          <g
+            key={i}
+            className={styles.sign}
+            style={{
+              animationDelay: `${(i * 1.7) % 7}s`,
+              animationDuration: `${6 + (i % 4) * 1.5}s`,
+            }}
+          >
+            <rect x={sign.x} y={sign.y} width="12" height={chars.length * (size + 2) + 6} fill={sign.color} fillOpacity="0.12" stroke={sign.color} strokeWidth="0.8" />
+            {chars.map((ch, j) => (
+              <text key={j} x={sign.x + 6} y={sign.y + 3 + (j + 0.5) * (size + 2)} fontSize={size} className={styles.signText} fill={sign.color}>
+                {ch}
               </text>
             ))}
           </g>
@@ -347,14 +261,6 @@ export default function CitySkyline() {
             <stop offset="0%" stopColor={PINK} stopOpacity="0" />
             <stop offset="100%" stopColor={PINK} stopOpacity="0.18" />
           </linearGradient>
-          <linearGradient id="car-trail" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor={CYAN} stopOpacity="0" />
-            <stop offset="100%" stopColor={CYAN} stopOpacity="0.6" />
-          </linearGradient>
-          <linearGradient id="car-beam" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#fff" stopOpacity="0.35" />
-            <stop offset="100%" stopColor="#fff" stopOpacity="0" />
-          </linearGradient>
           <filter id="neon-glow" x="-50%" y="-50%" width="200%" height="200%">
             <feGaussianBlur stdDeviation="2" result="blur" />
             <feMerge>
@@ -371,20 +277,16 @@ export default function CitySkyline() {
           <Lights layer={far} cyan={0.35} orange={0.3} />
         </g>
 
-        <Cars lane="far" />
-
         <g>
           <path d={mid.path} fill="#0d0a12" />
           <Lights layer={mid} cyan={0.45} orange={0.4} />
-          <Ads ads={midAds} />
+          <Signs signs={midSigns} />
         </g>
-
-        <Cars lane="near" />
 
         <g>
           <path d={near.path} fill="#05060a" />
           <Lights layer={near} cyan={0.55} orange={0.45} />
-          <Ads ads={nearAds} />
+          <Signs signs={nearSigns} />
         </g>
 
         <rect x="0" y={HEIGHT - 50} width={WIDTH} height="50" fill="url(#skyline-street)" />

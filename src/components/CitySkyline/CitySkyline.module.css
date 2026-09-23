@@ -31,22 +31,12 @@
     50% { opacity: 0.9; }
 }
 
-/* Flying cars cross the whole skyline; direction is set per car. */
-.car {
-    animation: car-fly 30s linear infinite;
+/* Neon signs: mostly steady, with a short burst of flicker each cycle. */
+.sign {
+    animation: sign-flicker 7s steps(1, end) infinite;
 }
 
-@keyframes car-fly {
-    from { transform: translateX(-80px); }
-    to { transform: translateX(1680px); }
-}
-
-/* Neon ads: mostly steady, with a short burst of flicker each cycle. */
-.ad {
-    animation: ad-flicker 7s steps(1, end) infinite;
-}
-
-@keyframes ad-flicker {
+@keyframes sign-flicker {
     0% { opacity: 0.9; }
     60% { opacity: 0.25; }
     61% { opacity: 0.9; }
@@ -56,45 +46,17 @@
     66% { opacity: 0.9; }
 }
 
-.adText {
+.signText {
     font-family: var(--font-play), sans-serif;
     font-weight: 700;
     text-anchor: middle;
     dominant-baseline: central;
 }
 
-/* Two-message ads alternate between their texts. */
-.swapA {
-    animation: ad-swap-a 7s steps(1, end) infinite;
-}
-
-.swapB {
-    animation: ad-swap-b 7s steps(1, end) infinite;
-}
-
-@keyframes ad-swap-a {
-    0% { opacity: 1; }
-    50% { opacity: 0; }
-}
-
-@keyframes ad-swap-b {
-    0% { opacity: 0; }
-    50% { opacity: 1; }
-}
-
 @media (prefers-reduced-motion: reduce) {
     .beacon,
-    .ad {
+    .sign {
         animation: none;
         opacity: 0.6;
-    }
-
-    .swapA {
-        animation: none;
-    }
-
-    .swapB,
-    .car {
-        display: none;
     }
 }

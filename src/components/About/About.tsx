@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
 import HexTextAnimation from "../HexAnimation/HexAnimation";
 import profile from "@/imgs/profile.jpg";
 import { RESUME_URL } from "../links";
@@ -55,21 +54,17 @@ function ChipGrid({ items }: { items: Chip[] }) {
     return (
         <div className={styles.chipGrid}>
             {items.map((item, index) => (
-                <motion.div
+                <div
                     key={item.name}
                     className={styles.chip}
                     style={{ "--accent": item.color } as React.CSSProperties}
                     data-augmented-ui="tl-clip br-clip border"
-                    initial={{ opacity: 0, y: 12 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: index * 0.08 }}
                 >
                     <span className={styles.chipIndex}>0x0{index + 1}</span>
                     <i className={`bi ${item.icon} ${styles.chipIcon}`} />
                     <span className={styles.chipName}>{item.name}</span>
                     {item.detail && <span className={styles.chipDetail}>{item.detail}</span>}
-                </motion.div>
+                </div>
             ))}
         </div>
     );

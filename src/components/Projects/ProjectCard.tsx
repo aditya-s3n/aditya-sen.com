@@ -1,7 +1,6 @@
 "use client";
 
 import { Fragment } from "react";
-import { motion } from "framer-motion";
 import HexTextAnimation from "../HexAnimation/HexAnimation";
 import styles from "./Projects.module.css";
 
@@ -61,14 +60,10 @@ type CpuCoreProps = {
 
 function CpuCore({ project, coreId, cluster, featured = false }: CpuCoreProps) {
   return (
-    <motion.article
+    <article
       className={`${styles.core} ${featured ? styles.coreFeatured : ""}`}
       style={{ "--accent": project.color } as React.CSSProperties}
       data-augmented-ui="tl-clip br-clip border"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.5, delay: coreId * 0.08 }}
     >
       <div className={styles.coreHead}>
         <span className={styles.pinOne} aria-hidden="true" />
@@ -104,7 +99,7 @@ function CpuCore({ project, coreId, cluster, featured = false }: CpuCoreProps) {
       </div>
 
       <div className={styles.corePads} aria-hidden="true" />
-    </motion.article>
+    </article>
   );
 }
 

@@ -1,7 +1,6 @@
 "use client"
 
 import Image, { StaticImageData } from "next/image";
-import { motion } from "framer-motion";
 import HexTextAnimation from "../HexAnimation/HexAnimation"
 import styles from "./Career.module.css"
 
@@ -118,15 +117,11 @@ export default function CareerSection() {
   return (
     <div className="d-flex flex-column gap-5 mt-4">
       {careers.map((career, index) => (
-        <motion.article
+        <article
           key={career.id}
           className={styles.stick}
           style={{ "--accent": career.color } as React.CSSProperties}
           data-augmented-ui="l-round-xy r-round-xy bl-clip br-clip border"
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.5 }}
         >
           <div className={styles.rgbBar} aria-hidden="true" />
 
@@ -163,7 +158,7 @@ export default function CareerSection() {
           </div>
 
           <GoldFingers />
-        </motion.article>
+        </article>
       ))}
     </div>
   )

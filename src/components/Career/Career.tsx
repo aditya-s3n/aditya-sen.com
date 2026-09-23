@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import HexTextAnimation from "../HexAnimation/HexAnimation";
 import CareerSection, { careers, durationInMonths } from "./CareerSection";
 import { RESUME_URL } from "../links";
@@ -35,29 +34,21 @@ export default function Career() {
                             <span className="d-none d-sm-inline">POST // MEMORY CHECK</span>
                         </div>
                         <div className={styles.biosBody}>
-                            {postLines.map((line, index) => (
-                                <motion.div
+                            {postLines.map((line) => (
+                                <div
                                     key={line.label}
                                     className={styles.biosLine}
-                                    initial={{ opacity: 0, x: -8 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.25, delay: 0.2 + index * 0.18 }}
                                 >
                                     <span className={styles.biosLabel}>{line.label}</span>
                                     <span className={styles.biosDots} />
                                     <span className={styles.biosValue}>{line.value}</span>
-                                </motion.div>
+                                </div>
                             ))}
-                            <motion.p
+                            <p
                                 className={styles.biosStatus}
-                                initial={{ opacity: 0 }}
-                                whileInView={{ opacity: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.25, delay: 0.2 + postLines.length * 0.18 }}
                             >
                                 [ <span className={styles.ok}>OK</span> ] All modules operational <span className={styles.caret} />
-                            </motion.p>
+                            </p>
                         </div>
                     </div>
                 </div>
