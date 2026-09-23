@@ -1,26 +1,13 @@
 import HexTextAnimation from '@/components/HexAnimation/HexAnimation';
 import Image from 'next/image';
 import logo from '@/imgs/profile.jpg';
-import Background from '@/components/Background/Background';
-import Projects from '@/components/Projects/Projects';
-import Career from '@/components/Career/Career';
 import About from '@/components/About/About';
-import Contact from '@/components/Contact/Contact';
-import '../styles/background.css';
-import '../styles/styles.css';
 
 
 export default function AdityaPage() {
   return (
     <div>
-      <Background />
-      <div 
-        className='container my-5'
-        data-bs-spy="scroll"
-        data-bs-target="#navbarNav"
-        data-bs-offset="80"
-        tabIndex={0}
-      >
+      <div className='container my-5'>
         <div className='row'>
           <div className='col text-center text-md-start mb-4'>
             <div className="profile-image-wrapper" data-augmented-ui="r-clip-y both">
@@ -52,24 +39,11 @@ export default function AdityaPage() {
         </div>
 
 
-        <div className='mt-5' id="projects">
-          <Projects />
-        </div>
-
-        <div className='mt-5'  id="career">
-          <Career />
-        </div>
-
-        <div className='mt-5' id="about">
+        <div className='mt-5'>
           <About />
         </div>
 
-        <div className='mt-5' id="contact">
-          <Contact />
-        </div>
       </div>
-
-      
     </div>
   );
 }

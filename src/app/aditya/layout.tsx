@@ -1,5 +1,8 @@
 import Navbar from '@/components/Navbar/Navbar';
 import Footer from '@/components/Footer/Footer';
+import Background from '@/components/Background/Background';
+import '../styles/background.css';
+import '../styles/styles.css';
 
 export default function AdityaLayout({
   children,
@@ -9,6 +12,7 @@ export default function AdityaLayout({
   return (
     <>
       <Navbar />
+      <Background />
       {children}
       <Footer />
     </>

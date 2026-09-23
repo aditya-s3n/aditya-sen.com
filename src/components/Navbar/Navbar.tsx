@@ -23,22 +23,22 @@ export default function Navbar() {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <Link className="nav-link" href="/aditya#projects">
+              <Link className="nav-link" href="/aditya/projects">
                 Projects
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" href="/aditya#career">
+              <Link className="nav-link" href="/aditya/career">
                 Career
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" href="/aditya#about">
+              <Link className="nav-link" href="/aditya">
                 About
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" href="/aditya#contact">
+              <Link className="nav-link" href="/aditya/contact">
                 Contact
               </Link>
             </li>
