@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import HexTextAnimation from "../HexAnimation/HexAnimation";
 import profile from "@/imgs/profile.jpg";
+import { RESUME_URL } from "../links";
 import styles from "./About.module.css";
 
 const stats = [
@@ -39,6 +40,12 @@ const loadout = [
         caption: "I like all types of engineering!",
         icon: "bi-box",
         href: "https://drive.google.com/drive/folders/1m_l11mimNXIqmZlXha4vqFqzNAXGIOkQ?usp=sharing",
+    },
+    {
+        title: "Resume",
+        caption: "Full spec sheet",
+        icon: "bi-file-earmark-person",
+        href: RESUME_URL,
     },
 ];
 
@@ -132,23 +139,22 @@ export default function About() {
                         </div>
                     </div>
 
-                    <div className="row g-4">
+                    <div className={styles.loadoutGrid}>
                         {loadout.map((item) => (
-                            <div key={item.title} className="col-sm-6">
-                                <a
-                                    href={item.href}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className={styles.loadoutCard}
-                                    data-augmented-ui="tr-clip bl-clip border"
-                                >
-                                    <i className={`bi ${item.icon} ${styles.loadoutIcon}`} />
-                                    <span>
-                                        <span className={styles.loadoutTitle}>{item.title} <i className="bi bi-box-arrow-up-right" /></span>
-                                        <span className={styles.loadoutCaption}>{item.caption}</span>
-                                    </span>
-                                </a>
-                            </div>
+                            <a
+                                key={item.title}
+                                href={item.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={styles.loadoutCard}
+                                data-augmented-ui="tr-clip bl-clip border"
+                            >
+                                <i className={`bi ${item.icon} ${styles.loadoutIcon}`} />
+                                <span>
+                                    <span className={styles.loadoutTitle}>{item.title} <i className="bi bi-box-arrow-up-right" /></span>
+                                    <span className={styles.loadoutCaption}>{item.caption}</span>
+                                </span>
+                            </a>
                         ))}
                     </div>
                 </div>
