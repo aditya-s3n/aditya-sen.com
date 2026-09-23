@@ -39,3 +39,16 @@
     background: linear-gradient(135deg, #321214, #07090E) !important;
     border-bottom: 1px solid #FC7265;
 }
+
+.navbar-landing > .container-fluid {
+    position: relative;
+    z-index: 1;
+}
+
+/* Sits between the brand and the links, rising off the bottom border. */
+.navbar-circuit {
+    bottom: 0;
+    left: 220px;
+    width: min(320px, calc(100% - 300px));
+    height: 56px;
+}

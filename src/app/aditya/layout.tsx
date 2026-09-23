@@ -11,12 +11,12 @@ export default function AdityaLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <>
+    <div className="d-flex flex-column min-vh-100">
       <Navbar />
       <Background />
       <CitySkyline />
-      {children}
+      <main className="flex-grow-1">{children}</main>
       <Footer />
-    </>
+    </div>
   );
 }

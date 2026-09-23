@@ -1,10 +1,12 @@
 'use client';
 import './Navbar.css';
 import Link from 'next/link';
+import Circuit from '@/components/Circuit/Circuit';
 
 export default function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark px-4 navbar-landing sticky-top">
+      <Circuit className="navbar-circuit" />
       <div className="container-fluid">
         <Link className="navbar-brand brother-font" href="/">
           Aditya Sen
