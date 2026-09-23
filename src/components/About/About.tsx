@@ -1,88 +1,176 @@
 "use client";
 
+import Image from "next/image";
+import { motion } from "framer-motion";
 import HexTextAnimation from "../HexAnimation/HexAnimation";
+import profile from "@/imgs/profile.jpg";
 import styles from "./About.module.css";
 
+const stats = [
+    { label: "CLASS", value: "Graphics & Rendering" },
+    { label: "PROGRAM", value: "Computer Engineering" },
+    { label: "ORIGIN", value: "University of Waterloo" },
+    { label: "YEAR", value: "3rd" },
+];
+
 const interests = [
-    { name: "Automotive", color: "#ef4444", className: "automotive" },
-    { name: "Cybersecurity", color: "#59EEF4", className: "cybersecurity" },
-    { name: "Gaming", color: "#b347d9", className: "gaming" },
-    { name: "Finance", color: "#ffdd44", className: "finance" },
-]
+    { name: "Automotive", icon: "bi-car-front-fill", color: "#ef4444" },
+    { name: "Cybersecurity", icon: "bi-shield-lock-fill", color: "#59EEF4" },
+    { name: "Gaming", icon: "bi-controller", color: "#b347d9" },
+    { name: "Finance", icon: "bi-graph-up-arrow", color: "#ffdd44" },
+];
 
 const passions = [
-    { name: "Driving & Working on Cars", color: "#ef4444", className: "driving" },
-    { name: "Art - Books 📖 | Video Games 🎮 | Movies 🎥", color: "#59EEF4", className: "art" },
-    { name: "Running & Biking", color: "#b347d9", className: "run" },
-    { name: "Of Course! Computers 💕", color: "#ffdd44", className: "computing" },
-]
+    { name: "Driving & Working on Cars", icon: "bi-wrench-adjustable", color: "#ef4444" },
+    { name: "Art", detail: "Books · Video Games · Movies", icon: "bi-palette-fill", color: "#59EEF4" },
+    { name: "Running & Biking", icon: "bi-bicycle", color: "#b347d9" },
+    { name: "Of Course! Computers", icon: "bi-cpu-fill", color: "#ffdd44" },
+];
 
+const loadout = [
+    {
+        title: "PC Build",
+        caption: "See the specs",
+        icon: "bi-pc-display",
+        href: "https://ca.pcpartpicker.com/b/RLfv6h",
+    },
+    {
+        title: "3D CAD Designs",
+        caption: "I like all types of engineering!",
+        icon: "bi-box",
+        href: "https://drive.google.com/drive/folders/1m_l11mimNXIqmZlXha4vqFqzNAXGIOkQ?usp=sharing",
+    },
+];
+
+type Chip = { name: string; icon: string; color: string; detail?: string };
+
+function ChipGrid({ items }: { items: Chip[] }) {
+    return (
+        <div className={styles.chipGrid}>
+            {items.map((item, index) => (
+                <motion.div
+                    key={item.name}
+                    className={styles.chip}
+                    style={{ "--accent": item.color } as React.CSSProperties}
+                    data-augmented-ui="tl-clip br-clip border"
+                    initial={{ opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: index * 0.08 }}
+                >
+                    <span className={styles.chipIndex}>0x0{index + 1}</span>
+                    <i className={`bi ${item.icon} ${styles.chipIcon}`} />
+                    <span className={styles.chipName}>{item.name}</span>
+                    {item.detail && <span className={styles.chipDetail}>{item.detail}</span>}
+                </motion.div>
+            ))}
+        </div>
+    );
+}
 
 export default function About() {
     return (
-        <div className="pt-5" >
-            <h1 className={styles.aboutColor}>About</h1>
-            <div className={`w-100 border-top ${styles.aboutColor} mb-3`}></div>
-
-            <div>
-                <p className={styles.aboutText}>Currently a third-year <span className={styles.highlightAbout}>Computer Engineering</span> student at the <span className={styles.highlightAbout}>University of Waterloo.</span></p>
-
-                <p className={styles.aboutText}>I love computers! If you couldn&apos;t already tell with the cyberpunk themed website. <br></br> Learning as much as I can from low-level firmware to high-level software. </p> 
+        <section className="pt-5">
+            <div className={styles.header}>
+                <span className={styles.headerIndex}>{"// 01"}</span>
+                <HexTextAnimation className={`mb-0 ${styles.headerTitle}`} text="ABOUT" duration={1} />
+                <div className={styles.headerLine} />
             </div>
 
-            <div>
-                <div className="row g-4 mt-4">
-                    <div className="col-md-6">
-                    <div 
-                        className={`p-4 ${styles.section} ${styles.contributionsSection}`} 
-                        data-augmented-ui="tr-clip-y br-clip-y border"
-                    >
-                        <HexTextAnimation className={`fs-5 mb-3 text-center ${styles.sectionTitle1}`} text="GOALS" duration={2} delay={0.5} />
-                        <p className="mb-3 text-center">Industries I aim to contribute to:</p>
-                        <div className="d-flex flex-column gap-2 ">
-                        {interests.map((interest, index) => (
-                            <div
-                            key={interest.name}
-                            className={`d-flex align-items-center justify-content-center m-auto gap-3 py-2 w-75 ${styles.tab} ${styles[interest.className]}`}
-                            style={{ animationDelay: `${index * 0.1}s` }}
-                            >
-                            <div className={styles.tabGloss} />
-                            <span className={`small text-center fst-italic ${styles.tabText}`}>{interest.name}</span>
-                            </div>
-                        ))}
-                        </div>
-                    </div>
-                    </div>
+            <div className="row g-4 mt-2">
+                <div className="col-lg-5">
+                    <div className={`${styles.panel} ${styles.idCard}`} data-augmented-ui="tl-clip br-clip border">
+                        <div className={styles.panelTag}>ID // PLAYER_01</div>
 
-                    <div className="col-md-6">
-                    <div 
-                        className={`p-4 ${styles.section} ${styles.passionsSection}`}
-                        data-augmented-ui="l-clip-y border"
-                    >
-                        <HexTextAnimation className={`fs-5 mb-3 text-center ${styles.sectionTitle2}`} text="PASSIONS" duration={2} delay={0.5} />
-                        <p className="mb-3 text-center">Personal interests and hobbies:</p>
-                        <div className="d-flex flex-column gap-2">
-                        {passions.map((passion) => (
-                            <div
-                            key={passion.name}
-                            className={`d-flex align-items-center justify-content-center m-auto w-75 gap-3 py-2 ${styles.tab} ${styles[passion.className]}`}
-                            >
-                            <div className={styles.tabGloss} />
-                            <span className={`small fst-italic text-center ${styles.tabText}`}>{passion.name}</span>
-                            </div>
-                        ))}
+                        <div className={`profile-image-wrapper holocall-auto ${styles.portrait}`} data-augmented-ui="r-clip-y both">
+                            <Image
+                                src={profile}
+                                alt="Aditya Sen"
+                                className={styles.portraitImage}
+                                sizes="(max-width: 992px) 100vw, 400px"
+                                priority
+                            />
                         </div>
-                    </div>
+
+                        <p className={styles.name}>Aditya Sen</p>
+                        <div className={`landing-subtext-container ${styles.role}`} data-augmented-ui="bl-clip-y tr-clip-y border">
+                            <HexTextAnimation text="Graphics & Rendering Engineer" className="landing-subtext mb-0" duration={2} delay={0.5} />
+                        </div>
+
+                        <dl className={styles.stats}>
+                            {stats.map((stat) => (
+                                <div key={stat.label} className={styles.statRow}>
+                                    <dt>{stat.label}</dt>
+                                    <dd>{stat.value}</dd>
+                                </div>
+                            ))}
+                            <div className={styles.statRow}>
+                                <dt>STATUS</dt>
+                                <dd><span className={styles.statusDot} />Online</dd>
+                            </div>
+                        </dl>
                     </div>
                 </div>
 
+                <div className="col-lg-7 d-flex flex-column gap-4">
+                    <div className={`${styles.panel} ${styles.terminal}`} data-augmented-ui="tr-clip bl-clip border">
+                        <div className={styles.terminalBar}>
+                            <span className={styles.terminalDots}><i /><i /><i /></span>
+                            <span className={styles.terminalPath}>~/aditya/about.txt</span>
+                        </div>
+                        <div className={styles.terminalBody}>
+                            <p><span className={styles.prompt}>&gt;</span> whoami</p>
+                            <p className={styles.bio}>
+                                Currently a third-year <span className={styles.highlight}>Computer Engineering</span> student
+                                at the <span className={styles.highlight}>University of Waterloo</span>.
+                            </p>
+                            <p className={styles.bio}>
+                                I love computers! If you couldn&apos;t already tell from the cyberpunk themed website.
+                                Learning as much as I can, from low-level firmware to high-level software.
+                            </p>
+                            <p className="mb-0"><span className={styles.prompt}>&gt;</span> <span className={styles.caret} /></p>
+                        </div>
+                    </div>
+
+                    <div className="row g-4">
+                        {loadout.map((item) => (
+                            <div key={item.title} className="col-sm-6">
+                                <a
+                                    href={item.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className={styles.loadoutCard}
+                                    data-augmented-ui="tr-clip bl-clip border"
+                                >
+                                    <i className={`bi ${item.icon} ${styles.loadoutIcon}`} />
+                                    <span>
+                                        <span className={styles.loadoutTitle}>{item.title} <i className="bi bi-box-arrow-up-right" /></span>
+                                        <span className={styles.loadoutCaption}>{item.caption}</span>
+                                    </span>
+                                </a>
+                            </div>
+                        ))}
+                    </div>
+                </div>
             </div>
 
-            <div className="mt-5">
-                <p className={styles.aboutText}>Love so many types of art, those are just my top 3.</p>
-                <p className={styles.aboutText}>Check out my PC <a href="https://ca.pcpartpicker.com/b/RLfv6h" target="_blank" rel="noopener noreferrer" className={styles.aboutLink}><span className="text-decoration-underline">specs</span></a> 🖥️</p>
-                <p className={styles.aboutText}>I like all types of engineering! Checkout out some of my <a href="https://drive.google.com/drive/folders/1m_l11mimNXIqmZlXha4vqFqzNAXGIOkQ?usp=sharing" target="_blank" rel="noopener noreferrer" className={styles.aboutLink}><span className="text-decoration-underline">3D CAD designs here</span> <i className="bi bi-box-arrow-up-right"></i></a></p>
+            <div className="row g-4 mt-2">
+                <div className="col-md-6">
+                    <div className={`${styles.panel} ${styles.goals}`} data-augmented-ui="tr-clip-y br-clip-y border">
+                        <HexTextAnimation className={`fs-5 mb-1 ${styles.panelTitle}`} text="GOALS" duration={1} delay={0.3} />
+                        <p className={styles.panelSubtitle}>Industries I aim to contribute to</p>
+                        <ChipGrid items={interests} />
+                    </div>
+                </div>
+
+                <div className="col-md-6">
+                    <div className={`${styles.panel} ${styles.passions}`} data-augmented-ui="tl-clip-y bl-clip-y border">
+                        <HexTextAnimation className={`fs-5 mb-1 ${styles.panelTitle}`} text="PASSIONS" duration={1} delay={0.3} />
+                        <p className={styles.panelSubtitle}>Personal interests and hobbies</p>
+                        <ChipGrid items={passions} />
+                    </div>
+                </div>
             </div>
-        </div>
-    )
-} 
+        </section>
+    );
+}
