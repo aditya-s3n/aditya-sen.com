@@ -124,7 +124,7 @@ export default function About() {
                             </p>
                             <p className={styles.bio}>
                                 I love computers! If you couldn&apos;t already tell from the cyberpunk themed website.
-                                Learning as much as I can, focusing on building a career as a <b>graphics programmer</b>. Passionate about real-time rendering, VFX, CAD and geometric modelling, systems programming, and memory allocators.
+                                Learning as much as I can, focusing on building a career as a <b>graphics engineer</b>. Passionate about real-time rendering, VFX, CAD and geometric modelling, systems programming, and memory allocators.
                                 <br></br>Interested in RTL engineering and GPU architecture.
                             </p>
                             <p className="mb-0"><span className={styles.prompt}>&gt;</span> <span className={styles.caret} /></p>
