@@ -1,0 +1,79 @@
+.skyline {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: clamp(180px, 40vh, 420px);
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.6;
+    /* Fade the top edge so the skyline melts into the gradient. */
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 35%);
+}
+
+.svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.far {
+    opacity: 0.7;
+}
+
+.beacon {
+    fill: #FC7265;
+    animation: beacon-blink 3s ease-in-out infinite;
+}
+
+@keyframes beacon-blink {
+    0%, 100% { opacity: 0.15; }
+    50% { opacity: 0.9; }
+}
+
+/* Sits under the skyline so the beams appear to rise from behind the buildings. */
+.beams {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.beam {
+    position: absolute;
+    bottom: 5vh;
+    width: 140px;
+    height: 95vh;
+    margin-left: -70px;
+    transform-origin: 50% 100%;
+    /* Narrow at the ground, wide at the top. */
+    clip-path: polygon(48% 100%, 52% 100%, 100% 0, 0 0);
+    background: linear-gradient(
+        to top,
+        color-mix(in srgb, var(--beam-color) 35%, transparent) 0%,
+        color-mix(in srgb, var(--beam-color) 10%, transparent) 45%,
+        transparent 100%
+    );
+    filter: blur(3px);
+    mix-blend-mode: screen;
+    opacity: 0.5;
+    animation: beam-sweep 16s ease-in-out infinite alternate;
+}
+
+@keyframes beam-sweep {
+    0% { transform: rotate(-22deg); }
+    100% { transform: rotate(22deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .beacon {
+        animation: none;
+        opacity: 0.5;
+    }
+
+    .beam {
+        animation: none;
+        transform: rotate(-8deg);
+    }
+}
