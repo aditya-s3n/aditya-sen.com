@@ -25,8 +25,8 @@ export default function Navbar() {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <Link className="nav-link" href="/aditya/projects">
-                Projects
+              <Link className="nav-link" href="/aditya">
+                About
               </Link>
             </li>
             <li className="nav-item">
@@ -35,8 +35,8 @@ export default function Navbar() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" href="/aditya">
-                About
+              <Link className="nav-link" href="/aditya/projects">
+                Projects
               </Link>
             </li>
             <li className="nav-item">
