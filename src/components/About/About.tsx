@@ -22,7 +22,7 @@ const interests = [
 
 const passions = [
     { name: "3D Printing", icon: "bi-printer", color: "#ef4444" },
-    { name: "Art", detail: "Music · Video Games · Animation · Culture", icon: "bi-palette-fill", color: "#59EEF4" },
+    { name: "Art", detail: "Music · Games · Animation · Culture", icon: "bi-palette-fill", color: "#59EEF4" },
     { name: "Hiking & Outdoor Sports", icon: "bi-bicycle", color: "#b347d9" },
     { name: "Computers & PC Building", icon: "bi-cpu-fill", color: "#ffdd44" },
 ];
