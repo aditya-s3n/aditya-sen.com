@@ -1,5 +1,6 @@
 "use client";
 
+import { Fragment } from "react";
 import { motion } from "framer-motion";
 import HexTextAnimation from "../HexAnimation/HexAnimation";
 import styles from "./Projects.module.css";
@@ -51,71 +52,95 @@ export const otherProjects: Project[] = [
   },
 ];
 
-type FloppyDiskProps = {
+type CpuCoreProps = {
   project: Project;
-  drive: string;
-  index: number;
+  coreId: number;
+  cluster: string;
   featured?: boolean;
 };
 
-export default function FloppyDisk({ project, drive, index, featured = false }: FloppyDiskProps) {
+function CpuCore({ project, coreId, cluster, featured = false }: CpuCoreProps) {
   return (
-    <motion.div
-      className={`${styles.diskGlow} ${featured ? styles.featured : ""}`}
+    <motion.article
+      className={`${styles.core} ${featured ? styles.coreFeatured : ""}`}
       style={{ "--accent": project.color } as React.CSSProperties}
-      initial={{ opacity: 0, y: 24 }}
+      data-augmented-ui="tl-clip br-clip border"
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
+      transition={{ duration: 0.5, delay: coreId * 0.08 }}
     >
-      <article className={styles.disk} data-augmented-ui="tr-clip border">
-        <div className={styles.diskTop}>
-          <span className={styles.led} aria-hidden="true" />
-          <div className={styles.shutterTrack} aria-hidden="true">
-            <div className={styles.platter} />
-            <div className={styles.shutter}>
-              <div className={styles.shutterWindow} />
-            </div>
+      <div className={styles.coreHead}>
+        <span className={styles.pinOne} aria-hidden="true" />
+        <span>CORE {String(coreId).padStart(2, "0")}</span>
+        <span className={styles.coreCluster}>{cluster}</span>
+        <span className={styles.coreLed} aria-hidden="true" />
+      </div>
+
+      <div className={styles.coreBody}>
+        <HexTextAnimation
+          text={project.title}
+          className={`fw-bold mb-3 ${styles.coreTitle}`}
+          delay={0.3}
+          duration={1.5}
+        />
+        <p className={styles.coreDescription}>{project.description}</p>
+
+        {project.tags && (
+          <ul className={styles.tags}>
+            {project.tags.map((tag) => <li key={tag}>{tag}</li>)}
+          </ul>
+        )}
+
+        <a
+          href={project.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.sourceButton}
+          data-augmented-ui="tl-clip br-clip border"
+        >
+          <i className="bi bi-github" /> Read source
+        </a>
+      </div>
+
+      <div className={styles.corePads} aria-hidden="true" />
+    </motion.article>
+  );
+}
+
+type CpuPackageProps = {
+  projects: Project[];
+  firstCoreId: number;
+  cluster: string;
+  partName: string;
+  title: string;
+  caption: string;
+  featured?: boolean;
+};
+
+// A chip package: laser-etched header, then its cores joined by bus traces
+export default function CpuPackage({ projects, firstCoreId, cluster, partName, title, caption, featured = false }: CpuPackageProps) {
+  return (
+    <div className={`${styles.package} ${featured ? styles.packageFeatured : ""}`}>
+      <div className={styles.die} data-augmented-ui="tl-clip tr-clip br-clip bl-clip border">
+        <div className={styles.etch}>
+          <div>
+            <span className={styles.partName}>{partName}</span>
+            <h2 className={styles.clusterTitle}>{title}</h2>
+            <p className={styles.clusterCaption}>{caption}</p>
           </div>
-          <span className={styles.capacity}>{featured ? "2.88" : "1.44"} MB</span>
+          <span className={styles.coreCount}>{projects.length}C / {projects.length}T</span>
         </div>
 
-        <div className={styles.label}>
-          <div className={styles.labelBand}>
-            <span>{drive}:\{String(index + 1).padStart(2, "0")}</span>
-            <span>{featured ? "HD // RENDER" : "DS // HD"}</span>
-          </div>
-
-          <div className={styles.labelBody}>
-            <HexTextAnimation
-              text={project.title}
-              className={`fw-bold mb-3 ${styles.title}`}
-              delay={0.3}
-              duration={1.5}
-            />
-            <p className={styles.description}>{project.description}</p>
-
-            {project.tags && (
-              <ul className={styles.tags}>
-                {project.tags.map((tag) => <li key={tag}>{tag}</li>)}
-              </ul>
-            )}
-
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.readButton}
-              data-augmented-ui="tl-clip br-clip border"
-            >
-              <i className="bi bi-github" /> Read source
-            </a>
-          </div>
+        <div className={styles.coreRow}>
+          {projects.map((project, index) => (
+            <Fragment key={project.title}>
+              {index > 0 && <div className={styles.bus} aria-hidden="true" />}
+              <CpuCore project={project} coreId={firstCoreId + index} cluster={cluster} featured={featured} />
+            </Fragment>
+          ))}
         </div>
-
-        <span className={styles.writeProtect} aria-hidden="true" />
-        <span className={styles.densityHole} aria-hidden="true" />
-      </article>
-    </motion.div>
+      </div>
+    </div>
   );
 }
