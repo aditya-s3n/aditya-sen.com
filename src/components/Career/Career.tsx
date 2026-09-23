@@ -30,7 +30,7 @@ export default function Career() {
                 <div className="col-lg-8">
                     <div className={styles.bios} data-augmented-ui="tl-clip br-clip border">
                         <div className={styles.biosBar}>
-                            <span>SEN-BIOS v2.0</span>
+                            <span>CAREER-BIOS v2.0</span>
                             <span className="d-none d-sm-inline">POST // MEMORY CHECK</span>
                         </div>
                         <div className={styles.biosBody}>
