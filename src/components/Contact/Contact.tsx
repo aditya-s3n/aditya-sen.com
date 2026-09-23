@@ -38,7 +38,7 @@ const socialLinks = [
     href: "https://x.com/AdityaS3n",
     color: "#34d399",
     file: "~/contact/x.sh",
-    command: "tail -f x.com",
+    command: "curl x.com",
     output: "@AdityaS3n",
     action: "FOLLOW",
   },

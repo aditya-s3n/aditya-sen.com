@@ -1,6 +1,5 @@
 "use client";
 
-import { Fragment } from "react";
 import HexTextAnimation from "../HexAnimation/HexAnimation";
 import styles from "./Projects.module.css";
 
@@ -9,6 +8,7 @@ export type Project = {
   description: string;
   color: string;
   github: string;
+  status: "Running" | "Completed";
   tags?: string[];
 };
 
@@ -18,6 +18,7 @@ export const graphicsProjects: Project[] = [
     description: "A CPU-based path tracer built from scratch, following Ray Tracing in One Weekend. Implements Lambertian, metal, and dielectric materials with physically accurate light scattering, anti-aliasing via supersampling, and a thin-lens camera model for depth-of-field effects.",
     color: "#b347d9",
     github: "https://github.com/aditya-s3n/Raytracing",
+    status: "Completed",
     tags: ["Path Tracing", "PBR Materials", "Supersampling", "Depth of Field"],
   },
   {
@@ -25,6 +26,7 @@ export const graphicsProjects: Project[] = [
     description: "A software rasterizer built entirely from scratch, with no graphics API dependency. Parses OBJ mesh files and renders wireframe geometry using a custom Bresenham line algorithm and perspective camera projection.",
     color: "#ffdd44",
     github: "https://github.com/aditya-s3n/3D-Renderer",
+    status: "Running",
     tags: ["Software Rasterizer", "OBJ Parsing", "Bresenham", "Perspective Projection"],
   },
 ];
@@ -36,18 +38,21 @@ export const otherProjects: Project[] = [
       "Scarlet Encryption is a file encryption tool that allows users to securely encrypt and decrypt files on their local storage. It supports AES for encryption, SHA-256 for file integrity, RSA for hashing the AES key.",
     color: "#f97316",
     github: "https://github.com/aditya-s3n/scarlet_encryption",
+    status: "Running",
   },
   {
     title: "NASA - Twitter Bot",
     description: "Tweet me a Universe is a custom Node.js bot that randomly selects an image from NASA's database, and posts the media as a tweet. Using NASA API, Twitter API, streaming BLOB data, it is able to consistently post an image at 7AM EST for over 1000 days.",
     color: "#00d4ff",
     github: "https://github.com/aditya-s3n/tweet-me-a-universe",
+    status: "Completed",
   },
   {
     title: "Python - Email Automation",
     description: "An SMTP Python emailer, able to take in a csv file of emails / data. Shifting through the data to send out tailored emails based on the data provided in the CSV file.",
     color: "#ef4444",
     github: "https://github.com/aditya-s3n/Email-Automation",
+    status: "Completed",
   },
 ];
 
@@ -69,7 +74,6 @@ function CpuCore({ project, coreId, cluster, featured = false }: CpuCoreProps) {
         <span className={styles.pinOne} aria-hidden="true" />
         <span>CORE {String(coreId).padStart(2, "0")}</span>
         <span className={styles.coreCluster}>{cluster}</span>
-        <span className={styles.coreLed} aria-hidden="true" />
       </div>
 
       <div className={styles.coreBody}>
@@ -113,7 +117,7 @@ type CpuPackageProps = {
   featured?: boolean;
 };
 
-// A chip package: laser-etched header, then its cores joined by bus traces
+// A chip package: laser-etched header, then its cores
 export default function CpuPackage({ projects, firstCoreId, cluster, partName, title, caption, featured = false }: CpuPackageProps) {
   return (
     <div className={`${styles.package} ${featured ? styles.packageFeatured : ""}`}>
@@ -129,10 +133,7 @@ export default function CpuPackage({ projects, firstCoreId, cluster, partName, t
 
         <div className={styles.coreRow}>
           {projects.map((project, index) => (
-            <Fragment key={project.title}>
-              {index > 0 && <div className={styles.bus} aria-hidden="true" />}
-              <CpuCore project={project} coreId={firstCoreId + index} cluster={cluster} featured={featured} />
-            </Fragment>
+            <CpuCore key={project.title} project={project} coreId={firstCoreId + index} cluster={cluster} featured={featured} />
           ))}
         </div>
       </div>

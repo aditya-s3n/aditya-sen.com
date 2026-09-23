@@ -21,8 +21,8 @@ export default function Projects() {
         firstCoreId={0}
         cluster="GFX"
         partName="SEN-GFX // RENDER CLUSTER"
-        title="Graphics & Rendering"
-        caption="Renderers built from scratch, pixel by pixel"
+        title="Graphics Projects"
+        caption="All my projects that I learned real-time and offline rendering"
         featured
       />
 
@@ -32,7 +32,7 @@ export default function Projects() {
         cluster="GEN"
         partName="SEN-GEN // GENERAL PURPOSE"
         title="Other Projects"
-        caption="Tools, bots and automation"
+        caption="Tools, bots, and automation"
       />
     </section>
   );
