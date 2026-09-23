@@ -15,7 +15,7 @@ export default function AdityaLayout({
     <div className="d-flex flex-column min-vh-100">
       <Navbar />
       <Background />
-      <CityLights3D />
+      {/* <CityLights3D /> */}
       <CitySkyline />
       <main className="flex-grow-1">{children}</main>
       <Footer />
