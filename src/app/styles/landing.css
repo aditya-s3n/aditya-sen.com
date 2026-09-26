@@ -60,6 +60,9 @@
 
     --aug-border-bg: #FC8C65;
     --aug-border-all: 1px;
+    /* The panel is centered, so its bottom edge often lands on a half pixel and
+       augmented-ui's clip-path anti-aliases a 1px bottom border away entirely. */
+    --aug-border-bottom: 2px;
     --aug-tl: 16px;
     --aug-br: 16px;
 }
