@@ -155,7 +155,18 @@ export class Engine {
     this.drone.update(0); // recompute the camera from the new origin
   }
 
-  /** Real SF time, or the ?time= override advancing in real time. */
+  /** Switch to another time (or null for the real clock) and update the sky now. */
+  setTimeOverride(date: Date | null): void {
+    this.options.timeOverride = date;
+    this.clockStart = Date.now();
+    this.nextSkyUpdate = 0; // the next frame recomputes the sky
+    if (!this.running && this.sky) {
+      this.sky.update(this.now());
+      this.renderer.render(this.scene, this.camera);
+    }
+  }
+
+  /** Real SF time, or the override advancing in real time. */
   private now(): Date {
     const { timeOverride } = this.options;
     if (!timeOverride) return new Date();

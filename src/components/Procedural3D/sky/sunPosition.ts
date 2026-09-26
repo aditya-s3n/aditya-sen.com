@@ -1,5 +1,5 @@
 import type * as THREE from 'three';
-import { getMoonPosition, getPosition } from 'suncalc';
+import { getMoonPosition, getPosition, getTimes } from 'suncalc';
 import { SF_LOCATION, SF_TIMEZONE } from '../config';
 
 const DEG = Math.PI / 180;
@@ -46,4 +46,27 @@ const sfTimeFormat = new Intl.DateTimeFormat('en-US', {
 /** SF wall-clock time for UI, e.g. "4:52 PM". */
 export function formatSFTime(date: Date): string {
   return sfTimeFormat.format(date);
+}
+
+export const TIME_PRESETS = ['live', 'morning', 'afternoon', 'evening', 'night'] as const;
+export type TimePreset = (typeof TIME_PRESETS)[number];
+
+const HOUR = 3_600_000;
+
+/**
+ * A Date for a time-of-day preset, based on today's real sun times in SF
+ * (so "evening" is always golden hour, whatever the season).
+ * Returns null for 'live', meaning "use the real clock".
+ */
+export function presetTime(preset: TimePreset, now = new Date()): Date | null {
+  if (preset === 'live') return null;
+  const t = getTimes(now, SF_LOCATION.lat, SF_LOCATION.lng);
+  const at = (base: Date | null, offsetHours: number) =>
+    new Date((base ?? t.solarNoon).getTime() + offsetHours * HOUR);
+  switch (preset) {
+    case 'morning': return at(t.sunrise, 1.5);
+    case 'afternoon': return at(t.solarNoon, 2.5);
+    case 'evening': return at(t.sunset, -0.25);
+    case 'night': return at(t.sunset, 3);
+  }
 }

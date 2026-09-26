@@ -35,4 +35,6 @@ export interface LoadProgress {
 export interface Procedural3DProps {
   onProgress?: (progress: LoadProgress) => void;
   onReady?: () => void;
+  /** Render this time instead of now; null = real clock, undefined = leave as is. */
+  timeOverride?: Date | null;
 }

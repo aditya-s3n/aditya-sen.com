@@ -1,11 +1,12 @@
 'use client';
 
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import HexTextAnimation from '@/components/HexAnimation/HexAnimation';
 import Background from '@/components/Background/Background';
 import Procedural3D from '@/components/Procedural3D/Procedural3D';
-import { formatSFTime } from '@/components/Procedural3D/sky/sunPosition';
+import { formatSFTime, presetTime, type TimePreset } from '@/components/Procedural3D/sky/sunPosition';
+import TimeOfDayPicker from '@/components/TimeOfDayPicker/TimeOfDayPicker';
 import type { LoadProgress } from '@/components/Procedural3D/types';
 import './styles/background.css';
 import './styles/landing.css';
@@ -19,10 +20,15 @@ export default function Home() {
   const [sceneReady, setSceneReady] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [sfTime, setSfTime] = useState('');
+  const [showDebug, setShowDebug] = useState(false);
+  const [preset, setPreset] = useState<TimePreset>('live');
+  const timeOverride = useMemo(() => presetTime(preset), [preset]);
   const mountedAt = useRef(0);
 
   useEffect(() => {
     mountedAt.current = performance.now();
+    // Debug controls: always in `next dev`, and in production with ?debug.
+    setShowDebug(process.env.NODE_ENV !== 'production' || new URLSearchParams(window.location.search).has('debug'));
   }, []);
 
   const handleProgress = useCallback((p: LoadProgress) => {
@@ -46,16 +52,19 @@ export default function Home() {
   // San Francisco clock, matching the sky being rendered.
   useEffect(() => {
     if (!loaded) return;
-    const tick = () => setSfTime(formatSFTime(new Date()));
+    const tick = () => setSfTime(formatSFTime(timeOverride ?? new Date()));
     tick();
     const interval = setInterval(tick, 30_000);
     return () => clearInterval(interval);
-  }, [loaded]);
+  }, [loaded, timeOverride]);
 
   return (
     <div>
       <Background />
-      <Procedural3D onProgress={handleProgress} onReady={handleReady} />
+      <Procedural3D onProgress={handleProgress} onReady={handleReady} timeOverride={timeOverride} />
+      {showDebug && loaded && (
+        <TimeOfDayPicker value={preset} onChange={setPreset} />
+      )}
       <div className="landing-hero">
         {!loaded ? (
           <div className="loading-screen">
