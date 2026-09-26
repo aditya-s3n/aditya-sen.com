@@ -52,6 +52,18 @@
     animation: landing-fade-in 0.6s ease-in-out;
 }
 
+/* Dark glass panel so the text stays readable over the 3D scene. */
+.landing-panel {
+    padding: 2rem 3rem;
+    background-color: rgba(7, 9, 14, 0.6);
+    backdrop-filter: blur(6px);
+
+    --aug-border-bg: #FC8C65;
+    --aug-border-all: 1px;
+    --aug-tl: 16px;
+    --aug-br: 16px;
+}
+
 .landing-name {
     font-size: 3rem;
     font-family: var(--font-brother-signature), cursive;
@@ -125,4 +137,13 @@
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+.landing-time {
+    font-family: 'Courier New', monospace;
+    letter-spacing: 3px;
+    color: #59EEF4;
+    font-size: 0.75rem;
+    margin: 0.5rem 0 0;
+    opacity: 0.8;
 }
