@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useId, useRef, useState, type KeyboardEvent } from 'react';
-import { formatSFTime, presetTime, TIME_PRESETS, type TimePreset } from '@/components/Procedural3D/sky/sunPosition';
+import { formatSFTime, presetTime, TIME_PRESETS, type TimePreset } from '../Procedural3D/sky/sunPosition';
 import styles from './TimeOfDayDropDown.module.css';
 
 const PRESET_META: Record<TimePreset, { label: string; icon: string }> = {

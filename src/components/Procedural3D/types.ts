@@ -35,7 +35,7 @@ export interface WorldOrigin {
 }
 
 
-export interface LoadProgess {
+export interface LoadProgress {
     stage: string; // label for loading
     value: number; // 0-1 completion
 }
