@@ -41,7 +41,7 @@ export interface LoadProgress {
 }
 
 export interface Procedural3DProps {
-    onProgress?: (progress: LoadProgess) => void;
+    onProgress?: (progress: LoadProgress) => void;
     onReady?: () => void;
 
     // for TimeOfDayDropDown (null = live time)
