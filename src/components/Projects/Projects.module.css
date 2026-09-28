@@ -353,6 +353,208 @@
   background: var(--accent);
 }
 
+/* Stacked gallery: offset layers behind the frame hint at more images */
+.gallery {
+  isolation: isolate;
+  position: relative;
+  margin: 0 calc(var(--behind) * 6px) calc(1.25rem + var(--behind) * 6px) 0;
+}
+
+.galleryLayer {
+  position: absolute;
+  inset: 0;
+  transform: translate(calc(var(--layer) * 6px), calc(var(--layer) * 6px));
+  z-index: calc(-1 * var(--layer));
+  background: color-mix(in srgb, var(--accent) calc(30% - var(--layer) * 10%), #07090E);
+  border: 1px solid color-mix(in srgb, var(--accent) calc(50% - var(--layer) * 15%), transparent);
+}
+
+.galleryFrame {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  background: #07090E;
+  border: 1px solid color-mix(in srgb, var(--accent) 55%, transparent);
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.galleryFrame:hover {
+  transform: translate(-2px, -2px);
+  border-color: var(--accent);
+}
+
+.galleryFrame:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.galleryImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+}
+
+.galleryCounter {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  right: 0.5rem;
+  bottom: 0.5rem;
+  padding: 0.15rem 0.5rem;
+  font-family: 'Courier New', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  color: var(--accent);
+  background: rgba(7, 9, 14, 0.8);
+  border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+}
+
+/* ---------- Lightbox ---------- */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1080;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  background: rgba(3, 4, 8, 0.94);
+  backdrop-filter: blur(6px);
+  font-family: 'Courier New', monospace;
+  animation: galleryIn 0.2s ease;
+}
+
+.lightboxBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+}
+
+.lightboxCounter {
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  color: var(--accent);
+}
+
+.lightboxButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  font-size: 1.2rem;
+  color: var(--accent);
+  background: rgba(7, 9, 14, 0.8);
+  border: 1px solid color-mix(in srgb, var(--accent) 55%, transparent);
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.lightboxButton:hover:not(:disabled) {
+  color: #07090E;
+  background: var(--accent);
+}
+
+.lightboxButton:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.lightboxTools {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.lightboxZoom {
+  min-width: 2.5rem;
+  font-size: 0.85rem;
+  text-align: center;
+  color: var(--accent);
+}
+
+.lightboxButton:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.lightboxStage {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  margin: 1rem 0;
+}
+
+.lightboxScroll {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  overflow: auto;
+  container-type: size;
+}
+
+/* Native resolution, shrunk only if it doesn't fit the screen. Zoom multiplies that size. */
+.lightboxImage {
+  flex-shrink: 0;
+  margin: auto;
+  width: calc(min(var(--native), 100cqw, 100cqh * var(--ratio)) * var(--zoom));
+  height: auto;
+  max-width: none;
+  border: 1px solid color-mix(in srgb, var(--accent) 55%, transparent);
+  box-shadow: 0 0 40px color-mix(in srgb, var(--accent) 20%, transparent);
+  animation: galleryIn 0.3s ease;
+}
+
+.lightboxImageZoomed {
+  image-rendering: pixelated;
+}
+
+.lightboxImageClickable {
+  cursor: pointer;
+}
+
+.lightboxPrev,
+.lightboxNext {
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+  transform: translateY(-50%);
+}
+
+.lightboxPrev {
+  left: 0.5rem;
+}
+
+.lightboxNext {
+  right: 0.5rem;
+}
+
+.lightboxCaption {
+  margin: 0;
+  font-size: 0.85rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+@keyframes galleryIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lightbox,
+  .lightboxImage {
+    animation: none;
+  }
+}
+
 /* Contact pads along the bottom of each core */
 .corePads {
   height: 6px;
