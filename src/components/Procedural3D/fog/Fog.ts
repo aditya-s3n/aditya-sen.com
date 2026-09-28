@@ -41,9 +41,9 @@ export const fogCommon = /* glsl */`
     uniform vec3 uSunDirection;
     uniform vec3 uSunGlowColor;
 
-    vec3 fogColorFor(vec3 baseColor, vec) {
+    vec3 fogColorFor(vec3 baseColor, vec3 rayDir) {
         float towardSun = max(dot(rayDir, uSunDirection), 0.0);
-        return baseColor + uSunGlow * pow(towardSun, 8.0);
+        return baseColor + uSunGlowColor * pow(towardSun, 8.0);
     }
 `;
 /** vertex shader (per vertex) */

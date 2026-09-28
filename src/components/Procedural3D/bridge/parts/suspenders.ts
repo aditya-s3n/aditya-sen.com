@@ -14,7 +14,7 @@ export function placeSuspenders(zStart: number): PartPlacement[] {
 
     // create suspenders based on count
     for (let i = 1; i < count; i++) {
-        const offset = 1 * BRIDGE.suspenderSpacing; // meters from the chunk start
+        const offset = i * BRIDGE.suspenderSpacing; // meters from the chunk start
         const t = offset / CHUNK.length;  // same distance, fraction 0-1
         const z = zStart - offset;  // same distance, as world Z coordinates
         const cableY = cableHeightAt(t);

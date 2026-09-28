@@ -2,7 +2,7 @@ import Navbar from '@/components/Navbar/Navbar';
 import Footer from '@/components/Footer/Footer';
 import Background from '@/components/Background/Background';
 import CitySkyline from '@/components/CitySkyline/CitySkyline';
-import CityLights3D from '@/components/CityLights3D/CityLights3D';
+// import CityLights3D from '@/components/CityLights3D/CityLights3D';
 import '../styles/background.css';
 import '../styles/styles.css';
 
