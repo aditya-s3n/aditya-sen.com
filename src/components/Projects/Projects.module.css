@@ -395,7 +395,7 @@
   width: 100%;
   height: auto;
   aspect-ratio: 16 / 9;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .galleryCounter {
@@ -457,9 +457,27 @@
   transition: background 0.2s ease, color 0.2s ease;
 }
 
-.lightboxButton:hover {
+.lightboxButton:hover:not(:disabled) {
   color: #07090E;
   background: var(--accent);
+}
+
+.lightboxButton:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.lightboxTools {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.lightboxZoom {
+  min-width: 2.5rem;
+  font-size: 0.85rem;
+  text-align: center;
+  color: var(--accent);
 }
 
 .lightboxButton:focus-visible {
@@ -469,23 +487,33 @@
 
 .lightboxStage {
   position: relative;
-  display: flex;
   flex: 1;
   min-height: 0;
-  align-items: center;
-  justify-content: center;
   margin: 1rem 0;
 }
 
+.lightboxScroll {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  overflow: auto;
+  container-type: size;
+}
+
+/* Native resolution, shrunk only if it doesn't fit the screen. Zoom multiplies that size. */
 .lightboxImage {
-  width: auto;
+  flex-shrink: 0;
+  margin: auto;
+  width: calc(min(var(--native), 100cqw, 100cqh * var(--ratio)) * var(--zoom));
   height: auto;
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
+  max-width: none;
   border: 1px solid color-mix(in srgb, var(--accent) 55%, transparent);
   box-shadow: 0 0 40px color-mix(in srgb, var(--accent) 20%, transparent);
   animation: galleryIn 0.3s ease;
+}
+
+.lightboxImageZoomed {
+  image-rendering: pixelated;
 }
 
 .lightboxImageClickable {

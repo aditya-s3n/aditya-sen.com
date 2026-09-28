@@ -4,10 +4,14 @@ import HexTextAnimation from "../HexAnimation/HexAnimation";
 import Gallery, { GalleryImage } from "./Gallery";
 import styles from "./Projects.module.css";
 
-import morningGGBridge from "@/imgs/Morning_GG_Bridge.png";
-import liveGGBridge from "@/imgs/Live_GG_Bridge.png";
-import eveningGGBridge from "@/imgs/Evening_GG_Bridge.png";
-import nightGGBridge from "@/imgs/Night_GG_Bridge.png";
+import morningGGBridge from "@/imgs/ProceduralGoldenGate/Morning_GG_Bridge.png";
+import liveGGBridge from "@/imgs/ProceduralGoldenGate/Live_GG_Bridge.png";
+import eveningGGBridge from "@/imgs/ProceduralGoldenGate/Evening_GG_Bridge.png";
+import nightGGBridge from "@/imgs/ProceduralGoldenGate/Night_GG_Bridge.png";
+import pathTraceReflection from "@/imgs/PathTracer/material_reflection.png";
+import pathTraceDiffuse from "@/imgs/PathTracer/pathtrace_diffuse.png";
+import diabloWireframe from "@/imgs/3D-Renderer/diablo.png";
+import headWireframe from "@/imgs/3D-Renderer/head.png";
 
 export type Project = {
   title: string;
@@ -41,6 +45,10 @@ export const graphicsProjects: Project[] = [
     github: "https://github.com/aditya-s3n/Raytracing",
     status: "Completed",
     tags: ["Path Tracing", "PBR Materials", "Supersampling", "Depth of Field"],
+    images: [
+      { src: pathTraceDiffuse, alt: "Close-up path trace of a hollow glass sphere refracting the scene beside diffuse and metal spheres" },
+      { src: pathTraceReflection, alt: "Path-traced glass, diffuse and fuzzy metal spheres on a green ground" },
+    ],
   },
   {
     title: "3D Rasterization Rendering",
@@ -49,6 +57,10 @@ export const graphicsProjects: Project[] = [
     github: "https://github.com/aditya-s3n/3D-Renderer",
     status: "Running",
     tags: ["Software Rasterizer", "OBJ Parsing", "Bresenham", "Perspective Projection"],
+    images: [
+      { src: headWireframe, alt: "Wireframe render of a human head model" },
+      { src: diabloWireframe, alt: "Wireframe render of a Diablo character model" },
+    ],
   },
 ];
 

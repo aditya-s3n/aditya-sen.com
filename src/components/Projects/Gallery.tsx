@@ -8,6 +8,7 @@ import styles from "./Projects.module.css";
 export type GalleryImage = { src: StaticImageData; alt: string };
 
 const pad = (n: number) => String(n).padStart(2, "0");
+const ZOOM_LEVELS = [1, 2, 3, 4];
 
 type GalleryProps = {
   images: GalleryImage[];
@@ -64,15 +65,23 @@ type LightboxProps = {
 // Full-screen viewer. Rendered into <body> so the card's hover transform doesn't trap the fixed overlay.
 function Lightbox({ images, color, index, setIndex, onClose }: LightboxProps) {
   const closeRef = useRef<HTMLButtonElement>(null);
+  const [zoom, setZoom] = useState(0); // index into ZOOM_LEVELS
   const image = images[index];
   const many = images.length > 1;
-  const step = (delta: number) => setIndex((index + delta + images.length) % images.length);
+  const zoomed = zoom > 0;
+  const step = (delta: number) => {
+    setZoom(0);
+    setIndex((index + delta + images.length) % images.length);
+  };
+  const zoomBy = (delta: number) => setZoom(Math.min(Math.max(zoom + delta, 0), ZOOM_LEVELS.length - 1));
 
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
       if (event.key === "Escape") onClose();
       else if (event.key === "ArrowRight") step(1);
       else if (event.key === "ArrowLeft") step(-1);
+      else if (event.key === "+" || event.key === "=") zoomBy(1);
+      else if (event.key === "-") zoomBy(-1);
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
@@ -101,9 +110,18 @@ function Lightbox({ images, color, index, setIndex, onClose }: LightboxProps) {
     >
       <div className={styles.lightboxBar} onClick={(event) => event.stopPropagation()}>
         <span className={styles.lightboxCounter}>{pad(index + 1)} / {pad(images.length)}</span>
-        <button ref={closeRef} type="button" className={styles.lightboxButton} onClick={onClose} aria-label="Close gallery">
-          <i className="bi bi-x-lg" />
-        </button>
+        <div className={styles.lightboxTools}>
+          <button type="button" className={styles.lightboxButton} onClick={() => zoomBy(-1)} disabled={!zoomed} aria-label="Zoom out">
+            <i className="bi bi-zoom-out" />
+          </button>
+          <span className={styles.lightboxZoom} aria-live="polite">{ZOOM_LEVELS[zoom]}x</span>
+          <button type="button" className={styles.lightboxButton} onClick={() => zoomBy(1)} disabled={zoom === ZOOM_LEVELS.length - 1} aria-label="Zoom in">
+            <i className="bi bi-zoom-in" />
+          </button>
+          <button ref={closeRef} type="button" className={styles.lightboxButton} onClick={onClose} aria-label="Close gallery">
+            <i className="bi bi-x-lg" />
+          </button>
+        </div>
       </div>
 
       <div className={styles.lightboxStage}>
@@ -118,15 +136,23 @@ function Lightbox({ images, color, index, setIndex, onClose }: LightboxProps) {
           </button>
         )}
 
-        <Image
-          key={index}
-          src={image.src}
-          alt={image.alt}
-          className={`${styles.lightboxImage} ${many ? styles.lightboxImageClickable : ""}`}
-          sizes="100vw"
-          placeholder="blur"
-          onClick={(event) => { event.stopPropagation(); if (many) step(1); }}
-        />
+        {/* Scrolls when zoomed past the screen, so the image can be panned */}
+        <div className={styles.lightboxScroll}>
+          <Image
+            key={index}
+            src={image.src}
+            alt={image.alt}
+            className={`${styles.lightboxImage} ${zoomed ? styles.lightboxImageZoomed : ""} ${many && !zoomed ? styles.lightboxImageClickable : ""}`}
+            style={{
+              "--ratio": image.src.width / image.src.height,
+              "--native": `${image.src.width}px`,
+              "--zoom": ZOOM_LEVELS[zoom],
+            } as React.CSSProperties}
+            unoptimized
+            placeholder="blur"
+            onClick={(event) => { event.stopPropagation(); if (many && !zoomed) step(1); }}
+          />
+        </div>
 
         {many && (
           <button
