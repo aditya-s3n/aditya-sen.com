@@ -7,6 +7,7 @@ import { beam, box } from "./helpers";
 
 const LAMP_COUNT = 3; // segments between street lamps
 const SODIUM = new THREE.Color(1, 0.62, 0.3); //sodium-vapour street lamp
+const EDGE_LIGHT = new THREE.Color(1, 0.75, 0.45).multiplyScalar(0.35); // strip along the railings, dimmer than the lamps
 const POOL_SIZE = [12, 18] as const; // [x, z] of the light pool on the road
 
 
@@ -24,6 +25,7 @@ export function placeDeck(zStart: number, rng: () => number): PartPlacement[] {
     const lamps: THREE.Matrix4[] = [];
     const lampColors: THREE.Color[] = [];
     const pools: THREE.Matrix4[] = [];
+    const poolColors: THREE.Color[] = [];
 
 
 
@@ -53,6 +55,10 @@ export function placeDeck(zStart: number, rng: () => number): PartPlacement[] {
 
         concrete.push(box(walkX, deckY-0.2, spanMid, walkWidth, 0.6, spanLength));
         steel.push(box(side * (trussX+0.3), deckY+0.7, spanMid, 0.2, 1.3, spanLength));
+
+        // light strip along the top of the railing
+        lamps.push(box(side * (trussX+0.3), deckY+1.42, spanMid, 0.3, 0.15, spanLength));
+        lampColors.push(EDGE_LIGHT);
     }
 
 
@@ -86,6 +92,7 @@ export function placeDeck(zStart: number, rng: () => number): PartPlacement[] {
                 lamps.push(box(lampX - side*1.2, deckY + 8, z0, 0.9, 0.35, 0.5));
                 const tint = SODIUM.clone().multiplyScalar(0.8 + 0.4 * rng());
                 lampColors.push(tint);
+                poolColors.push(tint);
 
                 // pool of light under the head, just above the sidewalk so it covers both
                 pools.push(box(side * (BRIDGE.roadWidth/2 - 3), deckY + 0.15, z0, POOL_SIZE[0], 1, POOL_SIZE[1]));
@@ -102,6 +109,6 @@ export function placeDeck(zStart: number, rng: () => number): PartPlacement[] {
         { part: 'steelBox', matrices: steel },
         { part: 'concreteBox', matrices: concrete },
         { part: 'lamp', matrices: lamps, colors: lampColors },
-        { part: 'lampPool', matrices: pools, colors: lampColors },
+        { part: 'lampPool', matrices: pools, colors: poolColors },
     ];
 }
