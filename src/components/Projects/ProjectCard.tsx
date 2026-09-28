@@ -1,8 +1,14 @@
 "use client";
 
+import { useState } from "react";
 import Image, { StaticImageData } from "next/image";
 import HexTextAnimation from "../HexAnimation/HexAnimation";
 import styles from "./Projects.module.css";
+
+import morningGGBridge from "@/imgs/Morning_GG_Bridge.png";
+import liveGGBridge from "@/imgs/Live_GG_Bridge.png";
+import eveningGGBridge from "@/imgs/Evening_GG_Bridge.png";
+import nightGGBridge from "@/imgs/Night_GG_Bridge.png";
 
 export type Project = {
   title: string;
@@ -11,7 +17,7 @@ export type Project = {
   github: string;
   status: "Running" | "Completed";
   tags?: string[];
-  images?: { src: StaticImageData; alt: string }[]; // up to 4, shown as a 2x2 grid
+  images?: { src: StaticImageData; alt: string }[]; // any number, click through in a stacked gallery
 };
 
 export const graphicsProjects: Project[] = [
@@ -22,9 +28,12 @@ export const graphicsProjects: Project[] = [
     github: "https://github.com/aditya-s3n/aditya-sen.com/tree/main/src/components/Procedural3D",
     status: "Completed",
     tags: ["three.js", "Procedural Generation", "Instanced Rendering", "Custom GLSL", "Height Fog", "Real-time Sky"],
-    // Drop screenshots in src/imgs, import them at the top, then list them here:
-    // { src: goldenGateDay, alt: "Golden Gate Bridge at midday" },
-    images: [],
+    images: [
+      { src: liveGGBridge, alt: "Procedural Golden Gate Bridge at the live San Francisco time" },
+      { src: morningGGBridge, alt: "Procedural Golden Gate Bridge in the morning" },
+      { src: eveningGGBridge, alt: "Procedural Golden Gate Bridge at golden hour" },
+      { src: nightGGBridge, alt: "Procedural Golden Gate Bridge at night with the street lamps on" },
+    ],
   },
   {
     title: "PBR - Raytracing",
@@ -69,6 +78,47 @@ export const otherProjects: Project[] = [
   },
 ];
 
+type GalleryProps = {
+  images: NonNullable<Project["images"]>;
+};
+
+// One image at a time, with cards peeking out behind it. Click to cycle.
+function Gallery({ images }: GalleryProps) {
+  const [index, setIndex] = useState(0);
+  const image = images[index];
+  const behind = Math.min(images.length - 1, 2);
+
+  return (
+    <div className={styles.gallery} style={{ "--behind": behind } as React.CSSProperties}>
+      {Array.from({ length: behind }, (_, layer) => (
+        <span key={layer} className={styles.galleryLayer} style={{ "--layer": layer + 1 } as React.CSSProperties} aria-hidden="true" />
+      ))}
+
+      <button
+        type="button"
+        className={styles.galleryFrame}
+        onClick={() => setIndex((index + 1) % images.length)}
+        disabled={images.length < 2}
+        aria-label={`${image.alt}. Image ${index + 1} of ${images.length}, click for next`}
+      >
+        <Image
+          key={index}
+          src={image.src}
+          alt={image.alt}
+          className={styles.galleryImage}
+          sizes="(max-width: 991px) 100vw, 33vw"
+          placeholder="blur"
+        />
+        {images.length > 1 && (
+          <span className={styles.galleryCounter}>
+            {String(index + 1).padStart(2, "0")} / {String(images.length).padStart(2, "0")}
+          </span>
+        )}
+      </button>
+    </div>
+  );
+}
+
 type CpuCoreProps = {
   project: Project;
   coreId: number;
@@ -105,18 +155,7 @@ function CpuCore({ project, coreId, cluster, featured = false }: CpuCoreProps) {
         )}
 
         {project.images && project.images.length > 0 && (
-          <div className={styles.gallery}>
-            {project.images.slice(0, 4).map((image) => (
-              <Image
-                key={image.alt}
-                src={image.src}
-                alt={image.alt}
-                className={styles.galleryImage}
-                sizes="(max-width: 991px) 50vw, 25vw"
-                placeholder="blur"
-              />
-            ))}
-          </div>
+          <Gallery images={project.images} />
         )}
 
         {project.github && (
