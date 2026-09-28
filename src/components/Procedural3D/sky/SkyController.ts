@@ -154,7 +154,10 @@ export class SkyController {
         fogUniforms.uSunDirection.value.copy(s.sunDirection);
 
         // street lamps: dim by day, over-bright (HDR) at night
-        this.assets.lampMaterial.color.setScalar(lerp(1.6, 0.5, s.dayFactor));
+        // (exposure is 0.5, so these need to be well above 1 to read as light sources)
+        this.assets.lampMaterial.color.setScalar(lerp(8.0, 1.2, s.dayFactor));
+        // light they cast on the road, off in daylight
+        this.assets.lampPoolMaterial.color.setScalar(1.5 * (1 - s.dayFactor));
         // The real bridge is floodlit at night; fake it with a faint orange emissive
         this.assets.steelMaterial.emissiveIntensity = 0.12 * (1 - s.dayFactor);
         this.stars.material.opacity = 1 - smoothstep(-12, -4, alt);

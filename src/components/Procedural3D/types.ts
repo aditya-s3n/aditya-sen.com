@@ -8,8 +8,12 @@ export const PARTS = [
     'steelBox',
     'concreteBox',
     'cable',
-    'lamp'
+    'lamp',
+    'lampPool', // light cast on the road under each street lamp
 ] as const
+
+// parts with per-instance colours
+export const TINTED_PARTS: readonly Parts[] = ['lamp', 'lampPool'];
 
 export type Parts = (typeof PARTS)[number];
 
@@ -25,7 +29,7 @@ export interface InstancedRange {
 export interface PartPlacement {
     part: Parts;
     matrices: THREE.Matrix4[];
-    colors?: THREE.Color[]; // for lamps
+    colors?: THREE.Color[]; // for lamps and lamp pools
 }
 
 

@@ -143,8 +143,15 @@ export const fogFragment = /* glsl */ `
 
 
 
+// additive light (lamp pools) must fade out in fog, not blend toward fog colour
+const fogFragmentAdditive = fogFragment.replace(
+    'gl_FragColor.rgb = mix(gl_FragColor.rgb, fogColorFor(fogColor, fogDir), fogFactor);',
+    'gl_FragColor.rgb *= 1.0 - fogFactor;',
+);
+
+
 /** swap the built-in Three.js fog for the new fog. Before it compiles */
-export function applyFog(material: THREE.Material): void {
+export function applyFog(material: THREE.Material, additive = false): void {
     material.onBeforeCompile = (shader) => {
         Object.assign(shader.uniforms, fogUniforms);
 
@@ -155,7 +162,7 @@ export function applyFog(material: THREE.Material): void {
         // replace fragment shader (per pixel)
         shader.fragmentShader = shader.fragmentShader
             .replace('#include <fog_pars_fragment>', fogParsFragment)
-            .replace('#include <fog_fragment>', fogFragment);
+            .replace('#include <fog_fragment>', additive ? fogFragmentAdditive : fogFragment);
     }
 }
 

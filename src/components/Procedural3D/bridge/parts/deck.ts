@@ -7,6 +7,7 @@ import { beam, box } from "./helpers";
 
 const LAMP_COUNT = 3; // segments between street lamps
 const SODIUM = new THREE.Color(1, 0.62, 0.3); //sodium-vapour street lamp
+const POOL_SIZE = [12, 18] as const; // [x, z] of the light pool on the road
 
 
 
@@ -22,6 +23,7 @@ export function placeDeck(zStart: number, rng: () => number): PartPlacement[] {
     const concrete: THREE.Matrix4[] = [];
     const lamps: THREE.Matrix4[] = [];
     const lampColors: THREE.Color[] = [];
+    const pools: THREE.Matrix4[] = [];
 
 
 
@@ -82,7 +84,11 @@ export function placeDeck(zStart: number, rng: () => number): PartPlacement[] {
                 const lampX = side * (BRIDGE.roadWidth/2 + 0.6);
                 steel.push(box(lampX, deckY+4, z0, 0.25, 8, 0.25));
                 lamps.push(box(lampX - side*1.2, deckY + 8, z0, 0.9, 0.35, 0.5));
-                lampColors.push(SODIUM.clone().multiplyScalar(0.8 + 0.4 * rng()));
+                const tint = SODIUM.clone().multiplyScalar(0.8 + 0.4 * rng());
+                lampColors.push(tint);
+
+                // pool of light under the head, just above the sidewalk so it covers both
+                pools.push(box(side * (BRIDGE.roadWidth/2 - 3), deckY + 0.15, z0, POOL_SIZE[0], 1, POOL_SIZE[1]));
             }
         }
 
@@ -95,6 +101,7 @@ export function placeDeck(zStart: number, rng: () => number): PartPlacement[] {
     return [
         { part: 'steelBox', matrices: steel },
         { part: 'concreteBox', matrices: concrete },
-        { part: 'lamp', matrices: lamps, colors: lampColors }
+        { part: 'lamp', matrices: lamps, colors: lampColors },
+        { part: 'lampPool', matrices: pools, colors: lampColors },
     ];
 }

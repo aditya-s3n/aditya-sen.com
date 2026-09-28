@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import type { BridgeAssets } from '../bridge/assets';
-import { PARTS, type InstancedRange, type Parts, type PartPlacement } from '../types';
+import { PARTS, TINTED_PARTS, type InstancedRange, type Parts, type PartPlacement } from '../types';
 
 const HIDDEN = new THREE.Matrix4().makeScale(0, 0, 0);
 const WHITE = new THREE.Color(1, 1, 1);
@@ -43,7 +43,7 @@ export class InstancePool {
                 mesh.setMatrixAt(i, HIDDEN);
                 // Creating instanceColor up front means the shader is compiled with
                 // it during the loading screen, not on the first chunk that uses it.
-                if (part === 'lamp') mesh.setColorAt(i, WHITE);
+                if (TINTED_PARTS.includes(part)) mesh.setColorAt(i, WHITE);
             }
 
             this.meshes.set(part, mesh);
