@@ -1,5 +1,6 @@
 "use client";
 
+import Image, { StaticImageData } from "next/image";
 import HexTextAnimation from "../HexAnimation/HexAnimation";
 import styles from "./Projects.module.css";
 
@@ -10,9 +11,21 @@ export type Project = {
   github: string;
   status: "Running" | "Completed";
   tags?: string[];
+  images?: { src: StaticImageData; alt: string }[]; // up to 4, shown as a 2x2 grid
 };
 
 export const graphicsProjects: Project[] = [
+  {
+    title: "Procedural Golden Gate",
+    description: "The real-time 3D landing page of this site: an endless, procedurally generated Golden Gate Bridge built entirely in code with three.js. Chunks stream in and out through a fixed instance pool so the whole bridge draws in five draw calls, while the sky, sun, moon, fog and lighting follow the actual current time in San Francisco. Custom GLSL drives the analytic height fog, the Fresnel ocean and the night-time lamp glow.",
+    color: "#ff5a3c",
+    github: "https://github.com/aditya-s3n/aditya-sen.com/tree/main/src/components/Procedural3D",
+    status: "Completed",
+    tags: ["three.js", "Procedural Generation", "Instanced Rendering", "Custom GLSL", "Height Fog", "Real-time Sky"],
+    // Drop screenshots in src/imgs, import them at the top, then list them here:
+    // { src: goldenGateDay, alt: "Golden Gate Bridge at midday" },
+    images: [],
+  },
   {
     title: "PBR - Raytracing",
     description: "A CPU-based path tracer built from scratch, following Ray Tracing in One Weekend. Implements Lambertian, metal, and dielectric materials with physically accurate light scattering, anti-aliasing via supersampling, and a thin-lens camera model for depth-of-field effects.",
@@ -91,15 +104,32 @@ function CpuCore({ project, coreId, cluster, featured = false }: CpuCoreProps) {
           </ul>
         )}
 
-        <a
-          href={project.github}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={styles.sourceButton}
-          data-augmented-ui="tl-clip br-clip border"
-        >
-          <i className="bi bi-github" /> Read source
-        </a>
+        {project.images && project.images.length > 0 && (
+          <div className={styles.gallery}>
+            {project.images.slice(0, 4).map((image) => (
+              <Image
+                key={image.alt}
+                src={image.src}
+                alt={image.alt}
+                className={styles.galleryImage}
+                sizes="(max-width: 991px) 50vw, 25vw"
+                placeholder="blur"
+              />
+            ))}
+          </div>
+        )}
+
+        {project.github && (
+          <a
+            href={project.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.sourceButton}
+            data-augmented-ui="tl-clip br-clip border"
+          >
+            <i className="bi bi-github" /> Read source
+          </a>
+        )}
       </div>
 
       <div className={styles.corePads} aria-hidden="true" />

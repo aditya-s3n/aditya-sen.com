@@ -353,6 +353,21 @@
   background: var(--accent);
 }
 
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+  margin: 0 0 1.25rem;
+}
+
+.galleryImage {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+}
+
 /* Contact pads along the bottom of each core */
 .corePads {
   height: 6px;

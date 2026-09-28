@@ -39,9 +39,11 @@ export default function TaskManager() {
                 <td>{project.cluster}</td>
                 <td><span className={project.status === "Running" ? styles.tmRunning : styles.tmCompleted} />{project.status}</td>
                 <td>
-                  <a href={project.github} target="_blank" rel="noopener noreferrer" aria-label={`${project.title} source on GitHub`}>
-                    <i className="bi bi-github" />
-                  </a>
+                  {project.github && (
+                    <a href={project.github} target="_blank" rel="noopener noreferrer" aria-label={`${project.title} source on GitHub`}>
+                      <i className="bi bi-github" />
+                    </a>
+                  )}
                 </td>
               </tr>
             ))}
