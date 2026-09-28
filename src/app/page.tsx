@@ -20,15 +20,12 @@ export default function Home() {
   const [sceneReady, setSceneReady] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [sfTime, setSfTime] = useState('');
-  const [showDebug, setShowDebug] = useState(false);
   const [preset, setPreset] = useState<TimePreset>('live');
   const timeOverride = useMemo(() => presetTime(preset), [preset]);
   const mountedAt = useRef(0);
 
   useEffect(() => {
     mountedAt.current = performance.now();
-    // Debug controls: always in `next dev`, and in production with ?debug.
-    setShowDebug(process.env.NODE_ENV !== 'production' || new URLSearchParams(window.location.search).has('debug'));
   }, []);
 
   const handleProgress = useCallback((p: LoadProgress) => {
@@ -62,7 +59,7 @@ export default function Home() {
     <div>
       <Background />
       <Procedural3D onProgress={handleProgress} onReady={handleReady} timeOverride={timeOverride} />
-      {showDebug && loaded && (
+      {loaded && (
         <TimeOfDayDropDown value={preset} onChange={setPreset} />
       )}
       <div className="landing-hero">
