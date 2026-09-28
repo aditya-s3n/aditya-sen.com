@@ -1,8 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import Image, { StaticImageData } from "next/image";
 import HexTextAnimation from "../HexAnimation/HexAnimation";
+import Gallery, { GalleryImage } from "./Gallery";
 import styles from "./Projects.module.css";
 
 import morningGGBridge from "@/imgs/Morning_GG_Bridge.png";
@@ -17,7 +16,7 @@ export type Project = {
   github: string;
   status: "Running" | "Completed";
   tags?: string[];
-  images?: { src: StaticImageData; alt: string }[]; // any number, click through in a stacked gallery
+  images?: GalleryImage[]; // any number, opens in a full-screen gallery
 };
 
 export const graphicsProjects: Project[] = [
@@ -78,47 +77,6 @@ export const otherProjects: Project[] = [
   },
 ];
 
-type GalleryProps = {
-  images: NonNullable<Project["images"]>;
-};
-
-// One image at a time, with cards peeking out behind it. Click to cycle.
-function Gallery({ images }: GalleryProps) {
-  const [index, setIndex] = useState(0);
-  const image = images[index];
-  const behind = Math.min(images.length - 1, 2);
-
-  return (
-    <div className={styles.gallery} style={{ "--behind": behind } as React.CSSProperties}>
-      {Array.from({ length: behind }, (_, layer) => (
-        <span key={layer} className={styles.galleryLayer} style={{ "--layer": layer + 1 } as React.CSSProperties} aria-hidden="true" />
-      ))}
-
-      <button
-        type="button"
-        className={styles.galleryFrame}
-        onClick={() => setIndex((index + 1) % images.length)}
-        disabled={images.length < 2}
-        aria-label={`${image.alt}. Image ${index + 1} of ${images.length}, click for next`}
-      >
-        <Image
-          key={index}
-          src={image.src}
-          alt={image.alt}
-          className={styles.galleryImage}
-          sizes="(max-width: 991px) 100vw, 33vw"
-          placeholder="blur"
-        />
-        {images.length > 1 && (
-          <span className={styles.galleryCounter}>
-            {String(index + 1).padStart(2, "0")} / {String(images.length).padStart(2, "0")}
-          </span>
-        )}
-      </button>
-    </div>
-  );
-}
-
 type CpuCoreProps = {
   project: Project;
   coreId: number;
@@ -155,7 +113,7 @@ function CpuCore({ project, coreId, cluster, featured = false }: CpuCoreProps) {
         )}
 
         {project.images && project.images.length > 0 && (
-          <Gallery images={project.images} />
+          <Gallery images={project.images} color={project.color} />
         )}
 
         {project.github && (
