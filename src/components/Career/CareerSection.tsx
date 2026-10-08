@@ -4,6 +4,7 @@ import Image, { StaticImageData } from "next/image";
 import HexTextAnimation from "../HexAnimation/HexAnimation"
 import styles from "./Career.module.css"
 
+import uwAsicLogo from "@/imgs/uwasicLogo.jpeg";
 import spsCommerceLogo from "@/imgs/SPSCommerce.png";
 import midnightSunLogo from "@/imgs/MidnightSun.png";
 import dundasLifeLogo from "@/imgs/DundasLife.png";
@@ -24,6 +25,16 @@ export type CareerEntry = {
 export const careers: CareerEntry[] = [
   {
     id: 0,
+    company: "UW ASIC",
+    position: "Rendering Software Lead",
+    duration: "September 2026 - Present",
+    description:
+      "Leading all the host-side software for the TinyTracer, a hardware path-tracing ASIC written in Verilog. Architected the full rendering pipeline from scene design to final image: compiler, UART link, live view, denoiser, output. Building a real-time raycast viewport and scene designer with wgpu and WGSL.",
+    color: "#facc15",
+    logo: uwAsicLogo,
+  },
+  {
+    id: 1,
     company: "SPS Commerce",
     position: "Software Engineering Intern",
     duration: "January 2026 - April 2026",
@@ -33,7 +44,7 @@ export const careers: CareerEntry[] = [
     logo: spsCommerceLogo,
   },
   {
-    id: 1,
+    id: 2,
     company: "Midnight Sun Solar Rayce XVI",
     position: "Firmware Team Lead",
     duration: "January 2024 - January 2026",
@@ -43,7 +54,7 @@ export const careers: CareerEntry[] = [
     logo: midnightSunLogo,
   },
   {
-    id: 2,
+    id: 3,
     company: "Lifestyle Home Products",
     position: "Software Engineering Intern",
     duration: "May 2025 - August 2025",
@@ -53,7 +64,7 @@ export const careers: CareerEntry[] = [
     logo: lifestyleLogo,
   },
   {
-    id: 3,
+    id: 4,
     company: "Lifestyle Home Products",
     position: "Software Engineering Intern",
     duration: "September 2024 - December 2024",
@@ -63,7 +74,7 @@ export const careers: CareerEntry[] = [
     logo: lifestyleLogo,
   },
   {
-    id: 4,
+    id: 5,
     company: "Dundas Life",
     position: "Software Engineering Intern",
     duration: "January 2024 - April 2024",
@@ -73,7 +84,7 @@ export const careers: CareerEntry[] = [
     logo: dundasLifeLogo,
   },
   {
-    id: 5,
+    id: 6,
     company: "uCast",
     position: "Software Engineering Intern",
     duration: "July 2022 - July 2023",
@@ -87,8 +98,13 @@ export const careers: CareerEntry[] = [
 const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
 // "January 2026 - April 2026" -> 4 (inclusive month count), shown as the stick's "capacity"
+// "Present" counts up to the current month
 export function durationInMonths(duration: string) {
   const [start, end] = duration.split(" - ").map((part) => {
+    if (part.trim() === "Present") {
+      const now = new Date()
+      return now.getFullYear() * 12 + now.getMonth()
+    }
     const [month, year] = part.trim().split(" ")
     return Number(year) * 12 + MONTHS.indexOf(month)
   })
