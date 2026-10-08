@@ -1,1 +1,1 @@
-export const RESUME_URL = "https://drive.google.com/file/d/1ao0Wkd_Af_1SoZYjkRdc7w02-OKuPuq4/view?usp=sharing";
+export const RESUME_URL = "https://drive.google.com/file/d/1LZdqsAAdisKgROnz_T0crlOE2jJ8NsJ4/view?usp=sharing";
