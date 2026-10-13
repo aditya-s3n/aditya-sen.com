@@ -52,67 +52,6 @@
 }
 
 
-@keyframes holocall-simple-scan {
-  0% {
-    top: -4px;
-    opacity: 0;
-  }
-  5% {
-    opacity: 1;
-  }
-  95% {
-    top: 100%;
-    opacity: 1;
-  }
-  100% {
-    top: 104%;
-    opacity: 0;
-  }
-}
-
-.profile-image-wrapper.holocall-active::before {
-  content: "";
-  position: absolute;
-  top: -4px;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(89, 238, 244, 0.3) 20%,
-    rgba(89, 238, 244, 0.8) 50%,
-    rgba(89, 238, 244, 0.3) 80%,
-    transparent
-  );
-  box-shadow: 0 0 8px rgba(89, 238, 244, 0.6);
-  animation: holocall-simple-scan 3s ease-in-out infinite;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.profile-image-wrapper.holocall-auto::before {
-  content: "";
-  position: absolute;
-  top: -4px;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(89, 238, 244, 0.3) 20%,
-    rgba(89, 238, 244, 0.8) 50%,
-    rgba(89, 238, 244, 0.3) 80%,
-    transparent
-  );
-  box-shadow: 0 0 8px rgba(89, 238, 244, 0.6);
-  animation: holocall-simple-scan 3s ease-in-out infinite 1s;
-  pointer-events: none;
-  z-index: 1;
-}
-
-
 
 #projects, #career, #about, #contact {
   scroll-margin-top: 40px;

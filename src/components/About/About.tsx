@@ -84,7 +84,7 @@ export default function About() {
                     <div className={`${styles.panel} ${styles.idCard}`} data-augmented-ui="tl-clip br-clip border">
                         <div className={styles.panelTag}>ID // PLAYER_01</div>
 
-                        <div className={`profile-image-wrapper holocall-auto ${styles.portrait}`} data-augmented-ui="r-clip-y both">
+                        <div className={`profile-image-wrapper ${styles.portrait}`} data-augmented-ui="r-clip-y both">
                             <Image
                                 src={profile}
                                 alt="Aditya Sen"

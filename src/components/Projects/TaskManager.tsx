@@ -12,7 +12,7 @@ export default function TaskManager() {
   return (
     <div className={styles.taskManager} data-augmented-ui="tl-clip br-clip border">
       <div className={styles.tmBar}>
-        <span className={styles.tmTitle}><i className="bi bi-cpu" /> Task Manager</span>
+        <span className={styles.tmTitle}><i className="bi bi-cpu" /> System Monitor</span>
         <span className={styles.tmControls} aria-hidden="true"><i className="bi bi-dash" /><i className="bi bi-square" /><i className="bi bi-x" /></span>
       </div>
 
