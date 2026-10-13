@@ -58,7 +58,7 @@ export default function Contact() {
           <i /><i /><i /><i />
         </span>
         <div>
-          <p className={styles.transmissionLabel}>Reach Out</p>
+          <p className={styles.transmissionLabel}>Outreach Channel</p>
           <p className={styles.transmissionText}>
             Reach out if you have any questions, or just feeling friendly :)
           </p>
