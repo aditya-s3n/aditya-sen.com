@@ -134,6 +134,12 @@
   box-shadow: 0 0 6px #22c55e;
 }
 
+.tmSwapped {
+  composes: tmRunning;
+  background: #f59e0b;
+  box-shadow: 0 0 6px #f59e0b;
+}
+
 .tmCompleted {
   composes: tmRunning;
   background: rgba(255, 255, 255, 0.4);

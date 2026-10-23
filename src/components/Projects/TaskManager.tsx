@@ -1,12 +1,18 @@
 "use client";
 
-import { graphicsProjects, otherProjects } from "./ProjectCard";
+import { graphicsProjects, otherProjects, Project } from "./ProjectCard";
 import styles from "./Projects.module.css";
 
 const allProjects = [
   ...graphicsProjects.map((project) => ({ ...project, cluster: "GFX" })),
   ...otherProjects.map((project) => ({ ...project, cluster: "GEN" })),
 ];
+
+const statusStyles: Record<Project["status"], string> = {
+  Running: styles.tmRunning,
+  Swapped: styles.tmSwapped,
+  Completed: styles.tmCompleted,
+};
 
 export default function TaskManager() {
   return (
@@ -37,7 +43,7 @@ export default function TaskManager() {
                 <td>{String(index).padStart(2, "0")}</td>
                 <td className={styles.tmName}>{project.title}</td>
                 <td>{project.cluster}</td>
-                <td><span className={project.status === "Running" ? styles.tmRunning : styles.tmCompleted} />{project.status}</td>
+                <td><span className={statusStyles[project.status]} />{project.status}</td>
                 <td>
                   {project.github && (
                     <a href={project.github} target="_blank" rel="noopener noreferrer" aria-label={`${project.title} source on GitHub`}>
