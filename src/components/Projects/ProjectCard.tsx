@@ -18,7 +18,7 @@ export type Project = {
   description: string;
   color: string;
   github: string;
-  status: "Running" | "Completed";
+  status: "Running" | "Swapped" | "Completed";
   tags?: string[];
   images?: GalleryImage[]; // any number, opens in a full-screen gallery
 };
@@ -71,7 +71,7 @@ export const otherProjects: Project[] = [
       "Scarlet Encryption is a file encryption tool that allows users to securely encrypt and decrypt files on their local storage. It supports AES for encryption, SHA-256 for file integrity, RSA for hashing the AES key.",
     color: "#f97316",
     github: "https://github.com/aditya-s3n/scarlet_encryption",
-    status: "Running",
+    status: "Swapped",
   },
   {
     title: "NASA - Twitter Bot",
