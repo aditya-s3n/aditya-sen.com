@@ -34,3 +34,21 @@
     text-decoration: none;
     margin: 0;
 }
+
+/* On phones: name and year share a row, the link sits below,
+   and each circuit takes half the width so they never collide with the text */
+@media (max-width: 767px) {
+    .footerContainer {
+        padding-top: 2.75rem !important;
+    }
+
+    .circuitLeft,
+    .circuitRight {
+        width: 50%;
+        height: 40px;
+    }
+
+    .footerText {
+        font-size: 1rem;
+    }
+}

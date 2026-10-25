@@ -57,12 +57,6 @@
   letter-spacing: 1px;
 }
 
-.tmControls {
-  display: flex;
-  gap: 1rem;
-  color: rgba(255, 255, 255, 0.45);
-}
-
 .tmTabs {
   display: flex;
   padding: 0 1.25rem;
@@ -213,7 +207,6 @@
 
 .packageFeatured .clusterTitle {
   font-size: 1.7rem;
-  text-shadow: 0 0 14px rgba(89, 238, 244, 0.35);
 }
 
 .clusterCaption {
@@ -299,7 +292,6 @@
 .coreTitle {
   font-size: 1.15rem;
   color: var(--accent);
-  text-shadow: 0 0 10px color-mix(in srgb, var(--accent) 45%, transparent);
 }
 
 .coreFeatured .coreTitle {

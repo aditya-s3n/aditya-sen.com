@@ -1,0 +1,65 @@
+.glitch {
+    position: relative;
+    display: inline-block;
+}
+
+/* Two colour-shifted copies, each clipped to a slice, only shown on glitch frames */
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* One ~0.66s burst each time the component switches this class on */
+.active {
+    animation: glitch-jitter 0.66s steps(1, end);
+}
+
+.active::before {
+    animation: glitch-top 0.66s steps(1, end);
+}
+
+.active::after {
+    animation: glitch-bottom 0.66s steps(1, end);
+}
+
+@keyframes glitch-jitter {
+    0% { transform: none; color: inherit; }
+    9% { transform: translate(-5px, 1px); color: #59EEF4; }
+    23% { transform: translate(6px, -2px) skewX(-12deg); color: #fcee0a; }
+    36% { transform: translate(-3px, 0); color: inherit; }
+    50% { transform: none; }
+    64% { transform: translate(4px, 1px) skewX(8deg); color: #00ff9f; }
+    77%, 100% { transform: none; color: inherit; }
+}
+
+@keyframes glitch-top {
+    0% { opacity: 0; }
+    9% { opacity: 1; color: #59EEF4; transform: translateX(-9px); clip-path: inset(5% 0 60% 0); }
+    23% { opacity: 1; color: #fcee0a; transform: translateX(7px); clip-path: inset(50% 0 25% 0); }
+    36% { opacity: 1; color: #00ff9f; transform: translateX(-5px); clip-path: inset(25% 0 50% 0); }
+    50% { opacity: 0; }
+    64% { opacity: 1; color: #59EEF4; transform: translateX(10px); clip-path: inset(0 0 75% 0); }
+    77%, 100% { opacity: 0; }
+}
+
+@keyframes glitch-bottom {
+    0% { opacity: 0; }
+    9% { opacity: 1; color: #ff2a6d; transform: translateX(9px); clip-path: inset(60% 0 5% 0); }
+    23% { opacity: 1; color: #b347d9; transform: translateX(-8px); clip-path: inset(10% 0 65% 0); }
+    36% { opacity: 1; color: #ff2a6d; transform: translateX(6px); clip-path: inset(70% 0 0 0); }
+    50% { opacity: 0; }
+    64% { opacity: 1; color: #fcee0a; transform: translateX(-10px); clip-path: inset(40% 0 35% 0); }
+    77%, 100% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .active,
+    .active::before,
+    .active::after {
+        animation: none;
+    }
+}

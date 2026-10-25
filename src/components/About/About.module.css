@@ -327,6 +327,10 @@
   font-size: 1.4rem;
   color: var(--accent);
   margin-bottom: 0.4rem;
+  transition: filter 0.3s ease;
+}
+
+.chip:hover .chipIcon {
   filter: drop-shadow(0 0 6px var(--accent));
 }
 
