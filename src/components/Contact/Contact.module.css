@@ -53,18 +53,19 @@
 .signal i {
   width: 6px;
   background: #59a1f4;
-  box-shadow: 0 0 6px rgba(89, 161, 244, 0.7);
-  animation: signal 1.6s ease-in-out infinite;
+  opacity: 0.25;
+  animation: signal 1.6s steps(1, end) infinite;
 }
 
 .signal i:nth-child(1) { height: 25%; }
-.signal i:nth-child(2) { height: 50%; animation-delay: 0.15s; }
-.signal i:nth-child(3) { height: 75%; animation-delay: 0.3s; }
-.signal i:nth-child(4) { height: 100%; animation-delay: 0.45s; }
+.signal i:nth-child(2) { height: 50%; animation-delay: 0.4s; }
+.signal i:nth-child(3) { height: 75%; animation-delay: 0.8s; }
+.signal i:nth-child(4) { height: 100%; animation-delay: 1.2s; }
 
+/* Each bar is lit for one quarter of the cycle, switching instantly */
 @keyframes signal {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.3; }
+  0% { opacity: 1; box-shadow: 0 0 8px rgba(89, 161, 244, 0.9); }
+  25%, 100% { opacity: 0.25; box-shadow: none; }
 }
 
 .transmissionLabel {
