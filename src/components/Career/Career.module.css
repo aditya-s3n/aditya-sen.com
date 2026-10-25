@@ -268,7 +268,6 @@
   font-size: 1.6rem;
   font-weight: bold;
   color: var(--accent);
-  text-shadow: 0 0 10px color-mix(in srgb, var(--accent) 45%, transparent);
 }
 
 .duration {
