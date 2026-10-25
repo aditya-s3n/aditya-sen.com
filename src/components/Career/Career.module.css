@@ -130,7 +130,6 @@
 .resumeIcon {
   font-size: 2.5rem;
   color: #FCA765;
-  filter: drop-shadow(0 0 8px rgba(252, 167, 101, 0.6));
 }
 
 .resumeTitle {
