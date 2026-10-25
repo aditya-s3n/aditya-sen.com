@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import HexTextAnimation from '@/components/HexAnimation/HexAnimation';
+import Glitch from '@/components/Glitch/Glitch';
 import Background from '@/components/Background/Background';
 import Procedural3D from '@/components/Procedural3D/Procedural3D';
 import { formatSFTime, presetTime, type TimePreset } from '@/components/Procedural3D/sky/sunPosition';
@@ -73,7 +74,7 @@ export default function Home() {
           </div>
         ) : (
           <div className="landing-content landing-panel" data-augmented-ui="tl-clip br-clip border">
-            <p className="landing-name">Aditya Sen</p>
+            <p className="landing-name"><Glitch text="Aditya Sen" onMount /></p>
             <div className="landing-tag-container" data-augmented-ui="bl-clip-y tr-clip-y border">
               <HexTextAnimation text="Graphics & Rendering Engineer" className="landing-tag mb-0" duration={2} />
             </div>
